@@ -359,3 +359,4 @@ for row in rows: #줄들(리스트) 중 줄
 
 
 
+clear : Ctrl + l

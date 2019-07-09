@@ -155,3 +155,17 @@ wysiwyg :  What You See Is What You Get
 print('hi')
 ```
 
+
+
+TIL폴더에 .vscode 폴더 제외하고
+
+.gitignore에 .vscode/
+
+
+
+`import requests`
+
+`pip install requests`
+
+
+

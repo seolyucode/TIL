@@ -90,3 +90,29 @@ ls
 
 `git push origin master`
 
+
+
+`cd ..`
+
+`cd TIL`
+
+`git status`
+
+`git commit -m 'startcamp | learn git | 190708' ` : commit message / 과거형X 현재형O
+
+`git remote add github https://github.com/seolyucode/TIL.git`
+
+`git remote -v` 
+
+`git push github master`
+
+
+
+### 배운 것들
+
+`git add .`
+
+`git commit -m 'python | learn list | 190709'`
+
+`git push github master`
+

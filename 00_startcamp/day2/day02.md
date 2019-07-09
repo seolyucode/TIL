@@ -258,3 +258,92 @@ for row in rows: #줄들(리스트) 중 줄
 
 ```
 
+
+
+#CSV : comma separated value
+
+Excel Viewer 설치 -> csv파일 만들었을 때, 탭에서 우클 - 오픈 프리뷰
+
+
+
+file_write.py
+
+```python
+lunches = {
+    '양자강': '02-557-4211',
+    '김밥카페': '02-553-3181',
+    '순남시래기': '02-508-0887'
+}
+
+# 파일 쓰기
+with open('lunch.csv', 'w', encoding='utf-8') as f: #파일 여는 문법
+    f.write('식당이름, 전화번호\n')
+    for name, phone in lunches.items():
+        f.write(f'{name}, {phone}\n')
+
+# 파일 읽기
+
+
+# for lunch in lunches:
+#     print(lunch) #키값
+#     print(lunches[lunch])
+
+# for name, phone in lunches.items():
+#     print(name, phone)
+
+
+```
+
+
+
+file_read.py
+
+```python
+import csv
+
+with open('lunch.csv', 'r', encoding='utf-8') as f:
+    items = csv.reader(f)
+    for item in items:
+        print(item)
+```
+
+
+
+melon50.py 추가
+
+```python
+import bs4
+import requests
+
+url = 'https://www.melon.com/chart/index.htm'
+
+headers = {'User-Agent' : ':)'} #User-Agent #406이라서 추가
+
+response = requests.get(url, headers=headers).text 
+#url 뿐 아니라 딕셔너리 감
+#200은 오케이 404는 없다 406은 Not Acceptable 
+#뱉어낸 애를 response에 저장
+
+#print(response)
+
+
+text = bs4.BeautifulSoup(response, 'html.parser')
+rows = text.select('.lst50') #모든 가로열들 다 잡아서(리스트)
+
+with open('melon50.csv', 'w', encoding='utf-8') as f:
+    f.write('순위, 제목, 가수\n')
+    for row in rows: #줄들(리스트) 중 줄
+        rank = row.select_one('td:nth-child(2) > div > span.rank').text
+        title = row.select_one('td:nth-child(6) > div > div > div.ellipsis.rank01 > span > a').text
+        artist = row.select_one('td:nth-child(6) > div > div > div.ellipsis.rank02 > a').text
+        #print(rank, title, artist)
+        f.write(f'{rank}, {title}, {artist}\n')
+
+#print(type(rows)) #rows는 리스트 type() 타입 궁금할 때 print(type(rows))
+
+
+
+```
+
+
+

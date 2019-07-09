@@ -167,5 +167,46 @@ TIL폴더에 .vscode 폴더 제외하고
 
 `pip install requests`
 
+`py -m pip install requests`
 
 
+
+시스템 환경 변수 편집 - 환경 변수
+
+
+
+`py -m venv venv`
+
+`pip install requests`
+
+
+
+https://isitchristmas.com/
+
+
+
+### scraping.py
+
+```python
+import requests # 요청 보내주는
+import bs4 # 파이썬 친화적으로 예쁘게 만들어주는
+
+
+url = 'https://finance.naver.com/sise/'
+response = requests.get(url).text
+#print(response)
+text = bs4.BeautifulSoup(response, 'html.parser')
+kospi = text.select_one('#KOSPI_now') #전체 중 선택
+
+print(kospi.text)
+```
+
+
+
+`pip install bs4` : 긴 텍스트를
+
+`import bs4`
+
+
+
+`python -m pip install --upgrade pip` : 노란글씨안보이게하려고

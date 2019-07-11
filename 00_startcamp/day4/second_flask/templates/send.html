@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send message</title>
+    <!-- <style>
+        p{
+            color: red;
+       }
+        .code {
+            color: blue;
+        }
+
+        #secret {
+            color: yellow;
+        }
+        </style> -->
+</head>
+<body>
+    <h1>Send message here</h1>
+    <!-- p.code*10 -->
+    <!-- <p>GOOD</p>
+    <p class="code">hi</p>
+    <p class="code">hello</p>
+    <p class="code">bye</p> -->
+    <!-- id는 문서에서 잡아낼 때 -->
+    <!-- <p class="code" id="secret">ssafy3</p>
+    <p class="code">good</p> -->
+    <!-- form action="" : 양식을 보낼 곳 -->
+    <!-- http method. POST 요청. method="POST"는 중요한 요청/안전해야할 때 씀.-->
+    <form action="/receive" method="POST">
+        <!-- <input type="text" placeholder="message here" autofocus value="hi" name="msg"> -->
+        <input type="text" autofocus value="" name="msg">
+        <input type="submit" value="보내기:)">
+    </form>
+</body>
+</html>
+
+

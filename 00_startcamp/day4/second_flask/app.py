@@ -16,6 +16,11 @@ def art():
 def add():
     #pass  # add.html => <input> * 2
     return render_template('add.html')
+
+
+@app.route('/substr')
+def substr():
+    return render_template('review.html')
     
 
 # @app.route('/result')

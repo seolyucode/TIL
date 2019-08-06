@@ -1,0 +1,31 @@
+{% extends 'utils/base.html' %}
+
+{% block title %}ART{% endblock %}
+{% block body %}
+
+<h1>Asciify</h1>
+<p>Input Some text below</p>
+
+<form action="/utils/output/" method="GET">
+    <!-- {% csrf_token %} -->
+    <div>
+        <label for="word">text</label>
+        <!-- <input id="word" name="user-input" type="text" value="HIHI"> -->
+        <input id="word" name="user-input" type="text" required>
+    </div>
+    <div>
+        <label for="font">font</label>
+        <select name="user-font" id="font">
+            {% for font in fonts %}
+            <option value="{{ font }}">{{ font }}</option>
+            {% endfor %}
+            <!-- <option value="1">hihi</option> -->
+        </select>
+        <!-- <input id="font" name="user-font" type="text"> -->
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}

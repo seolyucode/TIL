@@ -27,15 +27,15 @@ def output(request):
     '''
     if not user_input:  # user_input이 있다면
         user_input = 'NO EMPTY'
-    
+
     result = text2art(user_input, font=user_font)
         # print(request.GET)
-        
-    
+
+
     return render(request, 'utils/output.html', {
             'result': result,
         })
-    #return HttpResponse(user_input)
+    # return HttpResponse(user_input)
     '''
 
     if user_input:  # user_input이 있다면
@@ -52,4 +52,4 @@ def throw(request):
 
 
 def catch(request):
-    return render(request, 'catch.html')
+    return render(request, 'utils/catch.html')

@@ -40,6 +40,6 @@ def edit(request):  # 특정 게시글을 수정할 화면
 
 # Delete
 def delete(request, article_id):  # 특정 게시글을 삭제하는 view(일)
-    a = Article.objects.get(id=article_id)  # 특정
-    a.delete()
+    article = Article.objects.get(id=article_id)  # 특정
+    article.delete()
     return redirect('/board/articles')

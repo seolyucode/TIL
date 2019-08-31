@@ -71,7 +71,7 @@
 ## 차수 Degree
 
 * 정점과 연결되어 있는 간선의 개수
-* 방향 그래프의 경우 In-degree, Out-degree로 나누어서 차수를 계산
+* 방향 그래프의 경우 In-degree(들어오는 간선), Out-degree(나가는 간선)로 나누어서 차수를 계산
 
 
 
@@ -167,7 +167,7 @@ A[6] (4,7)
 재귀 호출 구현
 
 ```c++
-// 인접 행렬을 이용한 구현
+// 인접 행렬을 이용한 구현 O(V제곱)
 void dfs(int x) {  // dfs(x) x에 방문했다를 의미
     check[x] = true;
     printf("%d ",x);
@@ -178,7 +178,7 @@ void dfs(int x) {  // dfs(x) x에 방문했다를 의미
     }
 }
 
-// 인접 리스트를 이용한 구현
+// 인접 리스트를 이용한 구현 O(V+E)
 void dfs(int x) {
     check[x] = true;
     printf("%d ",x);
@@ -193,7 +193,356 @@ void dfs(int x) {
 
 
 
+### 너비 우선 탐색 Breadth First Search(BFS)
 
+* 큐를 이용해서 지금 위치에서 갈 수 있는 것을 모두 큐에 넣는 방식
+* 큐에 넣을 때 방문했다고 체크해야 한다
+
+```c++
+# BFS의 구현은 Queue를 이용해서 할 수 있다.(인접 행렬)
+queue<int> q;
+check[1] = true; qu.push(1);
+while(!q.empty()) {
+    int x = q.front(); q.pop();
+    printf("%d ", x);
+    for (int i=1; i<=n; i++) {
+        if (a[x][i]==1 && check[i]==false) {
+            check[i] = true;
+            q.push(i);
+        }
+    }
+}
+
+# 인접 리스트
+queue<int> q;
+check[1] = true; q.push(1);
+while(!q.empty()) {
+    int x = q.front(); q.pop();
+    printf("%d ", x);
+    for (int i=0; i<=a[x].size(); i++) {
+        int y = a[x][i];
+        if (check[y] == false) {
+            check[y] == true; q.push(y);
+        }
+    }
+}
+```
+
+시간 복잡도
+
+* 인접 행렬: O(V제곱)
+* 인접 리스트: O(V+E)
+
+
+
+### DFS와 BFS
+
+https://www.acmicpc.net/problem/1260
+
+* 그래프를 DFS로 탐색한 결과와 BFS로 탐색한 결과를 출력하는 문제
+
+```python
+# 인접 리스트
+from collections import deque
+n,m,start = map(int,input().split())
+a = [[] for _ in range(n+1)]
+check = [False] * (n+1)
+for _ in range(m):
+    u,v = map(int,input().split())
+    a[u].append(v)
+    a[v].append(u)
+for i in range(n):
+    a[i].sort()
+
+def dfs(x):
+    global check
+    check[x] = True
+    print(x, end=' ')
+    for y in a[x]:
+        if check[y] == False:
+            dfs(y)
+
+def bfs(start):
+    check = [False] * (n+1)
+    q = deque()
+    q.append(start)
+    check[start] = True
+    while q:
+        x = q.popleft()
+        print(x, end=' ')
+        for y in a[x]:
+            if check[y] == False:
+                check[y] = True
+                q.append(y)
+
+dfs(start)
+print()
+bfs(start)
+print()
+```
+
+```python
+# 간선 리스트
+from collections import deque
+n,m,start = map(int,input().split())
+edges = []
+check = [False] * (n+1)
+for _ in range(m):
+    u,v = map(int,input().split())
+    edges.append((u,v))
+    edges.append((v,u))
+m *= 2
+edges.sort()
+cnt = [0]*(n+1)
+
+for u, v in edges:
+    cnt[u] += 1
+
+for i in range(1, n+1):
+    cnt[i] += cnt[i-1]
+
+def dfs(x):
+    global check
+    check[x] = True
+    print(x, end=' ')
+    for i in range(cnt[x-1],cnt[x]):
+        y = edges[i][1]
+        if check[y] == False:
+            dfs(y)
+
+def bfs(start):
+    check = [False] * (n+1)
+    q = deque()
+    q.append(start)
+    check[start] = True
+    while q:
+        x = q.popleft()
+        print(x, end=' ')
+        for i in range(cnt[x-1],cnt[x]):
+            y = edges[i][1]
+            if check[y] == False:
+                check[y] = True
+                q.append(y)
+
+dfs(start)
+print()
+bfs(start)
+print()
+```
+
+```python
+# 비재귀 구현
+from collections import deque
+n,m,start = map(int,input().split())
+a = [[] for _ in range(n+1)]
+for _ in range(m):
+    u,v = map(int,input().split())
+    a[u].append(v)
+    a[v].append(u)
+for i in range(n):
+    a[i].sort()
+
+def dfs(node):
+    check = [False] * (n+1)
+    stack = []
+    stack.append((node,0))
+    check[node] = True
+    print(node, end=' ')
+    while stack:
+        x,start = stack.pop()
+        for i in range(start, len(a[x])):
+            y = a[x][i]
+            if check[y] == False:
+                print(y, end=' ')
+                check[y] = True
+                stack.append((x,i+1))
+                stack.append((y,0))
+                break
+
+def bfs(start):
+    check = [False] * (n+1)
+    q = deque()
+    q.append(start)
+    check[start] = True
+    while q:
+        x = q.popleft()
+        print(x, end=' ')
+        for y in a[x]:
+            if check[y] == False:
+                check[y] = True
+                q.append(y)
+
+dfs(start)
+print()
+bfs(start)
+print()
+```
+
+
+
+### 연결 요소 Connected Component
+
+* 연결 그래프가 아닌 경우.. 그래프가 하나 연결요소 2개
+* 연결 요소를 구하는 것은 DFS나 BFS(DFS 시작이 두번 => 연결요소 2개) 탐색을 이용해서 구할 수 있다.
+
+```python
+import sys
+sys.setrecursionlimit(100000)
+n,m = map(int,input().split())
+a = [[] for _ in range(n)]
+check = [False] * (n)
+for _ in range(m):
+    u,v = map(int,input().split())
+    a[u-1].append(v-1)
+    a[v-1].append(u-1)
+
+def dfs(x):
+    check[x] = True
+    for y in a[x]:
+        if check[y] == False:
+            dfs(y)
+
+ans = 0
+for i in range(n):
+    if not check[i]:
+        dfs(i)
+        ans += 1
+print(ans)
+```
+
+
+
+### 이분 그래프 Bipartite Graph
+
+* 그래프를 A와 B로 나눌 수 있음
+* A에 포함되어 있는 정점끼리 연결된 간선이 없음
+* B에 포함되어 있는 정점끼리 연결된 간선이 없음
+* 모든 간선의 한 끝 점은 A에, 다른 끝 점은 B에
+* 그래프를 DFS 또는 BFS 탐색으로 이분 그래프인지 아닌지 알아낼 수 있다
+
+DFS로 검사 -> 0: 방문X // 1: 그룹A // 2:그룹B
+
+```python
+import sys
+sys.setrecursionlimit(1000000)
+t = int(sys.stdin.readline())
+for _ in range(t):
+    n,m = map(int,sys.stdin.readline().split())
+    a = [[] for _ in range(n)]
+    color = [0] * n
+    for _ in range(m):
+        u,v = map(int,sys.stdin.readline().split())
+        a[u-1].append(v-1)
+        a[v-1].append(u-1)
+
+    def dfs(x, c):
+        color[x] = c
+        for y in a[x]:
+            if color[y] == 0:
+                if not dfs(y, 3-c):
+                    return False
+            elif color[y] == color[x]:
+                return False
+        return True
+
+    ans = True
+    for i in range(n):
+        if color[i] == 0:
+            if not dfs(i, 1):
+                ans = False
+    print('YES' if ans else 'NO')
+```
+
+
+
+# 플러드 필 Flood Fill
+
+* 어떤 위치와 연결된 모든 위치를 찾는 알고리즘
+
+
+
+### 단지 번호 붙이기
+
+https://www.acmicpc.net/problem/2667
+
+그래프 문제(인접 행렬/리스트 만들지 않아도 됨. 위/왼쪽/오른쪽/아래 4 방향 알아보면 됨)
+
+* DFS나 BFS 알고리즘을 이용해서 어떻게 이어져있는지 확인 가능
+* $d[i][j]$ = (i,j)를 방문안했으면 0, 했으면 단지 번호
+
+```c++
+int cnt = 0;
+for (int i=0; i<n; i++) {
+    for (int j=0; j<n; j++) {
+        if (a[i][j]==1 && d[i][j]==0) {
+            bfs(i, j, ++cnt);
+        }
+    }
+}
+```
+
+```c++
+void bfs(int x, int y, int cnt) {
+    queue<pair<int, int>> q; q.push(make_pair(x,y)); d[x][y] = cnt;
+    while (!q.empty()) {
+        x = q.front().first; y = q.front().second; q.pop();
+        for (int k=0; k<4; k++) {
+            int nx = x+dx[k], ny = y+dy[k];
+            if (0 <= nx && nx < n && 0 <= ny && ny < n) {
+                if (a[nx][ny] == 1 && d[nx][ny] == 0) {
+                    q.push(make_pair(nx,ny)); d[nx][ny]=cnt;
+                }
+            }
+        }
+    }
+}
+```
+
+
+
+### 4963번 섬의 개수
+
+* 연결이 대각선까지 8방향. dx, dy 리스트만 확장해주면 됨
+
+```python
+from collections import deque
+dx = [0,0,1,-1,1,1,-1,-1]
+dy = [1,-1,0,0,1,-1,1,-1]
+def bfs(x, y, cnt):
+    q = deque()
+    q.append((x,y))
+    group[x][y] = cnt
+    while q:
+        x, y = q.popleft()
+        for k in range(8):
+            nx, ny = x+dx[k], y+dy[k]
+            if 0 <= nx < n and 0 <= ny < m:
+                if a[nx][ny] == 1 and group[nx][ny] == 0:
+                    q.append((nx,ny))
+                    group[nx][ny] = cnt
+while True:
+    m,n = map(int,input().split())
+    if n == 0 and m == 0:
+        break
+    a = [list(map(int,input().split())) for _ in range(n)]
+    group = [[0]*m for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        for j in range(m):
+            if a[i][j] == 1 and group[i][j] == 0:
+                cnt += 1
+                bfs(i, j, cnt)
+
+    print(cnt)
+```
+
+
+
+### 나이트
+
+dx = [-2, -1, 1, 2, 2, 1, -1, -2]
+
+dy = [1, 2, 2, 1, -1, -2, -2, -1]
 
 
 

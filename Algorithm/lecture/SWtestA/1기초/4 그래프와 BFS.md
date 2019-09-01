@@ -546,3 +546,330 @@ dy = [1, 2, 2, 1, -1, -2, -2, -1]
 
 
 
+# BFS
+
+* BFS의 목적은 임의의 정점에서 시작해서, 모든 정점을 한 번씩 방문하는 것이다.
+* BFS는 최단 거리를 구하는 알고리즘이다.
+* BFS는 모든 가중치가 1일 때, 최단 거리를 구하는 알고리즘이다.
+* BFS를 이용해 해결할 수 있는 문제는 아래와 같은 조건을 만족해야 한다
+  1. 최소 비용 문제이어야 한다
+  2. 간선의 가중치가 1이어야 한다
+  3. 정점과 간선의 개수가 적어야 한다. (적다는 것은 문제의 조건에 맞춰서 해결할 수 있다는 것을 의미)
+     * 간선의 가중치가 문제에서 구하라고 하는 최소 비용과 의미가 일치해야 한다
+     * 즉, 거리의 최소값을 구하는 문제라면 가중치는 거리를 의미해야 하고, 시간의 최소값을 구하는 문제라면 가중치는 시간을 의미해야 한다
+
+### 2178번 미로탐색
+
+https://www.acmicpc.net/problem/2178
+
+* (1, 1)에서 (N, M)으로 가는 가장 빠른 길을 구하는 문제
+* DFS 탐색으로는 문제 풀 수 없다
+* BFS 탐색을 사용해야 하며, BFS는 단계별로 진행된다는 사실 이용
+
+```python
+from collections import deque
+dx = [0,0,1,-1]
+dy = [1,-1,0,0]
+n, m = map(int,input().split())
+a = [list(map(int,list(input()))) for _ in range(n)]
+q = deque()
+check = [[False]*m for _ in range(n)]
+dist = [[0]*m for _ in range(n)]
+q = deque()
+q.append((0,0))
+check[0][0] = True
+dist[0][0] = 1
+while q:
+    x, y = q.popleft()
+    for k in range(4):
+        nx, ny = x+dx[k], y+dy[k]
+        if 0 <= nx < n and 0 <= ny < m:
+            if check[nx][ny] == False and a[nx][ny] == 1:
+                q.append((nx,ny))
+                dist[nx][ny] = dist[x][y] + 1
+                check[nx][ny] = True
+print(dist[n-1][m-1])
+```
+
+
+
+### 토마토
+
+https://www.acmicpc.net/problem/7576
+
+```python
+from collections import deque
+dx = [0,0,1,-1]
+dy = [1,-1,0,0]
+m, n = map(int,input().split())
+a = [list(map(int,input().split())) for _ in range(n)]
+q = deque()
+dist = [[-1]*m for _ in range(n)]
+for i in range(n):
+    for j in range(m):
+        if a[i][j] == 1:
+            dist[i][j] = 0
+            q.append((i,j))
+while q:
+    x, y = q.popleft()
+    for k in range(4):
+        nx, ny = x+dx[k], y+dy[k]
+        if 0 <= nx < n and 0 <= ny < m:
+            if a[nx][ny] == 0 and dist[nx][ny] == -1:
+                q.append((nx,ny))
+                dist[nx][ny] = dist[x][y] + 1
+
+ans = max([max(row) for row in dist])
+for i in range(n):
+    for j in range(m):
+        if a[i][j] == 0 and dist[i][j] == -1:
+            ans = -1
+print(ans)
+```
+
+
+
+### 1697번 숨바꼭질
+
+```python
+from collections import deque
+MAX = 200000
+check = [False]*(MAX+1)
+dist = [-1]*(MAX+1)
+n,m = map(int,input().split())
+check[n] = True
+dist[n] = 0
+q = deque()
+q.append(n)
+while q:
+    now = q.popleft()
+    for nxt in [now-1, now+1, now*2]:
+        if 0 <= nxt <= MAX and check[nxt] == False:
+            check[nxt] = True
+            dist[nxt] = dist[now] + 1
+            q.append(nxt)
+print(dist[m])
+```
+
+
+
+### 14226번 이모티콘
+
+```python
+from collections import deque
+n = int(input())
+dist = [[-1]*(n+1) for _ in range(n+1)]
+q = deque()
+q.append((1,0))
+dist[1][0] = 0
+while q:
+    s, c = q.popleft()
+    if dist[s][s] == -1:
+        dist[s][s] = dist[s][c] + 1
+        q.append((s,s))
+    if s+c <= n and dist[s+c][c] == -1:
+        dist[s+c][c] = dist[s][c] + 1
+        q.append((s+c,c))
+    if s-1 >= 0 and dist[s-1][c] == -1:
+        dist[s-1][c] = dist[s][c] + 1
+        q.append((s-1,c))
+ans = -1
+for i in range(n+1):
+    if dist[n][i] != -1:
+        if ans == -1 or ans > dist[n][i]:
+            ans = dist[n][i]
+print(ans)
+```
+
+
+
+# 덱 사용하기
+
+### 13549번 숨바꼭질 3
+
+```python
+# 큐 소스
+from collections import deque
+MAX = 200000 
+check = [False]*MAX
+dist = [-1]*MAX
+n,m = map(int,input().split())
+check[n] = True
+dist[n] = 0
+q = deque()
+next_queue = deque()
+q.append(n)
+while q:
+    now = q.popleft()
+    if now*2 < MAX and check[now*2] == False:
+        q.append(now*2)
+        check[now*2] = True
+        dist[now*2] = dist[now]
+    if now-1 >= 0 and check[now-1] == False:
+        next_queue.append(now-1)
+        check[now-1] = True
+        dist[now-1] = dist[now]+1
+    if now+1 < MAX and check[now+1] == False:
+        next_queue.append(now+1)
+        check[now+1] = True
+        dist[now+1] = dist[now]+1
+    if not q:
+        q = next_queue
+        next_queue = deque()
+
+print(dist[m])
+```
+
+```python
+# 덱 소스
+from collections import deque
+MAX = 200000 
+check = [False]*MAX
+dist = [-1]*MAX
+n,m = map(int,input().split())
+check[n] = True
+dist[n] = 0
+q = deque()
+q.append(n)
+while q:
+    now = q.popleft()
+    if now*2 < MAX and check[now*2] == False:
+        q.appendleft(now*2)
+        check[now*2] = True
+        dist[now*2] = dist[now]
+    if now-1 >= 0 and check[now-1] == False:
+        q.append(now-1)
+        check[now-1] = True
+        dist[now-1] = dist[now]+1
+    if now+1 < MAX and check[now+1] == False:
+        q.append(now+1)
+        check[now+1] = True
+        dist[now+1] = dist[now]+1
+
+print(dist[m])
+```
+
+
+
+### 1261번 알고스팟
+
+```python
+from collections import deque
+dx = [0,0,1,-1]
+dy = [1,-1,0,0]
+m,n = map(int,input().split())
+a = [list(map(int,list(input()))) for _ in range(n)]
+dist = [[-1]*m for _ in range(n)]
+q = deque()
+q.append((0,0))
+dist[0][0] = 0
+while q:
+    x,y = q.popleft()
+    for k in range(4):
+        nx,ny = x+dx[k], y+dy[k]
+        if 0 <= nx < n and 0 <= ny < m:
+            if dist[nx][ny] == -1:
+                if a[nx][ny] == 0:
+                    dist[nx][ny] = dist[x][y]
+                    q.appendleft((nx,ny))
+                else:
+                    dist[nx][ny] = dist[x][y] + 1
+                    q.append((nx,ny))
+
+print(dist[n-1][m-1])
+```
+
+
+
+# BFS
+
+### 2206번 벽 부수고 이동하기
+
+```python
+from collections import deque
+dx = [0,0,1,-1]
+dy = [1,-1,0,0]
+n,m = map(int,input().split())
+a = [list(map(int,list(input()))) for _ in range(n)]
+dist = [[[0]*2 for j in range(m)] for i in range(n)]
+q = deque()
+q.append((0,0,0))
+dist[0][0][0] = 1
+while q:
+    x,y,z = q.popleft()
+    for k in range(4):
+        nx,ny = x+dx[k], y+dy[k]
+        if 0 <= nx < n and 0 <= ny < m:
+            if a[nx][ny] == 0 and dist[nx][ny][z] == 0:
+                dist[nx][ny][z] = dist[x][y][z] + 1
+                q.append((nx,ny,z))
+            if z == 0 and a[nx][ny] == 1 and dist[nx][ny][z+1] == 0:
+                dist[nx][ny][z+1] = dist[x][y][z] + 1
+                q.append((nx,ny,z+1))
+
+if dist[n-1][m-1][0] != 0 and dist[n-1][m-1][1]  != 0:
+    print(min(dist[n-1][m-1]))
+elif dist[n-1][m-1][0] != 0:
+    print(dist[n-1][m-1][0])
+elif dist[n-1][m-1][1] != 0:
+    print(dist[n-1][m-1][1])
+else:
+    print(-1)
+```
+
+
+
+### 3055번 탈출
+
+```python
+from collections import deque
+dx = [0,0,1,-1]
+dy = [1,-1,0,0]
+n,m = map(int,input().split())
+a = [input() for _ in range(n)]
+water = [[-1]*m for _ in range(n)]
+dist = [[-1]*m for _ in range(n)]
+q = deque()
+for i in range(n):
+    for j in range(m):
+        if a[i][j] == '*':
+            q.append((i,j))
+            water[i][j] = 0
+        elif a[i][j] == 'S':
+            sx,sy = i,j
+        elif a[i][j] == 'D':
+            ex,ey = i,j
+while q:
+    x,y = q.popleft()
+    for k in range(4):
+        nx,ny = x+dx[k], y+dy[k]
+        if 0 <= nx < n and 0 <= ny < m:
+            if water[nx][ny] != -1:
+                continue
+            if a[nx][ny] in 'XD':
+                continue
+            water[nx][ny] = water[x][y] + 1
+            q.append((nx,ny))
+
+q.append((sx,sy))
+dist[sx][sy] = 0
+while q:
+    x,y= q.popleft()
+    for k in range(4):
+        nx,ny = x+dx[k],y+dy[k]
+        if 0 <= nx < n and 0 <= ny < m:
+            if dist[nx][ny] != -1:
+                continue
+            if a[nx][ny] == 'X':
+                continue
+            if water[nx][ny] != -1 and dist[x][y]+1 >= water[nx][ny]:
+                continue
+            dist[nx][ny] = dist[x][y]+1
+            q.append((nx,ny))
+
+if dist[ex][ey] == -1:
+    print('KAKTUS')
+else:
+    print(dist[ex][ey])
+```
+

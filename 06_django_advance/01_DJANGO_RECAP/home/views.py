@@ -15,11 +15,11 @@ def guess(request):
 def answer(request):
     
     count = 0
-    if request.GET.get('q1') == 'a':
+    if request.POST.get('q1') == 'a':
         count += 1
-    if request.GET.get('q2') == 'b':
+    if request.POST.get('q2') == 'b':
         count += 1
-    if request.GET.get('q3') == '':
+    if request.POST.get('q3') == '':
         count += 1
         
     # 채점

@@ -1,0 +1,17 @@
+{% extends 'board/base.html' %}
+{% block title %}Article list{% endblock title %}
+
+{% block body %}
+<h1>This is Article list</h1>
+
+<ul>
+    {% for article in articles %}  <!-- [<A1>, <A2>, <A3>] -->
+        <li>
+            <a href="{% url 'board:detail' article.id %}">
+                {{ article.title }}
+            </a>
+            {% comment %} /board/articles/{{article.id}} {% endcomment %}
+        </li>  <!-- <A1> -->
+    {% endfor%}
+</ul>
+{% endblock body %}

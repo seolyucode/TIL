@@ -6,4 +6,25 @@
     <p>
         {{ article.content }}
     </p>
+    <div>
+        <a href="{% url 'board:edit' article.id %}">  <!-- 하드코딩 /board/articles/{{article.id}}/edit -->
+            <button>수정</button>
+        </a>    
+    </div>
+    <div>
+        <form action="{% url 'board:delete' article.id %}" method="POST">
+            {% csrf_token %}
+            {% comment %} <input type="submit" value="삭제" onclick="return confirm('ㄹㅇ?')"> {% endcomment %}
+            <input id="delButton" type="submit" value="삭제">
+        </form>
+    </div>
+
+    {% comment %} <script>
+        const delButton = document.querySelector('#delButton');
+        function writeHi () {
+            document.write('Hi');
+        }
+
+        delButton.addEventListener('mouseover', writeHi);
+    </script> {% endcomment %}
 {% endblock body %}

@@ -8,7 +8,7 @@
 <ul>
     {% for article in articles %}  <!-- [<A1>, <A2>, <A3>] -->
         <li>
-            <a href="{% url 'board:detail' article.id %}">
+            <a href="{{ article.get_absolute_url }}">
                 {{ article.title }}
             </a>
             {% comment %} /board/articles/{{article.id}} {% endcomment %}

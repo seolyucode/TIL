@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET, require_POST
-from .models import Article
 
+from .models import Article
+from .forms import ArticleModelForm
 
 @require_GET
 def index(request):
@@ -26,16 +27,17 @@ def detail(request, id):
 
 def new(request):
     if request.method == 'POST':
-        article = Article()
-        article.title = request.POST.get('title')
-        article.content = request.POST.get('content')
-        article.save()
-
-        # return redirect(f'/board/articles/{article.id}')
-        return redirect(article)
+        form = ArticleModelForm(request.POST)
+        
+        if form.is_valid():
+            article = form.save()
+            return redirect(article)
     else:
-        return render(request, 'board/new.html')
+        form = ArticleModelForm()
 
+    return render(request, 'board/new.html', {
+        'form': form,
+    })
 
 
 def edit(request, id):

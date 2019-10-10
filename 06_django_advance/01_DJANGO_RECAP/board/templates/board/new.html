@@ -3,13 +3,5 @@
 
 {% block body %}
 <h1>New article</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit">
-</form>
-
-{% comment %} board:create => board:new {% endcomment %}
-{% comment %} <form action="{% url 'board:new' %}" method="POST"> {% endcomment %}
-{% comment %} {% include 'board/_form.html' %} {% endcomment %}
+{% include 'board/_form.html' %}
 {% endblock body %}

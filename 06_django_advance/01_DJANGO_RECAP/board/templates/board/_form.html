@@ -1,15 +1,9 @@
 <form method="POST">
     {% csrf_token %}
-    <label for=""></label>
-    <div>
-        <label for="title">제목:</label>
-        <input id="title" name="title" value="{{ article.title }}">
-    </div>
-    <div>
-        <label for="content">내용:</label>
-        <textarea id="content" name="content" cols="30" rows="10">{{ article.content }}</textarea>
-    </div>
-    <div>
-        <input type="submit" value="제출!">
-    </div>
+    {{ form.as_p }}
+    {% comment %} form태그 안에 button태그는 제출 {% endcomment %}
+    <button>hi</button>
+    {% comment %} 동작 안하는 버튼 {% endcomment %}
+    {% comment %} <input type="buttton"> {% endcomment %}
+    <input type="submit">
 </form>

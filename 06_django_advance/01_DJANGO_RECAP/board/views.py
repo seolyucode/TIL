@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 
-from .models import Article
-from .forms import ArticleModelForm
+from .models import Article, Comment
+from .forms import ArticleModelForm, CommentModelForm
 
 from IPython import embed
 
 # CRUD
 @require_http_methods(['GET', 'POST'])
-def new(request):
+def new_article(request):
     # 요청이 GET/POST 인지 확인한다.
     # 만약 POST 라면
     if request.method == 'POST':
@@ -21,7 +21,7 @@ def new(request):
             article = form.save()
             # 저장한 article detail 로 redirect 한다.
             return redirect(article)
-            # return redirect('board:detail', article.id)를 많이 써서
+            # return redirect('board:article_detail', article.id)를 많이 써서
             # models.py에 Article 클래스에 get_absolute_url 메서드가 있어서 줄일 수 있음
         # form 이 유효하지 않다면,
         # else:
@@ -41,16 +41,16 @@ def new(request):
     })
 
 @require_GET
-def list(request):
+def article_list(request):
     articles = Article.objects.all()
     return render(request, 'board/list.html', {
         'articles': articles,
     })
 
 @require_http_methods(['GET', 'POST'])
-def edit(request, id):
+def edit_article(request, article_id):
     # 게시글 찾기
-    article = get_object_or_404(Article, id=id)
+    article = get_object_or_404(Article, id=article_id)
     # 제출할께요
     if request.method == 'POST':  # 데이터가 날라왔다면
         # 데이터 넘어온거 받는거
@@ -74,17 +74,34 @@ def edit(request, id):
     })        
 
 @require_GET
-def detail(request, id):
-    article = get_objects_or_404(Article, id=id)
+def article_detail(request, article_id):
+    article = get_object_or_404(Article, id=article_id)
+    # .order_by('-id') 나중에 쓴게 먼저 나옴. 거꾸로 나옴
+    comments = article.comment_set.all().order_by('-id')  # Comment.objects.filter(article_id=article.id)
+
     return render(request, 'board/detail.html', {
         'article': article,
+        'comments': comments,
     })
 
 @require_POST
-def delete(request):
-    article = get_object_or_404(Article, id=id)
+def delete_article(request, article_id):
+    article = get_object_or_404(Article, id=article_id)
     article.delete()
-    return redirect('board:list')
+    return redirect('board:article_list')
 
+@require_POST
+def new_comment(request, article_id):  # /board/articles/N/comments/new/  |  /board/articles/1/comments/3/delete
+    article = get_object_or_404(Article, id=article_id)  # 사용자의 요청 검증
+    comment = Comment()
+    comment.content = request.POST.get('comment_content')
+    comment.article_id = article.id
+    comment.save()
+    return redirect(article)
+    
 """
+c = Comment()
+c.content = request.POST.get('content')
+c.article_id = 1
+c.save()
 """

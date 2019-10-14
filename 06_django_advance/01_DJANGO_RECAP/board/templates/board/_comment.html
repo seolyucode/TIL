@@ -1,0 +1,30 @@
+<form action="{% url 'board:new_comment' article.id %}" method="POST">
+        {% csrf_token %}
+        {% comment %} <input type="text" name="comment_content"> {% endcomment %}
+        {{ comment_form.as_p }}
+        <input type="submit">
+    </form>
+
+    {% comment %} <script>
+        const delButton = document.querySelector('#delButton');
+        function writeHi () {
+            document.write('Hi');
+        }
+
+        delButton.addEventListener('mouseover', writeHi);
+    </script> {% endcomment %}
+    
+    {% if comments %}
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    {{ comment.content }} 
+                    <form method="POST" action="{% url 'board:delete_comment' article.id comment.id %}">
+                        {% csrf_token %}
+                        <input type="submit" value="삭제">
+                    </form>
+                    <button>수정</button>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}

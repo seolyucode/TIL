@@ -2,11 +2,30 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 
 from .models import Article, Comment
-from .forms import ArticleModelForm, CommentModelForm
-
+from .forms import ArticleModelForm, CommentModelForm, ArticleForm
 from IPython import embed
 
-# CRUD
+'''
+# Create Article with Form
+def new_article_with_form(request):
+# def new_article(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            article = Article()
+            # article.title = request.POST.get('title')  # 검증되지 않은 데이터
+            article.title = form.cleaned_data.get('title')  # 검증된 데이터
+            article.content = form.cleaned_data.get('content')
+            article.save()
+            return redirect(article)
+    else:
+        form = ArticleForm()
+    return render(request, 'board/new.html', {
+        'form': form,
+    })
+'''
+
+# # CRUD
 @require_http_methods(['GET', 'POST'])
 def new_article(request):
     # 요청이 GET/POST 인지 확인한다.
@@ -78,10 +97,12 @@ def article_detail(request, article_id):
     article = get_object_or_404(Article, id=article_id)
     # .order_by('-id') 나중에 쓴게 먼저 나옴. 거꾸로 나옴
     comments = article.comment_set.all().order_by('-id')  # Comment.objects.filter(article_id=article.id)
+    comment_form = CommentModelForm()
 
     return render(request, 'board/detail.html', {
         'article': article,
         'comments': comments,
+        'comment_form': comment_form,
     })
 
 @require_POST
@@ -93,11 +114,39 @@ def delete_article(request, article_id):
 @require_POST
 def new_comment(request, article_id):  # /board/articles/N/comments/new/  |  /board/articles/1/comments/3/delete
     article = get_object_or_404(Article, id=article_id)  # 사용자의 요청 검증
-    comment = Comment()
-    comment.content = request.POST.get('comment_content')
-    comment.article_id = article.id
-    comment.save()
+    form = CommentModelForm(request.POST)
+    # embed()
+    if form.is_valid():
+        # comment = Comment()
+        # comment.content = request.POST.get('content')
+        comment = form.save(commit=False)  # comment = 는 필요가 없음  # 저장하는 척
+        comment.article_id = article.id
+        comment.save()
+
+    # comment = Comment()
+    # comment.content = request.POST.get('comment_content')
+    # comment.article_id = article.id
+    # comment.save()
     return redirect(article)
+
+
+@require_POST
+def delete_comment(request, article_id, comment_id):
+    import time
+    start = time.time()
+
+    # article = get_object_or_404(Article, id=article_id)
+    # comment = get_object_or_404(Comment, id=comment_id)
+    # if comment in article.comment_set.all():
+    #     comment.delete()
+    # return redirect(article)
+
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()
+
+    end = time.time()
+    print(end-start)
+    return redirect(comment.article)
     
 """
 c = Comment()

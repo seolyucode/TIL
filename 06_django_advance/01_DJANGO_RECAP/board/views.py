@@ -132,7 +132,7 @@ def new_comment(request, article_id):  # /board/articles/N/comments/new/  |  /bo
 
 @require_POST
 def delete_comment(request, article_id, comment_id):
-    import time
+    from time import time
     start = time.time()
 
     # article = get_object_or_404(Article, id=article_id)
@@ -141,7 +141,9 @@ def delete_comment(request, article_id, comment_id):
     #     comment.delete()
     # return redirect(article)
 
-    comment = get_object_or_404(Comment, id=comment_id)
+    # comment = get_object_or_404(Comment, id=comment_id)
+    comment = get_object_or_404(Comment, id=comment_id, article_id=article_id)
+
     comment.delete()
 
     end = time.time()

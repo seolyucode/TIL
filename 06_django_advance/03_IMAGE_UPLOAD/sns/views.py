@@ -16,3 +16,13 @@ def posting_detail(request, posting_id):
     return render(request, 'sns/posting_detail.html', {
         'posting': posting,
     })
+
+@require_POST
+def create_posting(request):
+    posting = Posting()
+    posting.content = request.POST.get('content')
+    posting.icon = ''
+    posting.image = request.FILES.get('image')
+    posting.save()
+    
+    return redirect(posting)  # redirect('sns:posting_detail', posting.id)

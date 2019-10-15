@@ -119,5 +119,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'  # 우리가 사용할 js/css/images
 # STATIC_URL = 'edit/'  # 이렇게 하면 수정할 수 있지만 나중에 재할당하지 않기
+
+MEDIA_URL = '/media/'  # 찾을 위치
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 서버 컴퓨터에 따라 /, \달라서  # 저장될 위치
+# print(BASE_DIR, '||', MEDIA_ROOT)

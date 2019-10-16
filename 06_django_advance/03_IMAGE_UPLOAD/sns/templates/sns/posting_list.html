@@ -6,21 +6,9 @@
 {% include 'sns/_header.html' %}
 
 {% if postings %}
-    <section>
+    <section class="card-columns">
         {% for posting in postings %}
-            <article class="card mb-3" style="width: 18rem; display: inline-block;">
-                <a href="{{ posting.get_absolute_url }}">
-                    {% if posting.image %}
-                        <img src="{{ posting.image.url }}" alt="{{ posting.image }}" class="card-img-top image-fluid">
-                    {% else %}
-                        <img src="http://picsum.photos/500/200" alt="random-image" class="card-img-top image-fluid">
-                        {% comment %} <img src="https://picsum.photos/seed/picsum/200/300" alt="random-image"> {% endcomment %}
-                    {% endif %}                    
-                </a>
-                <div class="card-body">
-                    {{ posting.content }}
-                </div>
-            </article>
+            {% include 'sns/_card.html' %}
         {% endfor %}
     </section>
 {% endif %}

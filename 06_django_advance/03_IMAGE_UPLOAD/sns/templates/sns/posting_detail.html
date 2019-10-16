@@ -13,32 +13,27 @@
       {% endif %}
 
       <div class="card-body">
-        <i class="fab fa-angrycreative fa-3x"></i>
+        <i class="{{ posting.icon }} fa-3x"></i>
         <hr>
+        <div class="row">
+            <div class="col-11">
+                <p class="card-text">{{ posting.content }}</p>
+            </div>
+            <div class="col-1">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <button>
+                        <i class="fas fa-trash"></i>                
+                    </button>
+                </form>
+            </div>
+        </div>
         <p class="card-text">{{ posting.content }}</p>
       </div>
     </div>
   </div>
     
-  <div class="col-12 col-md-6">
-    
-    <div class="card mb-2">
-      <div class="card-body">
-        <form action="#" method="POST">
-          {% csrf_token %}
-          <label for="comment">leave comment</label>
-          <input type="text" name="comment" id="comment" class="form-control">
-        </form>
-      </div>
-    </div>
-    
-    <div class="card">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item mb-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, natus incidunt? Consequatur, aliquam dolor, hic eveniet nemo nostrum iure laborum architecto omnis in odio esse at inventore nisi laboriosam delectus!</li>
-            <li class="list-group-item mb-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, natus incidunt? Consequatur, aliquam dolor, hic eveniet nemo nostrum iure laborum architecto omnis in odio esse at inventore nisi laboriosam delectus!</li>
-            <li class="list-group-item mb-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, natus incidunt? Consequatur, aliquam dolor, hic eveniet nemo nostrum iure laborum architecto omnis in odio esse at inventore nisi laboriosam delectus!</li>
-        </ul>
-    </div>
-  </div>
+    {% include 'sns/_comment.html' %}
+
 </div>
 {% endblock %}

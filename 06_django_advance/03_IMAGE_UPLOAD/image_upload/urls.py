@@ -21,8 +21,8 @@ from django.conf import settings  # MASTER_APP/settings.py 불러오기
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('sns.urls')),  # sns.urls로 포워딩
+    path('newsfeed/', include('sns.urls')),  # sns.urls로 포워딩
     # path('media', '/media/폴더 안에서 이미지를 찾아라.')
 ]
 
-urlpatterns +=  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 변수화 된 것을. 찾을 곳 / 실제로 저장되는 곳
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 변수화 된 것을. 찾을 곳 / 실제로 저장되는 곳

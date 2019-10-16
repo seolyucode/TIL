@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('newsfeed/', include('sns.urls')),  # sns.urls로 포워딩
     # path('media', '/media/폴더 안에서 이미지를 찾아라.')
+    path('accounts/', include('accounts.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 변수화 된 것을. 찾을 곳 / 실제로 저장되는 곳

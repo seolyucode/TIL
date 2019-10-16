@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',  # 설치: $ pip install django-bootstrap4 / 등록: bootstrap4
     'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',  # authenticate 인증
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sns'
+    'sns',
+    'accounts',
 ]
 
 MIDDLEWARE = [

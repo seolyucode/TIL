@@ -43,8 +43,10 @@ def create_posting(request):
 
 
 @require_POST
-def delete_posting(request):
-    pass
+def delete_posting(request, posting_id):
+    posting = get_object_or_404(Posting, id=posting_id)
+    posting.delete()
+    return redirect('sns:posting_list')
 
 
 @require_POST

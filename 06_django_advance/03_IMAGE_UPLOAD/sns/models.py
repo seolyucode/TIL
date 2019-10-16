@@ -13,6 +13,9 @@ class Posting(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)  # 추가될 때만 / add 될 때 / 고정 
     updated_at = models.DateTimeField(auto_now=True)  # 수정, save 할 때마다
 
+    class Meta:
+        ordering = ['-created_at', ]  # created_at 을 descending 내림차순으로.
+        
     # Detail 페이지를 쓸 거라면 만들어요.
     def get_absolute_url(self):
         return reverse("sns:posting_detail", kwargs={"posting_id": self.pk})  # id랑 pk 같은 말

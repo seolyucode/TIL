@@ -114,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko-kr'
 
-# TimeZone을 Asia/Seoul로 바꾸면
+# TimeZone 을 Asia/Seoul 로 바꾸면, 알아서 표시되는 시간이 바뀐다!
 TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True

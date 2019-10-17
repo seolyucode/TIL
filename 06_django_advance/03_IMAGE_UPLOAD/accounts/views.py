@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login as auth_login, logout as auth_logout
 
 @require_http_methods(['GET', 'POST'])
 def signup(request):  # new_user
+    if request.user.is_authenticated: # 사용자가 login 한 상태라면, 무시
+        return redirect('sns:posting_list')
+
     # 사용자가 회원가입 할 데이터를 보냈다면,
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -24,8 +28,26 @@ def signup(request):  # new_user
             'form': form,  # 새 시험지
         })
 
+@require_http_methods(['GET', 'POST'])
 def login(request):
-    pass
+    # # if  # 사용자가 login 한 상태라면, 무시
+    # from IPython import embed; embed()
+    # # if request.user.is_authenticated:
+    # from IPython import embed; embed()
+    if request.user.is_authenticated: # 사용자가 login 한 상태라면, 무시
+        return redirect('sns:posting_list')
+
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)  # form <- 입국신청서
+        if form.is_valid():
+            auth_login(request, form.get_user())
+            return redirect('sns:posting_list')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'accounts/login.html', {
+        'form': form,
+    })
 
 def logout(request):
-    pass
+    auth_logout(request)
+    return redirect('sns:posting_list')

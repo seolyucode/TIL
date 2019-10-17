@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET, require_POST
+from django.contrib.auth.decorators import login_required
 
 from .models import Posting, Comment
 from .forms import PostingModelForm, CommentModelForm
 
+
+# @login_required(login_url='/users/login/')  # login 이 X 면 => 무조건 /accounts/login/
+# @login_required
 @require_GET
 def posting_list(request):
     postings = Posting.objects.all()
@@ -11,6 +15,7 @@ def posting_list(request):
         'postings': postings,
     })
 
+@login_required
 @require_GET
 def posting_detail(request, posting_id):
     posting = get_object_or_404(Posting, id=posting_id)
@@ -32,6 +37,7 @@ def create_posting(request):
     return redirect(posting)  # redirect('sns:posting_detail', posting.id)
 '''
 
+@login_required
 @require_POST
 def create_posting(request):
     form = PostingModelForm(request.POST, request.FILES)  # 검증 & 저장 준비
@@ -41,14 +47,14 @@ def create_posting(request):
     else:
         return redirect('sns:posting_list')  # 실패하면 list page
 
-
+@login_required
 @require_POST
 def delete_posting(request, posting_id):
     posting = get_object_or_404(Posting, id=posting_id)
     posting.delete()
     return redirect('sns:posting_list')
 
-
+@login_required
 @require_POST
 def create_comment(request, posting_id):
     posting = get_object_or_404(Posting, id=posting_id)

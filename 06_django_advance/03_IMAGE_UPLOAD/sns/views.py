@@ -10,9 +10,11 @@ from .forms import PostingModelForm, CommentModelForm
 # @login_required
 @require_GET
 def posting_list(request):
+    # nickname = request.COOKIES.get('nickname')
     postings = Posting.objects.all()
     return render(request, 'sns/posting_list.html', {
         'postings': postings,
+        # 'nickname': nickname,
     })
 
 @login_required
@@ -42,7 +44,9 @@ def create_posting(request):
 def create_posting(request):
     form = PostingModelForm(request.POST, request.FILES)  # 검증 & 저장 준비
     if form.is_valid():  # 검증!
-        posting = form.save()  # 저장 => Posting 객체 return  /  posting은 변수
+        posting = form.save(commit=False)  # 저장 => Posting 객체 return  /  posting은 변수
+        posting.user = request.user  # anonymous
+        posting.save()
         return redirect(posting)  # 성공하면 detail page
     else:
         return redirect('sns:posting_list')  # 실패하면 list page
@@ -51,7 +55,8 @@ def create_posting(request):
 @require_POST
 def delete_posting(request, posting_id):
     posting = get_object_or_404(Posting, id=posting_id)
-    posting.delete()
+    if request.user == posting.user:
+        posting.delete()
     return redirect('sns:posting_list')
 
 @login_required
@@ -63,5 +68,12 @@ def create_comment(request, posting_id):
         comment = form.save(commit=False)  # 아직 posting_id 가 비어있기 때문에, 저장하는 '척' 만 하고 Comment 객체 return
         # comment.posting_id = posting.id
         comment.posting = posting  # 위 코드와 같음
+        comment.user = request.user
         comment.save()
     return redirect(posting)
+
+
+# 기본적으로 이렇게 되어있음. 안써도 됨
+class User():
+    def __str__(self):
+        return self.username

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings  # MASTER_APP/settings.py
 
 """
 $ python manage.py migrate <APP_NAME> zero
@@ -7,6 +8,7 @@ $ rm <APP_NAME>/migrations/0*
 """
 
 class Posting(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField()
     icon = models.CharField(max_length=30, default='')
     image = models.ImageField(blank=True)  # $ pip install pillow 이미지는 비울 수도 있다
@@ -25,6 +27,7 @@ class Posting(models.Model):
 
 
 class Comment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # related_name 이 없으면, posting.comment_set / 아래와 같다면, posting.comments
     posting = models.ForeignKey(Posting, on_delete=models.CASCADE, related_name='comments')
     content = models.CharField(max_length=200)

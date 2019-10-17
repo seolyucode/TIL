@@ -4,7 +4,7 @@
         <div class="card-body">
             <form action="{% url 'sns:create_comment' posting.id %}" method="POST">
                 {% csrf_token %}
-                <label for="comment">leave comment</label>
+                <label for="comment"><strong>{{ user }}</strong>, leave comment</label>
                 <input type="text" name="content" id="comment" class="form-control" autofocus>
             </form>
         </div>
@@ -14,7 +14,11 @@
         <ul class="list-group list-group-flush">
             {% if comments %}
             {% for comment in comments %}
-            <li class='list-group-item mb-1'>익명{{forloop.counter}}: {{ comment.content }}</li>
+            {% comment %} comment 쓴 사람 {% endcomment %}
+            {% comment %} {{ comment.user }}  SELECT * FROM user WHERE id=comment.user.id {% endcomment %}
+            {% comment %} 댓글이 달린 글의 작성자 {% endcomment %}
+            {% comment %} {{ comment.posting.user }}  SELECT * FROM user WHERE id=comment.posting.user.id {% endcomment %}
+            <li class='list-group-item mb-1'>{{ comment.user }}{{forloop.counter}}: {{ comment.content }}</li>
             {% endfor %}
             {% else %}
             <li class='list-group-item mb-1'>No comments yet..</li>

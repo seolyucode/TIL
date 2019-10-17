@@ -127,3 +127,5 @@ STATIC_URL = '/static/'  # 우리가 사용할 js/css/images
 MEDIA_URL = '/media/'  # 찾을 위치
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 서버 컴퓨터에 따라 /, \달라서  # 저장될 위치
 # print(BASE_DIR, '||', MEDIA_ROOT)
+
+# AUTH_USER_MODEL = 'auth.models.User'

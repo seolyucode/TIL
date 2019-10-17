@@ -30,6 +30,7 @@ def signup(request):  # new_user
 
 @require_http_methods(['GET', 'POST'])
 def login(request):
+    # from IPython import embed; embed()
     # # if  # 사용자가 login 한 상태라면, 무시
     # from IPython import embed; embed()
     # # if request.user.is_authenticated:
@@ -41,7 +42,12 @@ def login(request):
         form = AuthenticationForm(request, request.POST)  # form <- 입국신청서
         if form.is_valid():
             auth_login(request, form.get_user())
+            # response = redirect('sns:posting_list')
+            # response.set_cookie(key='nickname', value='idiot', max_age=5)
+            # response.set_cookie(key='nickname', value='idiot')  
+            # return response
             return redirect('sns:posting_list')
+            # return redirect('sns':posting_list).set_cookie(asdf)  # 이렇게 X 원본파괴
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {

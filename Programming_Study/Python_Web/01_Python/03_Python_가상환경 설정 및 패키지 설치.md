@@ -35,3 +35,47 @@ activate.bat  # 가상환경 활성화
 
 deactivate.bat  # 가상환경 활성화 빠져나오기
 
+
+
+구글링 - simplejson github(★1000개)
+
+
+
+`pip search simplejson`
+
+`pip install simplejson`
+
+`pip show list`
+
+`pip list`
+
+`pip uninstall simplejson`
+
+pip list
+
+pip install simplejson
+
+인터넷에서 찾은 필요한 패키지를 설치
+
+`pip install --upgrade simplejson`  업그레이드
+
+`pip search simple*`  # simple 들어간 패키지 찾기
+
+`pip show simplejson`
+
+`code`  # 가상환경 안에서 vscode 실행
+
+
+
+```python
+# Section03
+# 파이썬 가상환경 개념, 설정 및 pip 사용법, vscode 연동
+# 외부 설치 패키지 테스트
+import simplejson as json
+
+test_dict = {'1': 95, '4': 77, '3': 65, '5': 100, '2': 88}
+
+# simplejson 실행
+print(json.dumps(test_dict, sort_keys=True, indent=4 * ' '))
+```
+

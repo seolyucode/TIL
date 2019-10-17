@@ -5,6 +5,8 @@ from django.urls import reverse
 class Article(models.Model):
     title = models.CharField(max_length=100, null=False)
     content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     # 인스턴스 메서드. 디테일 페이지가 있을 경우 유용
     def get_absolute_url(self):  # detail page 가 있을 때 쓰는거임
@@ -18,3 +20,5 @@ class Comment(models.Model):
     # CASCADE 원주인이 날라가면 (댓글들) 다 지우겠다
     # on_delete=models.CASCADE 꼭 써야함
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

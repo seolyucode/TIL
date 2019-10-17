@@ -3,7 +3,7 @@ from .models import Question, Choice
 
 class ChoiceModelForm(forms.ModelForm):
     CHOICES = [
-        ('한식', '한식이요'),  # 진짜 넘어오는 데이터 / 사용자가 보는 데이터
+        ('한식', '한식이요'),  # 진짜 넘어오는 데이터 / 사용자가 보는 데이터   
         ('중식', '중식이요'),
         ('양식', '양식이요'),
         ]
@@ -11,3 +11,5 @@ class ChoiceModelForm(forms.ModelForm):
     class Meta:
         model = Choice
         fields = ('content',)
+
+        

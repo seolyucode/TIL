@@ -18,17 +18,327 @@ Django란?
 
 https://docs.djangoproject.com/ko/2.1/
 
-MVT (모델, 뷰, 템플릿) 계층
+MPV (모델, 템플릿, 뷰), 폼
 
-폼 - 폼태그를 의미(서버에게 값을 전달해주는.)
+모델 계층 - 데이터베이스와 연관. 모델 계층에 파이썬으로 클래스 만들고 연결해주면 sql 생성됨. 데이터를 구조화하고 조작
 
-관리자
+뷰 계층 - url 파싱, 비즈니스 로직(요청, 응답) ..
 
-....
+템플릿 계층 - html 코드
 
-모델 계층 - 클래스 만들면 sql 형태로 만들어주고 생성해줌. 데이터 정의/사용  // 데이터 정의
 
-뷰 계층 - 비즈니스 로직 url 파싱, 요청, 응답 관리  // 데이터를 가지고 동작
 
-템플릿 계층 - html 코드  // 보여주기
+`py -m venv venv`
+
+` source venv/Scripts/activate`
+
+`pip install django`
+
+`django-admin startproject fc_community`
+
+`cd fc_community/`
+
+`django-admin startapp board`
+
+
+
+board 앱 안에 templates 폴더 만들기
+
+정적분석도구?
+
+
+
+`django-admin startapp fcuser`
+
+fcuser에 templates 폴더 만들기
+
+
+
+fc_community - fc_community <- 프로젝트가 만들어질 때 만들어진 폴더
+
+settings.py
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'board',
+    'fcuser',
+]
+```
+
+
+
+fcuser - models.py
+
+```python
+from django.db import models
+
+class Fcuser(models.Model):  # 장고에서 제공하는 models.Model 상속
+    username = models.CharField(max_length=64,
+                                verbose_name='사용자명')
+    password = models.CharField(max_length=64,
+                                verbose_name='비밀번호')
+    registered_dttm = models.DateTimeField(auto_now_add=True,
+                                            verbose_name ='등록시간')
+    class Meta:
+        db_table = 'fastcampus_fcuser'
+```
+
+
+
+model을 관리할 수 있는 관리자 페이지 설정, 활용
+
+`ls`
+
+`python manage.py makemigrations`
+
+fcuser - migrations 폴더 안에 initial.py 파일 생김
+
+`python manage.py migrate`
+
+settings.py에 있던 앱들이 사용하는 테이블 자동으로 생성
+
+새로고침하면 db.sqlite3이 생성됨
+
+db.sqlite3은 setting에 이미 설정되어있음 DATABASES에
+
+`sqlite3 db.sqlite3`
+
+.tables
+
+.schema fastcampus_fcuser
+
+.q
+
+
+
+필드가 추가 .. 수정하면
+
+`python manage.py makemigrations`
+
+`python manage.py migrate`
+
+
+
+settings.py - admin 기본적으로 설정되어 있음
+
+urls.py에도 admin 기본으로 들어가있음
+
+```python
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]  # admin 하위에 있는 것들
+```
+
+`python manage.py runserver`
+
+127.0.0.1:8000/admin
+
+아이디 로그인 설정해야함
+
+Ctrl + C 눌러서 종료하고
+
+`python manage.py createsuperuser`
+
+계정 생성하기
+
+`python manage.py runserver`
+
+127.0.0.1:8000/admin
+
+로그인하기
+
+Users 들어가보면 아까 생성한 superuser 있음
+
+
+
+django admin에 만든 모델 등록하기
+
+fcuser - admin.py
+
+```python
+from django.contrib import admin
+from .models import Fcuser
+
+class FcuserAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Fcuser, FcuserAdmin)
+```
+
+
+
+fcuser - models.py
+
+```python
+from django.db import models
+
+class Fcuser(models.Model):  # 장고에서 제공하는 models.Model 상속
+    username = models.CharField(max_length=32,
+                                verbose_name='사용자명')
+    password = models.CharField(max_length=64,
+                                verbose_name='비밀번호')
+    registered_dttm = models.DateTimeField(auto_now_add=True,
+                                            verbose_name ='등록시간')
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        db_table = 'fastcampus_fcuser'
+```
+
+
+
+fcuser - admin.py
+
+```python
+from django.contrib import admin
+from .models import Fcuser
+
+class FcuserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'password')
+
+admin.site.register(Fcuser, FcuserAdmin)
+```
+
+
+
+fcuser - models.py
+
+```python
+from django.db import models
+
+class Fcuser(models.Model):  # 장고에서 제공하는 models.Model 상속
+    username = models.CharField(max_length=32,
+                                verbose_name='사용자명')
+    password = models.CharField(max_length=64,
+                                verbose_name='비밀번호')
+    registered_dttm = models.DateTimeField(auto_now_add=True,
+                                            verbose_name ='등록시간')
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        db_table = 'fastcampus_fcuser'
+        verbose_name = '패스트캠퍼스 사용자'
+        verbose_name_plural = '패스트캠퍼스 사용자'
+```
+
+
+
+templates 회원가입 페이지 생성
+
+fcuser - templates - register.html
+
+ https://getbootstrap.com/docs/4.3/getting-started/introduction/ 
+
+ https://getbootstrap.com/docs/4.3/components/forms/ 
+
+```html
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h1>회원가입</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+```
+
+
+
+fcuser - views.py
+
+```python
+from django.shortcuts import render
+
+def register(request):
+    # 기본적으로 templates 폴더를 바라보고 있어서 register.html이라 쓰면 되고 
+    # 그 안에 폴더 안에 있으면 'folder/register.html' 이런 식으로
+    return render(request, 'register.html')  
+```
+
+
+
+url 설정
+
+fc_community - urls.py
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('fcuser/', include('fcuser.urls')),
+]
+```
+
+
+
+fcuser에 urls.py 만들기
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('register/', views.register),
+]
+```
 

@@ -1,7 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from django.conf import settings  # MASTER_APP/settings.py
+from faker import Faker
 
+f = Faker()
 """
 $ python manage.py migrate <APP_NAME> zero
 $ rm <APP_NAME>/migrations/0*
@@ -9,6 +11,11 @@ $ rm <APP_NAME>/migrations/0*
 
 class Posting(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    likes_users = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, 
+        related_name='like_postings', 
+        blank=True
+    ) 
     content = models.TextField()
     icon = models.CharField(max_length=30, default='')
     image = models.ImageField(blank=True)  # $ pip install pillow 이미지는 비울 수도 있다
@@ -25,6 +32,16 @@ class Posting(models.Model):
     def __str__(self):
         return f'{self.pk}: {self.content[:20]}'
 
+    @classmethod
+    def dummy(cls, n):
+        f = Faker()
+        for _ in range(n):
+            cls.objects.create(
+                user_id=1,
+                content=f.sentence(),
+                icon='fas fa-angrycreative'
+            )
+
 
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -35,7 +52,16 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['created_at']  # 생성된 시간 정순
+        ordering = ['created_at']  # 생성된 시간 정순.
+    @classmethod
+    def dummy(cls, n, posting_id):
+        f = Faker()
+        for _ in range(n):
+            cls.objects.create(
+                user_id=1,
+                posting_id=posting_id,
+                content=f.sentence(),
+            )
 
     def __str__(self):
         return f'{self.id}: {self.content[:10]}'

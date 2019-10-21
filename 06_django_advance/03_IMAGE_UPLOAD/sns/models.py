@@ -11,7 +11,7 @@ $ rm <APP_NAME>/migrations/0*
 
 class Posting(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    likes_users = models.ManyToManyField(
+    like_users = models.ManyToManyField(
         settings.AUTH_USER_MODEL, 
         related_name='like_postings', 
         blank=True

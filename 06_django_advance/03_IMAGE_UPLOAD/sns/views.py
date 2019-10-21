@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.contrib.auth.decorators import login_required
 
 from .models import Posting, Comment
@@ -22,9 +22,11 @@ def posting_list(request):
 def posting_detail(request, posting_id):
     posting = get_object_or_404(Posting, id=posting_id)
     comments = posting.comments.all()  # posting.comment_set 이 아닌 이유는 Model => related_name
+    is_like = True if posting.like_users.get(id=request.user.id).exists() else False
     return render(request, 'sns/posting_detail.html', {
         'posting': posting,
         'comments': comments,
+        'is_like': is_like,
     })
 
 '''
@@ -77,3 +79,27 @@ def create_comment(request, posting_id):
 class User():
     def __str__(self):
         return self.username
+
+@login_required
+@require_POST
+def toggle_like(request, posting_id):
+    user = request.user
+    posting = get_object_or_404(Posting, id=posting_id)
+    # if user in posting.like_users.all():
+    if posting.like_users.get(id=user.id).exists():
+        posting.like_users.remove(user)  # Delete
+        is_like = False
+    else:
+        posting.like_users.add(user)  # Create
+        is_like = True
+    # user.like_postings.add(posting)
+    # posting.like_users.add(user)  # Create
+    return redirect(posting)
+
+@login_required
+@require_POST
+def dislike(request, posting_id):
+    user = request.user
+    posting = get_object_or_404(Posting, id=posting_id)
+    posting.like_users.remove(user)  # Delete
+    return redirect(posting)

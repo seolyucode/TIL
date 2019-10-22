@@ -9,7 +9,7 @@ User = get_user_model()
 
 @require_http_methods(['GET', 'POST'])
 def signup(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('/')
 
     if request.method == 'POST':
@@ -26,7 +26,7 @@ def signup(request):
 
 @require_http_methods(['GET', 'POST'])
 def login(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('/')
 
     if request.method == 'POST':

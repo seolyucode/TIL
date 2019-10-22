@@ -88,10 +88,10 @@ def toggle_like(request, posting_id):
     # if user in posting.like_users.all():
     if posting.like_users.get(id=user.id).exists():
         posting.like_users.remove(user)  # Delete
-        is_like = False
+        # is_like = False
     else:
         posting.like_users.add(user)  # Create
-        is_like = True
+        # is_like = True
     # user.like_postings.add(posting)
     # posting.like_users.add(user)  # Create
     return redirect(posting)

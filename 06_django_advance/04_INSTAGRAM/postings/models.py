@@ -4,7 +4,7 @@ from django_extensions.db.models import TimeStampedModel
 from django.contrib.auth import get_user_model
 
 from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
+from imagekit.processors import ResizeToFit
 
 User = get_user_model()
 
@@ -13,7 +13,7 @@ User = get_user_model()
 
 # Create your models here.
 class Posting(TimeStampedModel):
-    # like_users = models.ManyToManyField(User, related_name='like_posts', blank=True)
+    like_users = models.ManyToManyField(User, related_name='like_posts')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='postings')
     # hashtags = models.ManyToManyField(HashTag, blank=True, related_name='postings')
 
@@ -29,7 +29,7 @@ class Posting(TimeStampedModel):
 class Image(models.Model):
     posting = models.ForeignKey(Posting, on_delete=models.CASCADE, related_name='images')
     file = ProcessedImageField(
-        processors=[ResizeToFill(600, 600)],
+        processors=[ResizeToFit(600, 600, mat_color=(45,45,45))],  # 수정 (0,0,0)은 검정 // (45,45,45)는 적당한 회색
         upload_to='postings/images',
         format='JPEG',  # 'JPEG'=='JPG'
         options={'quality': 90},

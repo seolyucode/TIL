@@ -52,3 +52,11 @@ print(a()(1, 2))
 
 addd = a()
 print(addd(2, 3))
+
+# map func 1st arg must be FUNCTION
+
+new_list = map(, ['ah', 'eh', 'i'])
+new_map = map(str, [1, 2, 3])
+
+a = list(new_map)
+# '-ah-'

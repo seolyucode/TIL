@@ -2,6 +2,26 @@ function init() {
     const button = document.querySelector('#js-todo-button');
     const inputTag = document.querySelector('#js-todo-input');
     const reverseBtn = document.querySelector('#js-reverse-button');
+    const saveBtn = document.querySelector('#js-save-button');
+    const loadBtn = document.querySelector('#js-load-button');
+
+    saveBtn.addEventListener('click', () => {
+        if (confirm('save?')) {
+            const todoArea = document.querySelector('#js-todo-area');
+            const content = todoArea.innerHTML;
+            localStorage.setItem('content', content);
+            alert('saved!');
+        }
+    })
+
+    loadBtn.addEventListener('click', () => {
+        if (confirm('load?')) {
+            const todoArea = document.querySelector('#js-todo-area');
+            const content = localStorage.getItem('content');
+            todoArea.innerHTML = content;
+            alert('loaded!');
+        }
+    })
 
     reverseBtn.addEventListener('click', () => {
         const todoArea = document.querySelector('#js-todo-area');
@@ -29,10 +49,12 @@ function init() {
             createTodoCard(inputArea.value);
             inputArea.value = null;
         }
-    })
+    });
+}
 
-    // Card 만들기
-    const createTodoCard = (content, completed = false) => {
+// Card 만들기
+const createTodoCard = (content) => {
+    if (content) {
         const cardArea = document.querySelector('#js-todo-area');
 
         const todo = document.createElement('div');
@@ -42,7 +64,7 @@ function init() {
         wrapper.className = 'ui checkbox';
 
         const checkBox = document.createElement('input');
-        checkBox.type = 'checkbox'; // ??
+        checkBox.type = 'checkbox';
         // 새로고침 이후에도 이벤트 리스너가 달리는지?
         checkBox.addEventListener('click', () => {
             if (checkBox.checked) {
@@ -70,6 +92,10 @@ function init() {
         todo.appendChild(deleteIcon);
         cardArea.appendChild(todo);
     }
+}
+
+const saveToLocalStorage = () => {
+
 }
 
 init();

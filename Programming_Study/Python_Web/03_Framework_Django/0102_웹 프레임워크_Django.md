@@ -1,4 +1,4 @@
-Django란? 
+### Django란? 
 
 웹 프레임워크에 대한 이해
 
@@ -14,7 +14,7 @@ Django란?
 
 
 
-#### Django
+### Django
 
 https://docs.djangoproject.com/ko/2.1/
 
@@ -340,5 +340,324 @@ from . import views
 urlpatterns = [
     path('register/', views.register),
 ]
+```
+
+ http://127.0.0.1:8000/fcuser/register/ 
+
+
+
+register.html
+
+```html
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h1>회원가입</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <form>
+                    <div class="form-group">
+                        {% comment %} <label for="exampleInputEmail1">Email address</label> {% endcomment %}
+                        <label for="username">사용자 이름</label>
+                        <input type="text`" class="form-control" id="username" placeholder="사용자 이름">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" class="form-control" id="password" placeholder="비밀번호">
+                    </div>
+                    <div class="form-group">
+                        <label for="re-password">비밀번호 확인</label>
+                        <input type="password" class="form-control" id="re-password" placeholder="비밀번호 확인">
+                    </div>
+                    <button type="submit" class="btn btn-primary">등록</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+```
+
+{% csrf_token %} 
+
+암호화된 키를 숨겨놈, 크로스 도메인 방지
+
+```html
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h1>회원가입</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {% comment %} <label for="exampleInputEmail1">Email address</label> {% endcomment %}
+                        <label for="username">사용자 이름</label>
+                        <input type="text`" class="form-control" id="username" placeholder="사용자 이름">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" class="form-control" id="password" placeholder="비밀번호">
+                    </div>
+                    <div class="form-group">
+                        <label for="re-password">비밀번호 확인</label>
+                        <input type="password" class="form-control" id="re-password" placeholder="비밀번호 확인">
+                    </div>
+                    <button type="submit" class="btn btn-primary">등록</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+```
+
+
+
+register.html
+
+```html
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h1>회원가입</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {% comment %} <label for="exampleInputEmail1">Email address</label> {% endcomment %}
+                        <label for="username">사용자 이름</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="username" 
+                        placeholder="사용자 이름"
+                        name="username"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input 
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="비밀번호"
+                        name="password"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="re-password">비밀번호 확인</label>
+                        <input 
+                        type="password" 
+                        class="form-control" 
+                        id="re-password" 
+                        placeholder="비밀번호 확인"
+                        name="re-password"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-primary">등록</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+```
+
+
+
+fcuser-views.py
+
+```python
+from django.shortcuts import render
+from .models import Fcuser
+
+def register(request):
+    # 기본적으로 templates 폴더를 바라보고 있어서 register.html이라 쓰면 되고 
+    # 그 안에 폴더 안에 있으면 'folder/register.html' 이런 식으로
+    if request.method == 'GET':
+        return render(request, 'register.html')
+    elif request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        re_password = request.POST['re-password']
+
+        fcuser = Fcuser(
+            username=username,
+            password=password
+        )
+
+        fcuser.save()
+
+        return render(request, 'register.html')
+```
+
+회원가입 하고  http://127.0.0.1:8000/admin/ 에서 확인해보기
+
+views.py
+
+```python
+from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Fcuser
+
+def register(request):
+    # 기본적으로 templates 폴더를 바라보고 있어서 register.html이라 쓰면 되고 
+    # 그 안에 폴더 안에 있으면 'folder/register.html' 이런 식으로
+    if request.method == 'GET':
+        return render(request, 'register.html')
+    elif request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        re_password = request.POST['re-password']
+
+        if password != re_password:
+            return HttpResponse('비밀번호가 다릅니다!')
+
+        fcuser = Fcuser(
+            username=username,
+            password=password
+        )
+
+        fcuser.save()
+
+        return render(request, 'register.html')
+```
+
+원래 입력하던 폼에서 나오게 하기
+
+```python
+from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Fcuser
+
+def register(request):
+    # 기본적으로 templates 폴더를 바라보고 있어서 register.html이라 쓰면 되고 
+    # 그 안에 폴더 안에 있으면 'folder/register.html' 이런 식으로
+    if request.method == 'GET':
+        return render(request, 'register.html')
+    elif request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        re_password = request.POST['re-password']
+
+        res_data = {}
+        if password != re_password:
+            res_data['error'] = '비밀번호가 다릅니다.'
+        else:
+            fcuser = Fcuser(
+                username=username,
+                password=password
+            )
+
+            fcuser.save()
+
+        return render(request, 'register.html', res_data)
+```
+
+비밀번호 암호화해서 저장하기
+
+```python
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.contrib.auth.hashers import make_password
+from .models import Fcuser
+
+def register(request):
+    # 기본적으로 templates 폴더를 바라보고 있어서 register.html이라 쓰면 되고 
+    # 그 안에 폴더 안에 있으면 'folder/register.html' 이런 식으로
+    if request.method == 'GET':
+        return render(request, 'register.html')
+    elif request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        re_password = request.POST['re-password']
+
+        res_data = {}
+        if password != re_password:
+            res_data['error'] = '비밀번호가 다릅니다.'
+        else:
+            fcuser = Fcuser(
+                username=username,
+                password=make_password(password)
+            )
+
+            fcuser.save()
+
+        return render(request, 'register.html', res_data)
 ```
 

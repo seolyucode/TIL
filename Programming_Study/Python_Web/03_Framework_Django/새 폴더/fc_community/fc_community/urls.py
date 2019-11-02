@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from fcuser.views import home
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # admin 하위. 
+    path('admin/', admin.site.urls),  # admin 하위.
+    path('fcuser/', include('fcuser.urls')),
+    path('', home),  # http://127.0.0.1:8000
 ]

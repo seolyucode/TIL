@@ -20,5 +20,6 @@ from fcuser.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),  # admin 하위.
     path('fcuser/', include('fcuser.urls')),
+    path('board/', include('board.urls')),
     path('', home),  # http://127.0.0.1:8000
 ]

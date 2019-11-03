@@ -254,3 +254,9 @@ login.html, register.html에 대부분의 코드가 비슷하므로
 
 
 
+...
+
+
+
+`python manage.py startapp tag`
+

@@ -1,0 +1,56 @@
+<!-- 16_scope.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 자바스크립트 스코프
+        // let 으로 만든 변수 다시 선언할 일이 없어서 잘 안쓰고 const 쓰는게 좋음
+        // JS Global(전역)변수
+        glob1 = 1;
+        
+        function qq() {
+            for (t=0; t < 10; t++) {
+            glob2 = 11;
+            }
+            glob3 = 111;
+        }
+        qq();
+
+
+        // var / let / const
+        
+        // for i in range(10):
+        //     Pass
+        // print(i)  # i 가 살아있음 9
+        
+        // ES5 var: function scope
+        // var 는 쓸 일이 없음
+        for (var i=0; i < 10; i++) {
+            var j = 100;
+        };
+        console.log(i, j);  // i 는 10
+
+        function aa () {
+            var a = 1;
+        }
+
+        // console.log(a);
+
+        // ES6+ let/const: block({}) scope
+        for (let x=0; x < 10; x++) {
+            let y = 100;
+        }
+        cosole.log(x, y);
+
+        function bb () {
+            const b = 1;
+        }
+        console.log(b);
+
+    </script>
+</body>
+</html>

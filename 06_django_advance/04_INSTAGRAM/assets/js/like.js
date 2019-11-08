@@ -2,9 +2,13 @@ const likeButtons = document.querySelectorAll('.js-like-button');
 
 likeButtons.forEach((likeButton) => {
     likeButton.addEventListener('click', function(event){
-        const URL = `/insta/${event.target.dataset.id}/like/`
-        axios.get(URL)
+        const URL = `/insta/${event.target.dataset.id}/like/`;
+
+        axios.defaults.xsrfCookieName = 'csrftoken';
+        axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+        axios.post(URL)
             .then((res) => {
+                console.log(res)
                 if (res.data.liked) {  // 지금 좋아요 가 끝난거면
                     event.target.classList.remove('far');
                     event.target.classList.add('fas');
@@ -13,6 +17,7 @@ likeButtons.forEach((likeButton) => {
                     event.target.classList.remove('fas');
                     event.target.classList.add('far');
                 }
+                console.log(event.target.classList);
             })
                     
     });

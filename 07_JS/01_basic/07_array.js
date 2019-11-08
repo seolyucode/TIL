@@ -6,8 +6,10 @@ numbers.length;  // 4
 
 // 원본 파괴 methods
 numbers.reverse();
+
 numbers.push('a');
 numbers.pop();
+
 numbers.unshift('a');
 numbers.shift();
 
@@ -15,6 +17,7 @@ numbers.shift();
 // 원본 그대로인 methods
 numbers.includes('a');  // false
 numbers.indexOf(1);  // 0
+console.log(numbers.indexOf(100))  // 없으면 -1
 
 numbers.join();  // "1,2,3"
 numbers.join('');  // 123

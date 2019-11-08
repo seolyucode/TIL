@@ -19,11 +19,14 @@
 
     </div>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         const url = 'https://koreanjson.com';
         const btn1 = document.querySelector('#js-data-load-btn');
         const btn2 = document.querySelector('#js-load-fetch');
         const btn3 = document.querySelector('#js-load-axios');
+        const area = document.querySelector('#js-content-area');
+
         let postId = 1;
         btn1.addEventListener('click', () => {
             // Asynchronous Javascript And XML
@@ -41,10 +44,17 @@
             fetch(`${url}/posts/${postId++}`)
                 .then((res) => { return res.json() })  // .then(res => res.json()) 으로 줄일 수 있음.
                 .then(data => {
-                    const area = document.querySelector('#js-content-area');
                     area.innerHTML += `<p>${data.title}</p>`;
                 })
                 .catch(err => console.error(`${err}`));
+        })
+        btn3.addEventListener('click', () => {
+            axios.get(`${url}/posts/${postId++}`)  // Promise
+                .then(res => res.data)
+                .then(data => {
+                    area.innerHTML += `<p>${data.title}</p>`;
+                })
+                .catch(err => console.error(err))
         })
     </script>
 </body>

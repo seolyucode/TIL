@@ -58,3 +58,5 @@ const vegetables = products.filter((product) => {
     return product.type === 'vegetable';
 })
 console.log(vegetables);
+
+// find every some reduce

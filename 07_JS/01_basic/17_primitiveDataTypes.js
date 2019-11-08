@@ -17,7 +17,7 @@ typeof 1.1;  // number
 typeof Infinity;  // number
 typeof NaN;  // number
 
-typeof [1,2];  // object
+typeof [1,2];  // object 배열도 object
 Array.isArray([1,2])  // true
 typeof {a:1, b:2};  // object
 

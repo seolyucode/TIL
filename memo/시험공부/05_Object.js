@@ -35,6 +35,28 @@ const me = {
         return `${this.name} : ${message}`
     }
 }
-me.greeting('hi')
-me.name = 'John'
-me.greeting('hello') 
+
+console.log(me.greeting('hi'));  // Kim : hi
+console.log(me.name = 'John');  // John
+console.log(me.greeting('hello'));  // John : hello
+
+
+// 앞선 변수/object와 같이 함수도 ES6+ 부터 아래와 같이 선언 가능하다.
+const greeting = function(message) {
+    return `${this.name} : ${message}`
+}
+
+const you = {
+    name: 'Yu',
+    greeting,
+    bye() {
+        return 'bye'
+    }
+}
+console.log(you.greeting('hi'));  // Yu : hi
+console.log(you.name = 'Jane');  // Jane
+console.log(you.greeting('hello'));  // Jane : hello
+console.log(you.bye());  // bye
+
+
+// 메서드 정의시, arrow function 을 사용하지 않는다.

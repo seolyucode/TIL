@@ -18,6 +18,7 @@ console.log(typeof(Infinity))  // number
 console.log(typeof(120))  // number
 console.log(typeof(-120))  // number
 console.log(typeof -2)
+console.log(typeof("안녕"))
 
 
 // Object

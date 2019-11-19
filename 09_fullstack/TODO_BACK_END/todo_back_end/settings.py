@@ -67,6 +67,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'todos',
 ]
 
 # MIDDLEWARE 요청이 들어오면 반드시 무언가를 내보내야 함. 인자O returnO. 함수이기도 하고 클래스이기도 함
@@ -159,3 +161,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'accounts.User'

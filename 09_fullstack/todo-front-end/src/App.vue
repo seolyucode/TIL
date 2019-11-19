@@ -12,24 +12,10 @@
 </template>
 
 <style>
-/* #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+/* 
+  1. 컴포넌트마다 비슷한/같은 함수들을 정의 해야함. + 정리가 안됨.
+  2. 사용자 auth 정보 & todos 목록을 컴포넌트끼리 공유하지 못함.
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-} */
+  Vuex(State Management System) 상태 관리 시스템
+ */
 </style>

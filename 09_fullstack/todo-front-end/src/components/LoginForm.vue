@@ -51,8 +51,11 @@
                     axios.post('http://localhost:8000/api-token-auth/', this.credentials)
                         .then(res => {
                             this.isLoading = false;
-                            // this.$session.start();  // sessionsStorage.session-id: sess: + Date.now()
+                            this.$session.start();  // sessionsStorage.session-id: sess: + Date.now()
                             this.$session.set('jwt', res.data.token);
+                            // dispatch => action 실행하는 메서드
+                            this.$store.dispatch('login', res.data.token);
+
                             router.push('/');
                         })
                         .catch(err => {

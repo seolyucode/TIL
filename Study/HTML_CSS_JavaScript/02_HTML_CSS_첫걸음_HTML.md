@@ -242,3 +242,35 @@ DIV(막 쓰는 태그)
 
 보통 이렇게 묶인 부분들에 CSS나 JS를 적용
 
+
+
+IMG(이미지 넣는 태그)
+
+<img> 는 HTML 에 이미지를 삽입할 때 사용
+
+(웹 페이지에 이미지를 삽입하는 방식은 크게 2가지로, 'HTML에서 삽입(IMG)' 과 'CSS에서 삽입(background)'이 있다)
+
+```html
+<body>
+    <img src="./kitty.png" alt="냥이">
+</body>
+
+<body>
+    <이미지 경로="./kitty.png" 대체텍스트="냥이">
+</body>
+```
+
+속성 중 src 는 (필수)이미지의 URL
+
+alt 는 (필수)이미지의 대체 텍스트(alternate)를 지정
+
+속성이 누락되면 웹 표준에 어긋남
+
+
+
+W3C validator 에 접속하여 작성한 HTML 문서를 업로드하고 테스트를 시작
+
+
+
+ https://heropcode.github.io/GitHub-Responsive/ 
+

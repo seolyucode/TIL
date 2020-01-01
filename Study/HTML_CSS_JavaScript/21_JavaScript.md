@@ -631,3 +631,107 @@ console.log(objects);
 console.log(objects.length);
 ```
 
+
+
+## 반복문 - for
+
+```javascript
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+}
+```
+
+```javascript
+const names = ['멍멍이', '야옹이', '멍뭉이'];
+
+for (let i = 0; i < names.length; i++) {
+  console.log(names[i]);
+}
+```
+
+
+
+## 반복문 - while
+
+```javascript
+let i = 0;
+let isFun = false;
+
+while (!isFun) {
+  console.log(i);
+  i++;
+  if (i === 30) {
+    isFun = true;
+  }
+}
+```
+
+
+
+## 반복문 - for...of, for...in
+
+```javascript
+const numbers = [10, 20, 30, 40, 50];
+
+for (let number of numbers) {
+  console.log(number);
+}
+
+for (let i = 0; i < numbers.length; i++) {
+  console.log(numbers[i]);
+}
+
+const doggy = {
+  name: '멍멍이',
+  sound: '멍멍',
+  age: 2
+};
+
+console.log(Object.entries(doggy));
+console.log(Object.keys(doggy));
+console.log(Object.values(doggy));
+```
+
+```javascript
+const doggy = {
+  name: '멍멍이',
+  sound: '멍멍',
+  age: 2
+};
+
+for (let key in doggy) {
+  console.log(`${key}: ${doggy[key]}`);
+}
+```
+
+
+
+## 반복문 - continue 와 break
+
+```javascript
+for (let i = 0; i < 10; i++) {
+  // continue 는 그 다음 루프 돌게
+  if (i === 2) continue;
+  console.log(i);
+  // break 는 반복문 끝냄
+  if (i === 5) break;
+}
+```
+
+
+
+## 반복문 - 연습과 퀴즈
+
+```javascript
+function sumOf(numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
+}
+
+const result = sumOf([1, 2, 3, 4, 5]);
+console.log(result);
+```
+

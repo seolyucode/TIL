@@ -268,3 +268,366 @@ function hello(name) {
 hello("Seolyu");
 ```
 
+
+
+## Template Literal
+
+ES6
+
+ECMAScript 6
+
+ES2015
+
+ES7 ~ ES10
+
+```javascript
+function hello(name) {
+  console.log(`Hello ${name}!`);
+}
+
+hello("velopert");
+```
+
+```javascript
+function hello(name) {
+  return `Hello ${name}!`;
+  // return 쓰면 함수 종료
+}
+
+const result = hello("velopert");
+console.log(result);
+```
+
+```javascript
+function getGrade(score) {
+  if (score === 100) {
+    return "A+";
+  } else if (score >= 90) {
+    return "A";
+  } else if (score === 89) {
+    return "B+";
+  } else if (score >= 80) {
+    return "B";
+  } else if (score === 79) {
+    return "C+";
+  } else if (score >= 70) {
+    return "C";
+  } else if (score === 69) {
+    return "D+";
+  } else if (score >= 60) {
+    return "D";
+  } else {
+    return "F";
+  }
+}
+
+const grade = getGrade(30);
+console.log(grade);
+```
+
+
+
+## 화살표 함수
+
+```javascript
+const add = (a, b) => {
+  return a + b;
+}
+
+const add1 = (a, b) => a + b;
+
+const sum1 = add(1, 2);
+console.log(sum1);
+
+const hello = (name) => {
+  console.log(`Hello, ${name}!`);
+}
+
+const sum = add(1, 2);
+console.log(sum);
+
+hello('Seolyu');
+```
+
+
+
+## 객체
+
+```javascript
+const dogName = "멍멍이";
+const dogAge = 2;
+
+console.log(dogName);
+console.log(dogAge);
+
+const dog = {
+  name: "멍멍이",
+  age: 2,
+  "key with space": "asdf"
+};
+
+console.log(dog);
+console.log(dog.name);
+console.log(dog.age);
+
+```
+
+```javascript
+const ironMan = {
+  name: '토니 스타크',
+  actor: '로버트 다우니 주니어',
+  alias: '아이언맨',
+};
+
+const captainAmerica = {
+  name: '스티븐 로저스',
+  actor: '크리스 에반스',
+  alias: '캡틴 아메리카'
+};
+
+console.log(ironMan);
+console.log(captainAmerica);
+
+function print(hero) {
+  const text = `${hero.alias}(${hero.name}) 역할을 맡은 배우는 ${hero.actor} 입니다.`
+  console.log(text);
+}
+
+print(ironMan);
+print(captainAmerica);
+```
+
+
+
+## 객체 - 비구조화 할당
+
+```javascript
+const ironMan = {
+  name: '토니 스타크',
+  actor: '로버트 다우니 주니어',
+  alias: '아이언맨',
+};
+
+const { name } = ironMan;
+console.log(name);
+
+const captainAmerica = {
+  name: '스티븐 로저스',
+  actor: '크리스 에반스',
+  alias: '캡틴 아메리카'
+};
+
+console.log(ironMan);
+console.log(captainAmerica);
+
+function print(hero) {
+  const { alias, name, actor } = hero;
+  const text = `${alias}(${name}) 역할을 맡은 배우는 ${actor} 입니다.`
+  console.log(text);
+}
+
+function print1({ alias, name, actor }) {
+  const text = `${alias}(${name}) 역할을 맡은 배우는 ${actor} 입니다.`
+  console.log(text);
+}
+
+print(ironMan);
+print(captainAmerica);
+
+print1(ironMan);
+print1(captainAmerica);
+```
+
+
+
+## 객체 - 객체 안에 함수 넣기
+
+```javascript
+const dog = {
+  name: '멍멍이',
+  sound: '멍멍!',
+  say: function say() {
+    console.log(this.sound);
+  },
+  say1: function() {
+    console.log(this.sound);
+  },
+  say2() {
+    console.log(this.sound);
+  },
+  // 화살표 함수는 작동하지 않음
+  say3: () => {
+    console.log(this.sound);
+  }
+};
+
+dog.say();
+dog.say1();
+dog.say2();
+dog.say3();
+```
+
+```javascript
+const dog = {
+  name: "멍멍이",
+  sound: "멍멍!",
+  say: function say() {
+    console.log(this.sound);
+  },
+  say1: function() {
+    console.log(this.sound);
+  },
+  say2() {
+    console.log(this.sound);
+  },
+  // 화살표 함수는 작동하지 않음
+  say3: () => {
+    console.log(this.sound);
+  }
+};
+
+const cat = {
+  name: '야옹이',
+  sound: '야옹~'
+}
+
+cat.say = dog.say;
+cat.say();
+
+const catSay = cat.say;
+catSay();
+
+dog.say();
+dog.say1();
+dog.say2();
+dog.say3();
+```
+
+
+
+## Getter Setter 함수
+
+```javascript
+const numbers = {
+  a: 1,
+  b: 2
+};
+
+numbers.a = 5;
+console.log(numbers);
+```
+
+```javascript
+const numbers = {
+  a: 1,
+  b: 2,
+  get sum() {
+    console.log('sum 함수가 실행됩니다!');
+    return this.a + this.b;
+  }
+};
+
+// numbers.a = 5;
+// console.log(numbers);
+
+console.log(numbers.sum);
+numbers.b = 5;
+console.log(numbers.sum);
+```
+
+```javascript
+const dog = {
+  _name: '멍멍이',
+  get name() {
+    console.log('_name을 조회합니다..');
+    return this._name;
+  },
+  set name(value) {
+    console.log('이름이 바뀝니다..' + value);
+    this._name = value;
+  }
+};
+
+console.log(dog._name);
+console.log(dog.name);
+dog.name = '뭉뭉이';
+console.log(dog._name);
+console.log(dog.name);
+```
+
+```javascript
+const numbers = {
+  _a: 1,
+  _b: 2,
+  sum: 3,
+  calculate() {
+    console.log('calculate');
+    this.sum = this._a + this._b;
+  },
+  get a() {
+    return this._a;
+  },
+  get b() {
+    return this._b;
+  },
+  set a(value) {
+    this._a = value;
+    this.calculate();
+  },
+  set b(value) {
+    this._b = value;
+    this.calculate();
+  }
+};
+
+console.log(numbers.sum);
+numbers.a = 5;
+numbers.b = 7;
+numbers.a = 9;
+console.log(numbers.sum);
+console.log(numbers.sum);
+```
+
+```javascript
+const numbers = {
+  a: 1,
+  b: 2,
+  get sum() {
+    console.log('sum');
+    return this.a + this.b;
+  }
+};
+
+console.log(numbers.sum);
+numbers.a = 5;
+numbers.b = 7;
+numbers.a = 9;
+console.log(numbers.sum);
+console.log(numbers.sum);
+console.log(numbers.sum);
+console.log(numbers.sum);
+```
+
+
+
+## 배열
+
+```javascript
+const array = [1, 'blabla', {}, 4];
+const objects = [
+  { name: '멍멍이' },
+  { name: '야옹이' }
+];
+
+console.log(array[0]);
+console.log(objects[0]);
+console.log(objects[1]);
+
+objects.push({
+  name: '멍뭉이'
+})
+
+console.log(objects);
+console.log(objects.length);
+```
+

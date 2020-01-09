@@ -42,6 +42,12 @@ ES5 = ECMAScript5
 
  
 
+```javascript
+alert('Im Working. Im JS. Im Beautiful. Im worth it')
+```
+
+
+
 변수 variable
 
 변경되거나 변경될 수 있는 것
@@ -171,6 +177,35 @@ console.log(console);
 
 
 
+```javascript
+// console.log(title);
+console.dir(title);
+console.dir(document);
+```
+
+```javascript
+title.innerHTML = "Hi! From JS";
+title.style.color = '#34495e';
+
+document.title = 'I own you now'
+// 실제 바뀐 HTML 확인 가능
+```
+
+```javascript
+function handleResize(){
+    console.log(event);
+    console.log("I have been resized")
+}
+
+window.addEventListener("resize", handleResize);
+handleResize() 로 쓰면 자동으로 호출되고
+resize 될 때 함수 호출하려면 handleResize 라고 써야함
+```
+
+
+
+
+
 함수? 기능. 코드 조각. 원하는 만큼 쓸 수 있는 코드
 
 ```javascript
@@ -260,4 +295,196 @@ DOM <- Document Object Module
 객체는 많은 키를 가지고 있다
 
 
+
+자바스크립트는 이벤트에 반응하기 위해서 만들어졌다.
+
+이벤트 : 웹사이트에서 발생하는 것들 click, resize, input, change, load, submit ..
+
+이 이벤트를 중간에 가로챌 수 있다
+
+window. 는 조금 다른 이벤트를 가지고 있다.
+
+```javascript
+function handleResize(){
+    console.log("I have been resized")
+}
+
+window.addEventListener("resize", handleResize);
+// handleResize() 로 쓰면 자동으로 호출되고
+// resize 될 때 함수 호출하려면 handleResize 라고 써야함
+```
+
+```javascript
+const title = document.getElementById("title");
+// const title = document.querySelector("#title");
+
+function handleClick() {
+    title.style.color = 'black';
+}
+
+title.addEventListener("click", handleClick);
+```
+
+
+
+### if-else
+
+조건
+
+```javascript
+if(condition) {
+    block
+} else {
+    block
+}
+```
+
+```javascript
+if(10 > 5) {
+    console.log("hi");
+} else {
+    console.log("ho");
+}
+```
+
+if - else if - else if - ... - else
+
+
+
+&& 둘 다 참이어야 참
+
+|| or 적어도 하나가 참이면 참
+
+true && true = true;
+
+false && true = false;
+
+true && false = false;
+
+false && false = false;
+
+
+
+true || true = true;
+
+false || true = true;
+
+true || false = true;
+
+false || false = false;
+
+
+
+```javascript
+// prompt 는 안쓸꺼임
+const age = prompt("How old are you");
+
+console.log(age);
+
+if(age >= 18 && age <= 21) {
+    console.log('you can drink but you should not');
+} else if(age > 21) {
+    console.log("go ahead");
+} else {
+    console.log('you cant');
+}
+```
+
+ 
+
+https://flatuicolors.com/ 
+
+```javascript
+// 누군가가 title 클릭할 때 console.log(title.style.color);
+const title = document.querySelector("#title");
+
+const BASE_COLOR = "#34495e";
+
+function handleClick() {
+    console.log(title.style.color);
+}
+
+function init() {
+    title.style.color = BASE_COLOR;
+    title.addEventListener("click", handleClick);
+}
+
+init();
+```
+
+
+
+```javascript
+const title = document.querySelector("#title");
+
+const BASE_COLOR = "rgb(52, 73, 94)";
+const OTHER_COLOR = "#7f8c8d";
+
+// 누군가 내 타이틀을 클릭하면
+// 지금 가진 색깔 가져오기
+function handleClick() {
+    const currentColor = title.style.color;
+    console.log(currentColor);
+}
+
+function init() {
+    title.style.color = BASE_COLOR;
+    title.addEventListener("click", handleClick);
+}
+
+init();
+```
+
+```javascript
+const title = document.querySelector("#title");
+
+const BASE_COLOR = "rgb(52, 73, 94)";
+const OTHER_COLOR = "#7f8c8d";
+
+function handleClick() {
+    const currentColor = title.style.color;
+    // 만약 현재의 색깔이 기본색과 같다면
+    if(currentColor === BASE_COLOR) {
+        // 누군가 처음 클릭하면 같을 것이므로
+        // title.style.color 는 OTHER_COLOR가 될 것이다
+        title.style.color = OTHER_COLOR;
+    } else {
+        title.style.color = BASE_COLOR;
+    }
+}
+
+function init() {
+    title.style.color = BASE_COLOR;
+    title.addEventListener("click", handleClick);
+}
+
+init();
+```
+
+
+
+Javascript DOM event MDN 구글링
+
+```javascript
+function handleOffLine() {
+    console.log("Bye Bye");
+}
+
+function handleOnLine() {
+    console.log("Welcome back");
+}
+
+window.addEventListener("offline", handleOffLine);
+window.addEventListener("online", handleOnLine);
+```
+
+
+
+HTML은 HTML 파일에서만 작업하고
+
+CSS는 CSS 파일에서만 작업하게 하고
+
+자바스크립트는 로직을 처리하게 하여서
+
+자바스크립트가 웹사이트의 스타일을 처리하지 않게
 

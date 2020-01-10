@@ -488,3 +488,71 @@ CSS는 CSS 파일에서만 작업하게 하고
 
 자바스크립트가 웹사이트의 스타일을 처리하지 않게
 
+
+
+index.html
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Something</title>
+        <link rel="stylesheet" href="index.css"/>
+    </head>
+
+    <body>
+        <h1 id="title" class="btn">This works!</h1>
+        <script src="index.js"></script>
+    </body>
+</html>
+```
+
+
+
+index.css
+
+```css
+body {
+    background-color: mintcream;
+}
+
+.btn {
+    cursor : pointer;
+}
+
+h1 {
+    color: #34495e;
+    transition: color .5s ease-in-out;
+}
+
+.clicked {
+    color: #7f8c8d;
+}
+```
+
+
+
+index.js
+
+```js
+const title = document.querySelector("#title");
+
+const CLICKED_CLASS = "clicked";
+
+function handleClick() {
+    // const hasClass = title.classList.contains(CLICKED_CLASS);
+    // if(hasClass) {
+    //     title.classList.remove(CLICKED_CLASS);
+    // } else {
+    //     title.classList.add(CLICKED_CLASS);
+    // }
+    title.classList.toggle(CLICKED_CLASS);
+}
+
+function init() {
+    title.addEventListener("click", handleClick);
+}
+
+init();
+```
+

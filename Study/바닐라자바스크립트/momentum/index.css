@@ -6,7 +6,16 @@ body {
     cursor : pointer;
 }
 body {
-    color: #34495e;
+    color: #fff;
+}
+
+.js-clock {
+    cursor: default;
+    font-size: 300%;
+    letter-spacing: 1px;
+    text-align: center;
+    user-select: none;
+    text-shadow: 0 1px 5px rgba(0,0,0,.1);
 }
 
 .clicked {
@@ -16,6 +25,11 @@ body {
 .form,
 .greetings {
     display: none;
+    cursor: default;
+    font-size: 200%;
+    text-align: center;
+    user-select: none;
+    text-shadow: 0 1px 5px rgba(0,0,0,.1);
 }
 
 .showing {

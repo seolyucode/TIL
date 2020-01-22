@@ -30,7 +30,7 @@ nav ul li {
 }
 
 nav ul li :hover {
-
+    color: rgb(104, 5, 27);
 }
 
 nav ul li a {

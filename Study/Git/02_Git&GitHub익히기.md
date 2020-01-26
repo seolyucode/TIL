@@ -192,5 +192,14 @@ GitHub에 올려서 다른 사람들과 함께 버전 관리를 하자
 
 4. GitHub 사이트에서 올라간 커밋 확인
 
+```
+$ git push origin master
+remote: Permission to seolyulee/Programming.git denied to seolyucode.
+fatal: unable to access 'https://github.com/seolyulee/Programming.git/': The requested URL returned error: 403
+```
 
+다른 계정이라 오류나서 원래 계정으로 실습할 수 밖에 없었다.
 
+`git remote remove origin`
+
+`git remote add origin https://github.com/계정/리포지토리` <- 그냥 폴더 이동시킴. .git 지우고

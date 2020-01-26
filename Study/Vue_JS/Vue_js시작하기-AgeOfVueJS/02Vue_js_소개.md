@@ -137,7 +137,53 @@ vue.js의 핵심은 데이터의 변화를 라이브러리에서 감지해서 �
 
 
 
+### Reactivity 코드 라이브러리화 하기
+
+```html
+    <div id="app"></div>
+
+    <script>
+        var div = document.querySelector('#app');
+        var viewModel = {};
+
+        // Object.defineProperty(대상 객체, 객체의 속성, {
+        //     // 정의할 내용
+        // })
+
+        (function() {
+            function init() {
+            Object.defineProperty(viewModel, 'str', {
+            // 속성에 접근했을 때의 동작을 정의
+                get: function() {
+                    console.log('접근');                
+                },
+                // 속성에 값을 할당했을 때의 동작을 정의
+                set: function(newValue) {
+                    console.log('할당', newValue);
+                    render(newValue);
+                }
+            });
+            }
+
+            function render(value) {
+                div.innerHTML = value;
+            }
+
+            init();
+        })();
+    </script>
+```
+
+https://developer.mozilla.org/ko/docs/Glossary/IIFE
+
+`viewModel.str = 'hi';`
+
+`viewModel.str = 'hi!!! + 10';
 
 
 
+ctrl shift i - Vue 탭
 
+뷰 개발자 도구
+
+<Root> data 변화에 따라 화면이 자동으로 그려짐 Reactivity

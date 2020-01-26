@@ -203,3 +203,36 @@ fatal: unable to access 'https://github.com/seolyulee/Programming.git/': The req
 `git remote remove origin`
 
 `git remote add origin https://github.com/계정/리포지토리` <- 그냥 폴더 이동시킴. .git 지우고
+
+
+
+### 다른 사람이 만든 저장소 받아오기
+
+`git pull`
+
+#### 원격 저장소를 내 컴퓨터에 받아오기 : 클론(Clone)
+
+원격 저장소에 고양이가 커밋 올렸다
+
+신입 개발자 문어가 이 저장소를 본인 컴퓨터에 받아오고 싶어한다
+
+`clone`
+
+#### 원격 저장소의 데이터 가져오기 : 풀(pull)
+
+그 와중에 고양이가 새로운 버전 '고양3'을 만들어 원격 저장소에 push
+
+이 업데이트 된 데이터는 풀(pull) 명령어로 받아올 수 있다
+
+문어도 물론 커밋을 만들어서 원격 저장소로 Push 할 수 있으나 원격 저장소에 푸시 권환이 있을 경우에만
+
+
+
+내 컴퓨터에 oct 폴더 만들고 깃헙의 저장소 받아오기
+
+`git clone https://github.com/아이디/이름.git`
+
+파일 생성 후 add->commit->push
+
+GitHub에서 새 커밋 확인
+

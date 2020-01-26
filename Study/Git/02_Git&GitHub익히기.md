@@ -200,9 +200,30 @@ fatal: unable to access 'https://github.com/seolyulee/Programming.git/': The req
 
 다른 계정이라 오류나서 원래 계정으로 실습할 수 밖에 없었다.
 
+cat 폴더에서
+
 `git remote remove origin`
 
 `git remote add origin https://github.com/계정/리포지토리` <- 그냥 폴더 이동시킴. .git 지우고
+
+`git init`
+
+`git remote add origin https://github.com/seolyucode/gitTraining.git`
+
+`git add .`
+
+`git commit -m '..'`
+
+```
+$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+```
+
+`git push origin master`
 
 
 
@@ -235,4 +256,45 @@ fatal: unable to access 'https://github.com/seolyulee/Programming.git/': The req
 파일 생성 후 add->commit->push
 
 GitHub에서 새 커밋 확인
+
+
+
+oct 에서 clone 하니까 
+
+`ls` 했을 때 gitTraining 폴더가 생겨버려서
+
+`rm -rf gitTraining`
+
+`git clone https://github.com/seolyucode/gitTraining.git .`
+
+. 은 현재 폴더라는 뜻
+
+아까처럼 새로운 폴더 만드는게 아니고 현재 폴더에 저장소 받아오게 됨
+
+
+
+oct 폴더로 code 열어서 수정
+
+`git add .`
+
+`git commit -m '!!'`
+
+`git push origin master`
+
+
+
+만약 다른 사람 레포지토리에 기여하고 있다면 콜라보레이터 추가해야함
+
+
+
+원격 저장소의 변경사항 내 컴퓨터에 받아오기
+
+1. 변경사항 cat 폴더에 X
+2. 풀 명령어 `git pull origin master`
+
+`cd ../cat/`
+
+`git pull origin master`
+
+`git log`
 

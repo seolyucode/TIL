@@ -365,3 +365,93 @@ vscode에서 저장소 열기
 
 셋팅즈 - Collaborators - 추가
 
+
+
+내 코드를 머지해주면 안되겠니 - 풀 리퀘스트(Pull request)
+
+포크한 저장소에서 기능 개발을 마친 후 원본 저장소에 머지해달라고 하고 싶을 때
+
+1. 머지하고 싶은 두 브랜치를 선택
+2. 어떤 변경을 했는지 제목과 내용에 쓴다
+3. 단일 저장소에 보낼 수도 있고, 이렇게 포크한 저장소에서도 보낼 수 있다
+
+base 가 merge 를 당할 대상 브랜치
+
+compare 새로 만든 브랜치
+
+
+
+풀 리퀘스트로 머지 요청 보내기
+
+1. 코드를 함께 작성하는 팀원이 있다면, 최대한 직접 머지하는건 피하고 모든 머지를 풀 리퀘스트를 통해서
+2. 동료가 내 풀 리퀘스트(PR)를 보고 코드를 리뷰할 수 있다
+3. 동료의 PR에 수정이 필요하면 댓글을 달아 change request를 보낼 수 있다
+4. 오픈소스에 PR을 보낼 때는 '기여 안내문서(contribution quideline)'을 반드시 참고해야 한다
+
+
+
+TIP: 브랜치 관리하기
+
+1. 보통 `feat/기능이름` 으로 한 사람이 개발하는 기능 브랜치를 만든다.(혹은 `fix/버그이름` `hotfix/급한버그`)
+2. 작업이 끝나면 `dev`(혹은 `master`) 브랜치로 PR을 보낸다
+3. `dev` 브랜치에서 큼지막한 작업이 모두 머지되면 `release`(혹은 `latest`) 브랜치로 머지시키고 이를 실서버에 배포
+4. 직접 커밋은 feat(혹은 fix, hotfix) 브랜치에서만 한다
+5. dev나 master, release브랜치에는 직접 커밋하지 말고 머지만 한다
+
+
+
+풀 리퀘스트 실습
+
+1. 포크한 저장소에서 원본 저장소로 풀 리퀘스트 보내기
+2. 로그인해서 풀 리퀘스트 수락 후 머지
+
+
+
+포크한 저장소에서 New pull request
+
+base, compare 설정
+
+Create pull request
+
+제목, 내용 Create pull request
+
+
+
+Able to merge 는 base와 compare 브랜치가 충돌 안나는걸 깃헙이 자동 추적해서 알려주는 것
+
+
+
+원래 계정 원본 저장소에 Pull requests 온 거 확인
+
+File changed
+
+Review changes
+
+3가지 선택지 있음
+
+change에 바로 댓글 달 수도 있음
+
+
+
+Approve 
+
+LGTM : Looks Goot To Me 좋아보인다
+
+깃헙 외국 오픈소스에 컨트리뷰션할 때 많이 씀
+
+
+
+밑에 Merge pull request - Confirm merge 머지됨
+
+Insight 에 Contributors 에 추가된거 확인
+
+
+
+부계정 메인페이지 가보면 Pinned 된 저장소 고를 수 있음
+
+자랑하고 싶은 오픈소스 
+
+Customize your pins 에서
+
+원본 저장소 노출되게 할 수 있음
+

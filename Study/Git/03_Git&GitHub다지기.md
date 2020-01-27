@@ -111,3 +111,193 @@ Push 누르고 master 선택 push
 
 
 oct 에서 pull
+
+
+
+한 줄로 커밋을 쌓으면 둘이 겹치지 않나?
+
+=> 여러 줄로 쌓으면 됨. 한 줄에서 작업하면 충돌이 날 수 있음. 똑같은 코드를 동시에 고칠 가능성. 여러줄로 쌓으면 충돌나더라도 합치는 시점에 명시적으로 충돌 해결 가능
+
+Branch - 가지
+
+`git push origin master`
+
+master 브랜치(기본으로 만들어져 있음)에 커밋을 푸시
+
+master 브랜치 <- HEAD : 내가 지금 작업하는 로컬 브랜치를 가리킴
+
+
+
+`git branch 브랜치이름` <- 브랜치 만들기
+
+`git checkout 브랜치이름` <- 이동
+
+
+
+실습
+
+1. cat 저장소 master에서 feat/main-page 브랜치 생성
+
+   feat은 기능의 약자.
+
+2. 커밋 추가
+
+3. oct 에서 pull 받기
+
+4. master 에서 feat/comment 브랜치 생성
+
+5. 커밋 추가
+
+
+
+브랜치 눌러서 feat/main-page 브랜치 생성
+
+파일 수정하면 '커밋하지 않은 변경사항' 생김
+
+스테이지에 올리고 커밋과 동시에 푸시
+
+
+
+oct 에서 pull 받기
+
+새로운 브랜치 말고 master 기점으로 브랜치 생성
+
+파일 수정 후 '커밋하지 않은 변경사항'
+
+스테이지 올리고 커밋과 동시에 푸시
+
+왼쪽 보면 내 로컬 저장소에 있는 브랜치만 보여주므로 feat/comment만 보임
+
+밑에 원격 origin 보면 다 보임
+
+이동하려면 더블클릭
+
+
+
+#### 두 버전 합치기 - 머지(merge)
+
+feat 브랜치에서 작업이 끝나고 master에 합치려면
+
+master 브랜치의 최신 커밋에(base)
+
+cot 브랜치의 최신 커밋(compare)을 합치려고 한다
+
+1. 먼저 base 가 될 master 브랜치로 이동
+
+2. compare 브랜치인 oct를 나와 합치고 싶다라고 명령
+
+   `git merge oct`
+
+3. 합쳐진 결과는 oct 커밋
+
+master 브랜치 더블 클릭해서 feat/main-page 커밋 우클해서 병합
+
+master에 반영됨
+
+원격 저장소 반영 위해 push
+
+
+
+합치다가 충돌 : 컨플릭트(conflict)
+
+머지 => 합집합
+
+* Fast-forward
+* Merge commit
+* Conflict
+
+
+
+컨플릭트 해결
+
+=> 머지할 때 두 버전이 같은 곳을 수정했다면 이를 수동으로 고쳐줘야 한다
+
+base
+
+compare
+
+
+
+머지, 컨플릭트 해결 실습
+
+1. oct 에서 feat/comment 로 이동 후 '좋아요' 수정
+2. master 에 feat/comment 수정본 머지 (머지 커밋 생성 확인)
+3. cat 에서 feat/main-page 이동 후 '싫어요' 수정
+4. master 에 feat/main-page 수정본 머지(컨플릭트)
+5. 컨플릭트 해결
+
+VScode 에서 oct 의 feat/comment 에서 수정 후
+
+옆에 브랜치 클릭해서 변경사항 확인하고 + 버튼 누르면 스테이지 올라감
+
+커밋 메세지 쓰고 V 커밋 클릭
+
+밑에 feat/comment 옆에 새로고침 버튼 클릭하면 push/pull 한다
+
+소스트리 가보면 좋아요 커밋 생긴거 확인
+
+master 브랜치로 넘어간 후 머지를 원하는 대상인 좋아요 커밋 병합
+
+Merge branch 'feat/comment' 생성됨. 
+
+마스터 브랜치에 푸시함
+
+
+
+cat feat/main-page 에 싫어요 추가
+
+싫어요 커밋 푸시
+
+싫어요를 마스터브랜치에 merge하려고 하는데
+
+아까 mergecommit 보이지 않음
+
+마스터 브랜치 가서 패치(새로고침)
+
+master를 최신 상태 유지하기 위해 master 우클 가져오기 origin/master
+
+현재 상태
+
+* Merge branch 'feat/comment' 좋아요
+* origin/feat/main-page 싫어요 
+* 합치면 충돌
+* 싫어요 병합하면 충돌남
+
+컨플릭트가 난 파일은 자동으로 '커밋하지 않은 변경사항' - 스테이지 아래에 있게 됨
+
+VScode 에서 git 패널 눌러보면
+
+파일 나오는데, 
+
+```
+# cat
+
+Hello Cat!!
+
+## 목록
+1. cat
+<<<<<<< HEAD
+2. 좋아요
+=======
+2. 싫어요
+>>>>>>> feat/main-page
+```
+
+```
+# cat
+
+Hello Cat!!
+
+## 목록
+1. cat
+2. 싫은데 좋아요
+```
+
+수동으로 바꾼다
+
+소스트리 가보면, 아까와 달리 컨플릭트 해결된거 볼 수 있고 스테이지 올린 후 커밋한다
+
+커밋 메세지가 자동으로 적혀있음(머지 커밋)
+
+커밋하고 history 가보면 origin master 잘 업데이트 된 거 확인
+

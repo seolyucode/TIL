@@ -2,15 +2,15 @@
 
 
 
-`git remote update`  원격의 브랜치에 접근하기 위해 git remote 갱신
+#### `git remote update`  원격의 브랜치에 접근하기 위해 git remote 갱신
 
 
 
-`git branch`  로컬저장소의 브랜치 목록
+#### `git branch`  로컬저장소의 브랜치 목록
 
-`git branch -r`  원격저장소의 브랜치 리스트
+#### `git branch -r`  원격저장소의 브랜치 리스트
 
-`git branch -a`  모든 브랜치의 리스트
+#### `git branch -a`  모든 브랜치의 리스트
 
 
 
@@ -26,7 +26,7 @@
 
 원격 저장소의 특정 branch 를 로컬 저장소의 새로운 branch 로 가져오기
 
-`git checkout -b [새로운 로컬 branch 이름] [원격 저장소 이름]/[원격 branch 이름]`
+#### `git checkout -b [새로운 로컬 branch 이름] [원격 저장소 이름]/[원격 branch 이름]`
 
 `git checkout [새로운 로컬 branch 이름]`
 
@@ -36,11 +36,11 @@
 
 새로운 로컬 브랜치를 저장소 remote branch 에도 생성하고 싶을 때는
 
-git push [원격저장소이름] [새로운로컬branch이름]
+#### git push [원격저장소이름] [새로운로컬branch이름]
 
 브랜치 연동
 
-git branch --set-upstream-to [원격저장소이름]/[새로운로컬branch이름]
+#### git branch --set-upstream-to [원격저장소이름]/[새로운로컬branch이름]
 
 
 

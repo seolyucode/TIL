@@ -6,7 +6,7 @@
 
 
 
-`git init`  // 깃 저장소 생성
+#### `git init`  // 깃 저장소 생성
 
 `git clone`  // 원격저장소 프로젝트 로컬저장소에
 
@@ -14,7 +14,7 @@
 
 github의 원격저장소와 연결
 
-`git remote add origin https://github.com/username/프로젝트.git`
+#### `git remote add origin https://github.com/username/프로젝트.git`
 
 
 
@@ -40,4 +40,4 @@ github의 원격저장소와 연결
 
 // fetch 원격저장소의 내용을 확인만 하고 로컬저장소의 내용과 병합작업 수행X
 
-`git push -f -u origin master`  // git commit 기록 날리고 push
+#### `git push -f -u origin master`  // git commit 기록 날리고 push

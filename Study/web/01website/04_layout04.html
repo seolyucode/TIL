@@ -1,83 +1,83 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Layout2</title>
+    <title>Layout4</title>
+
     <style>
         body {
-            background: #e2b3de;
+            background-color: #2e030c;
         }
 
         #wrap {
             width: 1000px;
             height: 900px;
             margin: 0 auto;
-            font-size: 40px;
+            font-size: 30px;
             color: #fff;
             text-align: center;
             text-transform: uppercase;
         }
 
-        #header {
+        .header {
             width: 1000px;
             height: 100px;
             line-height: 100px;
-            background-color: #910232;
+            background: #8b4308e0;
         }
 
-        #nav {
+        .nav {
             width: 1000px;
             height: 100px;
             line-height: 100px;
-            background-color: #a34a24;
+            background: #f57c00;
         }
 
-        #side_left {
+        .side {
             float: left;
             width: 300px;
             height: 600px;
             line-height: 600px;
-            background-color: #b8a84b;
+            background: #ca127ebb;
         }
 
-        #contents {
+        .content1 {
             float: left;
-            width: 400px;
-            height: 600px;
-            line-height: 600px;
-            background-color: #93c274;
+            width: 700px;
+            height: 300px;
+            line-height: 300px;
+            background: #098383;
         }
 
-        #side_right {
+        .content2 {
             float: left;
-            width: 300px;
-            height: 600px;
-            line-height: 600px;
-            background-color: #8eddcc;
+            width: 700px;
+            height: 300px;
+            line-height: 300px;
+            background: #b9c739;
         }
 
-        #footer {
-            /* clear: both; 는 float:left; 성질 차단 */
+        .footer {
             clear: both;
             width: 1000px;
             height: 100px;
             line-height: 100px;
-            background-color: #b3b8fd;
+            background: #c82f8dc8;
         }
     </style>
 </head>
 
 <body>
     <div id="wrap">
-        <div id="header">header</div>
-        <div id="nav">nav</div>
-        <div id="side_left">side_left</div>
-        <div id="contents">contents</div>
-        <div id="side_right">side_right</div>
-        <div id="footer">footer</div>
+        <div class="header">header</div>
+        <div class="nav">nav</div>
+        <div class="side">side</div>
+        <div class="content1">content1</div>
+        <div class="content2">content2</div>
+        <div class="footer">footer</div>
     </div>
 </body>
 

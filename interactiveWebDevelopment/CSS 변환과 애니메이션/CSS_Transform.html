@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .box-container {
+            display: flex;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            background: rgba(255, 255, 0, 0.7);
+        }
+        .box:hover {
+            /* width: 200px; */
+            /* height: 200px; */
+            /* transform: scale(2) rotate(25deg); */
+            /* transform: skewY(-30deg); */
+            /* transform: translate(30px, 10px); */
+            /* transform: translateY(-30px); */
+            /* transform: scale(1.5); */
+
+            /* 기준점 */
+            /* transform-origin: left top; */
+
+            /* 가로방향 세로방향 */
+            transform-origin: 0% 0%;
+
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Transform</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iste vitae ullam facilis, quam velit inventore
+        enim quos. Cumque totam consequuntur asperiores quas fugit. Officiis obcaecati dolores cupiditate autem
+        molestiae?
+    </p>
+    <div class="box-container">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+        <div class="box">D</div>
+        <div class="box">E</div>
+    </div>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, nobis? Rerum nostrum numquam neque at illum
+        dolorum! Perspiciatis, labore minus, obcaecati nesciunt facilis placeat earum maxime error eos hic temporibus.
+    </p>
+</body>
+
+</html>

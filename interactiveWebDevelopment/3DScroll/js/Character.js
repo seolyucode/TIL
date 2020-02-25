@@ -32,7 +32,7 @@ function Character(info) {
     this.mainElem.style.left = info.xPos + '%';
     // 스크롤 중인지 아닌지
     this.scrollState = false;
-    // 바로 이전 스크롤 위치
+    // 바로 이전(마지막) 스크롤 위치
     this.lastScrollTop = 0;
     this.xPos = info.xPos;
     this.speed = info.speed;
@@ -60,6 +60,10 @@ Character.prototype = {
                 self.mainElem.classList.remove('running');
             }, 500);
 
+            // console.log('lastScrollTop: ' + self.lastScrollTop);
+            // console.log('pageYOffset: ' + pageYOffset);
+            // self.lastScrollTop = pageYOffset; 
+
             // 이전 스크롤 위치와 현재 스크롤 위치를 비교
             if (self.lastScrollTop > pageYOffset) {
                 // 이전 스크롤 위치가 크다면: 스크롤 올림
@@ -75,6 +79,7 @@ Character.prototype = {
         window.addEventListener('keydown', function (e) {
             if (self.runningState) return;
 
+            // keycode.info 사이트
             if (e.keyCode == 37) {
                 // 왼쪽
                 self.direction = 'left';

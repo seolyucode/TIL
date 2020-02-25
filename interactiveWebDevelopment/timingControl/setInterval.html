@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">취소</button>
+    <script>
+        let timeId;
+        const btn = document.querySelector('.btn');
+
+        function sample() {
+            console.log('sample!');
+        }
+
+        // setTimeout 은 리턴하는 값이 있음
+        // 비동기테스트, 의도적으로 지연
+        // timeId = setTimeout(sample, 3000);
+        // console.log(timeId);
+
+        // 계속 반복
+        // 설정된 시간 1000(1초)마다 반복
+        // 초당 60번 하려면 1000/60
+        timeId = setInterval(sample, 1000);
+
+        // 취소
+        // clearTimeout(timeId);
+
+        // 클릭하면 취소
+        btn.addEventListener('click', function () {
+            // clearTimeout(timeId);
+            clearInterval(timeId);
+        });
+
+        // ms (1/1000초)
+        // 1000 은 1초
+        // 1초 후에 이 함수를 실행
+        // setTimeout(function () {
+        //     console.log('setTimeout!');
+        // }, 1000);
+    </script>
+</body>
+</html>

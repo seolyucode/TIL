@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        svg {
+            /* 여기서 width height 없으면 반응형으로 움직임 */
+            width: 500px;
+            height: 500px;
+            background: rgb(163, 31, 31);
+        }
+    </style>
+</head>
+<body>
+    <!-- <svg width="500" height="500"> -->
+    <!-- viewBox 의 크기에 따라 상대적인 비율로 안의 요소들의 크기 결정 -->
+    <svg viewBox="0 0 1000 1000">
+        <rect x="0" y="0" width="100" height="100"></rect>
+    </svg>
+</body>
+</html>

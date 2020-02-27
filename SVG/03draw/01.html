@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <style>
+        .shapes {
+            width: 600px;
+            height: 400px;
+            background: #ddd;
+        }
+        rect {
+            fill: orange;
+            stroke: dodgerblue;
+            stroke-width: 10;
+        }
+        ellipse {
+            /* 태그에 직접 속성을 넣은 것 보다 */
+            /* css로 셋팅해준 것이 우선순위 있다 */
+            fill: pink;
+        }
+    </style>
+</head>
+<body>
+    <svg class="shapes">
+        <!-- <rect x="10" y="20" width="200" height="100"></rect> -->
+        <rect x="10" y="20" width="200" height="100"/>
+        <rect x="50" y="170" rx="10" ry="10" width="100" height="100"/>
+        <circle cx="350" cy="250" r="30"></circle>
+        <ellipse cx="200" cy="200" rx="100" ry="50" fill="red" stroke="pink" stroke-width="20"></ellipse>
+        <line x1="10" x2="400" y1="30" y2="300" stroke="blue"></line>
+        
+        <!-- polyline polygon 포인트 찍는 방식 같은데  -->
+        <!-- polygon은 끝점이 시작점과 연결됨. 마무리. -->
+        <!-- <polyline points="0 0, 200 100, 150 300" stroke="red" stroke-width="10"></polyline> -->
+        <polygon points="0 0, 200 100, 150 300" stroke="red" stroke-width="10"></polygon>
+    </svg>
+</body>
+</html>

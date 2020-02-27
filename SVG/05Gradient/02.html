@@ -9,19 +9,33 @@
             margin: 0;
         }
         svg {
-            width: 500px;
-            height: 500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            /* width: 500px;
+            height: 500px; */
             background: #ddd;
+        }
+        .pattern-circle {
+            fill: pink;
+        }
+        .bg-rect {
+            fill: url(#bg-pattern);
         }
     </style>
 </head>
 <body>
-    <svg>
+    <svg viewBox="0 0 500 500">
         <defs>
-            <pattern>
-                
+            <pattern id="bg-pattern" x="0" y="0" width="0.1" height="0.1">
+                <circle cx="25" cy="25" r="25" class="pattern-circle"></circle>
             </pattern>
         </defs>
+
+        <rect class="bg-rect" x="0" y="0" width="100%" height="100%"></rect>
+        <!-- <rect class="bg-rect" x="0" y="0" width="100%" height="100%" fill="url(#bg-pattern)"></rect> -->
     </svg>
 </body>
 </html>

@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'sycon';
+  src:  url('fonts/sycon.eot?buui45');
+  src:  url('fonts/sycon.eot?buui45#iefix') format('embedded-opentype'),
+    url('fonts/sycon.ttf?buui45') format('truetype'),
+    url('fonts/sycon.woff?buui45') format('woff'),
+    url('fonts/sycon.svg?buui45#sycon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'sycon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes icon-ani-tongtong {
+  from { transform: translateY(0); }
+  to { transform: translateY(0.3em); }
+}
+
+.icon-red {
+  color: red !important;
+}
+
+.icon-ani-tongtong {
+  display: inline-block;
+  animation: icon-ani-tongtong 1s alternate infinite;
+}
+
+.icon-syface:before {
+  content: "\e900";
+}

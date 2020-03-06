@@ -12,26 +12,42 @@
     <img id="logo" src="images/logo.png" width="165" height="58" alt="">
 
     <div id="menu">
-        <a id="home" onclick="clickHome()">
+        <!-- <a id="home" onclick="clickHome()"> -->
+        <a id="home">
             Home
         </a>
-        <a id="seoul" onclick="clickSeoul()">
+        <!-- <a id="seoul" onclick="clickSeoul()"> -->
+        <a id="seoul">
             Seoul
         </a>
-        <a id="tokyo" onclick="clickTokyo()">
+        <!-- <a id="tokyo" onclick="clickTokyo()"> -->
+        <a id="tokyo">
             Tokyo
         </a>
-        <a id="paris" onclick="clickParis()">
+        <!-- <a id="paris" onclick="clickParis()"> -->
+        <a id="paris">
             Paris
         </a>
     </div>
 
-    <img id="photo" src="images/home.png" width="90%" alt="">
+    <!-- <img id="photo" src="images/home.png" width="90%" alt="" onmouseenter="mouseEnterPhoto();"
+        onmouseleave="mouseLeavePhoto();"> -->
+    <img id="photo" src="images/home.png" width="90%">
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
     <script>
+        $('#home').on('click', clickHome);
+        $('#seoul').on('click', clickSeoul);
+        $('#tokyo').on('click', clickTokyo);
+        $('#paris').on('click', clickParis);
+
+        $('#photo').on('mouseenter', mouseEnterPhoto);
+        $('#photo').on('mouseleave', mouseLeavePhoto);
+
+        $(document).on('keydown', processKeyEvent);
+
         // 사진을 바꿔주는 함수
         function clickHome() {
             // document.getElementById('photo').src = 'images/home.png';
@@ -87,6 +103,31 @@
             $('#home').css('font-weight', 'normal');
             $('#seoul').css('font-weight', 'normal');
             $('#tokyo').css('font-weight', 'normal');
+        }
+
+
+        // 사진에 그림자
+        function mouseEnterPhoto() {
+            $('#photo').css('box-shadow', '5px 10px');
+        }
+
+        function mouseLeavePhoto() {
+            $('#photo').css('box-shadow', 'none');
+        }
+
+        // 키보드 이벤트 핸들링
+        function processKeyEvent(event) {
+            // clickHome();
+            // console.log(event);
+            if (event['key'] === '1') {
+                clickHome();
+            } else if (event['key'] === '2') {
+                clickSeoul();
+            } else if (event['key'] === '3') {
+                clickTokyo();
+            } else if (event['key'] === '4') {
+                clickParis();
+            }
         }
     </script>
 </body>

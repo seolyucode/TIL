@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+</head>
+
+<body>
+    <button id="hello">Hello Codeit!</button>
+
+    <ul id="todo-list">
+        <li class="item">청소</li>
+        <li class="item">코딩</li>
+        <li class="item">숙제</li>
+        <li class="item">영화</li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script>
+        // jQuery = '선택' + '동작'
+        // . 을 기준으로 
+        $('#hello').on('click', sayHello);
+
+        function sayHello() {
+            alert($('#hello').text());
+            $('#hello').css('background', '#7f8ff4');
+        }
+    </script>
+</body>
+
+</html>

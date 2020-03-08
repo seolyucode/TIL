@@ -19,3 +19,13 @@
   게임이 끝난다 <- 이벤트 핸들링
 
   
+
+![image-20200308211823738](./images/mouse.png)
+
+![keyboard](./images/keyboard.png)
+
+![focus](./images/focus.png)
+
+![input](./images/input.png)
+
+![window](./images/window.png)

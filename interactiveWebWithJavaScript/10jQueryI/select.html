@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            max-width: 23rem;
+            border: 2px solid #f6774f;
+        }
+
+        button {
+            border: none;
+            color: white;
+            margin: 1rem;
+            width: 150px;
+            height: 40px;
+        }
+
+        .color-1 {
+            background-color: #426fc5;
+        }
+
+        .color-2 {
+            background-color: #00897b;
+        }
+
+        .color-3 {
+            background-color: #f6774f;
+        }
+
+        .color-4 {
+            background-color: #e94043;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box-1">
+        <button class="color-1">-</button>
+        <button class="color-2">-</button>
+        <button class="color-3">-</button>
+        <button class="color-4">-</button>
+    </div>
+
+    <div class="box" id="box-2">
+        <button class="color-1">-</button>
+        <button class="color-2">-</button>
+        <button class="color-3">-</button>
+        <button class="color-4">-</button>
+    </div>
+
+    <div class="box" id="box-3">
+        <button class="color-1">-</button>
+        <button class="color-2">-</button>
+        <button class="color-3">-</button>
+        <button class="color-4">-</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        $('#box-1 button').text('SELECTED!');
+        // $('#box-2 button').filter('.color-3').text('SELECTED!');
+        // $('#box-2 button').not('.color-3').text('SELECTED!');
+        // $('#box-2 button').eq(1).text('SELECTED!');
+        // $('#box-2 .color-1').parent().css('background-color', 'black');
+        // $('#box-2').children().css('background-color', 'black');
+        // $('#box-3').children('.color-2').css('background-color', 'black');
+
+        // children()은 한 단계 아래의 자녀(직속 자녀)만 찾아주는 반면, find()자녀의 자녀의 자녀들까지 그 이하는 모두 찾아낸다
+        // $('#box-1').css('background-color', 'black');
+        // $('#box-2').find('.color-2').css('background-color', 'black');
+
+        $('#box-1 .color-2').text('SELECTED!');
+        $('#box-2 .color-2').siblings().text('SELECTED!');
+        $('#box-3 .color-2').siblings('.color-4').text('SELECTED!');
+    </script>
+</body>
+
+</html>

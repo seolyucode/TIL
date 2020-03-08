@@ -29,6 +29,28 @@
             alert($('#hello').text());
             $('#hello').css('background', '#7f8ff4');
         }
+
+        // 모든 li 요소 바로 뒤에 <li class="item">새로운 아이템</li> 생김
+        // $('li').after('<li class="item">새로운 아이템</li>');
+
+        // ul 자식 중 마지막만
+        // $('#todo-list li:last-child').after('<li class="item">새로운 아이템</li>');
+        // $('#todo-list li:last-child').before('<li class="item">새로운 아이템</li>');
+
+        // 자식요소로 추가하기
+        // $('ul').append('<li class="item">새로운 아이템</li>');
+        // 첫번째 자식으로
+        $('ul').prepend('<li class="item">새로운 아이템</li>');
+
+        // $('ul li:first-child').before('<li class="item">어떤 요소</li>');
+        // 문제 없이 작동
+        // $('ul li:first-child').before("<li class='item'>어떤 요소</li>");
+        // 오류!
+        // $('ul li:first-child').before('<li class='item '>어떤 요소</li>');
+        // 문제 해결!
+        // $('ul li:first-child').before('<li class=\'item\'>어떤 요소</li>');
+        // 문제 해결!
+        // $('ul li:first-child').before("<li class=\"item\">어떤 요소</li>");
     </script>
 </body>
 

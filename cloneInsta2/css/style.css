@@ -1,0 +1,656 @@
+.mText {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sText {
+    font-size: 12px;
+}
+
+body {
+    background: hsl(0, 0%, 98%);
+}
+
+#header {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    /* background: pink; */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#header .inner {
+    width: 975px;
+    height: 77px;
+    margin: 0 auto;
+    /* background: palevioletred; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 35%;
+}
+
+#header .inner .logo>a {
+    color: transparent;
+}
+
+#header .inner .logo .logoImageBox .logoImage {
+    position: relative;
+    /* margin-right: 30px; */
+}
+
+#header .inner .logo .logoImageBox .logoImage:after {
+    content: '';
+    width: 1px;
+    height: 28px;
+    background: rgb(0, 0, 0);
+    position: absolute;
+    /* right: -15px; */
+    /* top: -4px; */
+    /* transition: all .5s; */
+}
+
+#header .inner .logo div {
+    vertical-align: middle;
+}
+
+.logoImageBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    /* background: orange; */
+}
+
+.logoImage {
+    /* display: inline-block; */
+    transform: scale(0.4);
+}
+
+.logoTextBox {
+    /* display: inline-block; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 75px;
+    margin-left: 90px;
+    /* background: red; */
+}
+
+.logoText {
+    /* display: inline-block; */
+    transform: scale(0.4);
+}
+
+#header .searchBox {
+    position: relative;
+    width: 25%;
+}
+
+#searchField {
+    width: 185px;
+    height: 28px;
+    background: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    padding: 3px 30px;
+    color: #999;
+    font-weight: 400;
+    text-align: left;
+    font-size: 14px;
+    outline: none;
+}
+
+#searchField::placeholder {
+    font-size: 0;
+}
+
+#searchField:focus::placeholder {
+    font-size: 14px;
+}
+
+#header .searchBox .fakeField {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* vertical-align: middle; */
+}
+
+.searchText {
+    line-height: 450%;
+    margin-left: -20px;
+}
+
+#searchField:focus~.fakeField>span:nth-child(1) {
+    transform: translateX(-90px);
+}
+
+#searchField:focus~.fakeField>span:nth-child(2) {
+    display: none;
+}
+
+.rightIcons {
+    width: 35%;
+}
+
+.cameraIconBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    /* background: orange; */
+}
+
+.cameraIcon {
+    /* display: inline-block; */
+    transform: scale(0.3);
+}
+
+.compassIconBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    /* background: orange; */
+}
+
+.compassIcon {
+    /* display: inline-block; */
+    transform: scale(0.3);
+}
+
+.heartIconBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    /* background: orange; */
+}
+
+.heartIcon {
+    /* display: inline-block; */
+    transform: scale(0.3);
+}
+
+.userOutlineIconBox {
+    /* display: inline-block; */
+    /* float: left; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    /* background: orange; */
+}
+
+.userOutlineIcon {
+    /* display: inline-block; */
+    transform: scale(0.3);
+}
+
+.moreIconBox {
+    /* display: inline-block; */
+    /* float: left; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    /* background: orange; */
+}
+
+.moreIcon {
+    /* display: inline-block; */
+    transform: scale(0.13);
+}
+
+.moreIcon:hover {
+    /* display: inline-block; */
+    transform: scale(0.14);
+}
+
+#header .rightIcons {
+    width: 132px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#header .rightIcons > div {}
+
+
+#mainContainer {
+    padding-top: 130px;
+    display: flex;
+    justify-content: center;
+}
+
+#mainContainer .inner {
+    width: 935px;
+    /* height: 500px; */
+    /* background: pink; */
+    position: relative;
+}
+
+.contentsBox {
+
+}
+
+.contents {
+    width: 614px;
+    /* height: 500px; */
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 3px;
+    margin-bottom: 60px;
+    background: white;
+
+}
+
+.contents .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.contents .top .profileImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.contents .top .profileImg img {
+    width: 100%;
+}
+
+.contents .top .userContainer {
+    display: flex;
+}
+
+.contents .imgSection {
+    overflow: hidden;
+}
+
+.contents .imgSection img {
+    width: 100%;
+}
+
+
+.heartOutlineIconBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    /* background: orange; */
+}
+
+.heartOutlineIcon {
+    /* display: inline-block; */
+    transform: scale(0.6);
+}
+
+.bubbleIconBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    /* background: orange; */
+}
+
+.bubbleIcon {
+    /* display: inline-block; */
+    transform: scale(0.9);
+}
+
+.shareIconBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    /* background: orange; */
+}
+
+.shareIcon {
+    /* display: inline-block; */
+    transform: scale(0.5);
+}
+
+.bookmarkIconBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+    /* background: orange; */
+}
+
+.bookmarkIcon {
+    /* display: inline-block; */
+    transform: scale(0.45);
+}
+
+.contents .bottomIcons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px 20px: */
+}
+
+.contents .bottomIcons .leftIcons {
+    display: flex;
+}
+
+
+.contents .bottomIcons .leftIcons > div {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.contents .bottomIcons .rightIcon > div {
+    cursor: pointer;
+}
+
+
+.contents .likes {
+    padding: 5px 20px;
+    color: #262626;
+}
+
+.contents .commentContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+.contents .commentContainer .comment {
+    display: flex;
+    font-size: 14px;
+}
+
+.contents .commentContainer .comment .nickName {
+    margin-right: 10px;
+}
+
+.smallHeartOutlineIconBox {
+    /* display: inline-block; */
+    float: left;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    /* background: orange; */
+}
+
+.smallHeartOutlineIcon {
+    /* display: inline-block; */
+    transform: scale(0.25);
+}
+
+.contents .timer {
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    color: #999;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    padding: 10px 20px;
+}
+
+.contents .commentField {
+    min-height: 56px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.contents .commentField input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.contents .commentField input:focus ~ .uploadBtn{
+    pointer-events: initial;
+    opacity: 1;
+}
+
+.contents .commentField .uploadBtn {
+    color: #3897f0;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0.6;
+} 
+
+
+.sideBox {
+    width: 293px;
+    /* height: 300px; */
+    /* background: rgba(255, 192, 203, 0.377); */
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.sideBox .profileThumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.sideBox .profileThumb img {
+    width: 100%;
+    height:100%;
+}
+
+.sideBox .userProfile {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color:#262626;
+}
+
+.sideBox .detail .id {
+    margin-bottom: 5px;
+}
+
+.sideBox .detail .koName {
+    font-size: 12px;
+    color:#999;
+}
+
+
+.sideBox > article {
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+    margin-bottom: 20px;
+    width: 291px;
+    font-size: 14px;
+    color:#262626;
+    font-weight: bold;
+    background: white;
+}
+
+.sideBox > article > header {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    color:#999;
+}
+
+
+.sideBox > article > header .more {
+    font-size: 12px;
+    color:#262626;
+    cursor: pointer;
+}
+
+.thumbUser {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.thumbUser .profileThumb {
+    width: 34px;
+    height: 34px;
+}
+
+.thumbUser .time {
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    color:#999;
+}
+
+.sideBox .scrollInner {
+    height: 182px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*overflow:hidden auto;*/
+}
+
+
+.hiddenMenu {
+    display: none;
+    width: 600px;
+    /*background: red;*/
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+}
+
+.hiddenMenu .scrollInner {
+    height: 100px;
+    width: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.hiddenMenu .scrollInner .user {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+    justify-content: space-between;
+}
+
+.hiddenMenu .scrollInner .user .id {
+    font-size: 12px;
+    color:#262626;
+}
+
+.hiddenMenu .thumbImg {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.hiddenMenu .thumbImg img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 1000px 이하로 줄었을 때 */
+@media screen and (max-width: 1000px) {
+
+    #header .inner {
+        width: 97.5%;
+    }
+
+    #mainContainer {
+        padding-top: 220px;
+    }
+
+    #mainContainer .inner {
+        width: 93.5%;
+    }
+
+    .contentsBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .sideBox {
+        display: none;
+    }
+
+    .hiddenMenu {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    #header .searchBox {
+        display: none;
+    }
+
+    .hiddenMenu {
+        width: 95%;
+    }
+}

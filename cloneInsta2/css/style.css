@@ -95,7 +95,7 @@ body {
 
 #header .searchBox {
     position: relative;
-    width: 25%;
+    /* width: 25%; */
 }
 
 #searchField {
@@ -143,7 +143,7 @@ body {
 }
 
 .rightIcons {
-    width: 35%;
+    /* width: 35%; */
 }
 
 .cameraIconBox {
@@ -237,7 +237,7 @@ body {
 }
 
 #header .rightIcons {
-    width: 132px;
+    /* width: 132px; */
     display: flex;
     justify-content: space-between;
 }

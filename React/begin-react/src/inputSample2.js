@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 function InputSample2() {
     const [inputs, setInputs] = useState({
         name: '',
         nickname: '',
     });
+
+    const nameInput = useRef();
     const { name, nickname } = inputs;
 
     const onChange = (e) => {
@@ -30,7 +32,8 @@ function InputSample2() {
                 name="name" 
                 placeholder="이름" 
                 onChange={onChange} 
-                value={name} 
+                value={name}
+                ref={nameInput} 
             />
             <input 
                 name="nickname" 

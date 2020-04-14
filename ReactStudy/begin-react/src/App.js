@@ -58,7 +58,7 @@ function App() {
       email,
     };
     // setUsers([...users, user]);
-    setUsers(users.concat(user));
+    setUsers(users => users.concat(user));
     setInputs({
       username: '',
       email: ''
@@ -66,20 +66,22 @@ function App() {
 
     console.log(nextId.current);  // 4
     nextId.current += 1;
-  }, [username, email, users]);
+  }, [username, email]);
 
   const onRemove = useCallback(id => {
-    setUsers(users.filter(user => user.id !== id));
-  }, [users]);
+    setUsers(users => users.filter(user => user.id !== id));
+  }, []);
 
+  // 특정 함수를 재사용하기 위해 useCallback
   const onToggle = useCallback(id => {
-    setUsers(users.map(
+    setUsers(users => users.map(
       user => user.id === id
         ? { ...user, active: !user.active }
         : user
     ));
-  }, [users]);
+  }, []);
 
+  // 연산된 값을 재사용하기 위해 useMemo
   const count = useMemo(() => countActiveUsers(users), [users]);
 
   return (

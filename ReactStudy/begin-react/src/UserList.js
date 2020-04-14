@@ -1,14 +1,16 @@
 import React from 'react';
 
-function User({ user }) {
+function User({ user, onRemove }) {
+    const { username, email, id } = user;
     return (
         <div>
-            <b>{user.username}</b> <span>({user.email})</span>
+            <b>{username}</b> <span>({email})</span>
+            <button onClick={() => onRemove(id)}>삭제</button>
         </div>  
     );
 }
 
-function UserList({ users }) {
+function UserList({ users, onRemove }) {
     // const users = [
     //     {
     //         id: 1,
@@ -46,7 +48,13 @@ function UserList({ users }) {
             {
                 users.map(
                     // (user, index) =>(<User user={user} key={index} />)
-                    user => (<User user={user} key={user.id} />)
+                    (user, index) => (
+                        <User 
+                            user={user} 
+                            key={user.id} 
+                            onRemove={onRemove}
+                        />
+                    )
                 )
             }
         </div>

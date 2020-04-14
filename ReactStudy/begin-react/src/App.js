@@ -60,6 +60,10 @@ function App() {
     nextId.current += 1;
   }
 
+  const onRemove = id => {
+    setUsers(users.filter(user => user.id !== id));
+  };
+
   return (
     <Wrapper>
       {/* <Hello name="react" color="red" isSpecial={true} /> */}
@@ -76,7 +80,7 @@ function App() {
         onChange={onChange} 
         onCreate={onCreate} 
       />
-      <UserList users={users}/>
+      <UserList users={users} onRemove={onRemove} />
     </Wrapper>
   )
 }

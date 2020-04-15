@@ -6,6 +6,7 @@ import InputSample from './InputSample';
 import InputSample2 from './InputSample2';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
+import useInputs from './useInputs';
 
 
 function countActiveUsers(users) {
@@ -14,10 +15,10 @@ function countActiveUsers(users) {
 };
 
 const initialState = {
-  inputs: {
-    username: '',
-    email:'',
-  },
+  // inputs: {
+  //   username: '',
+  //   email:'',
+  // },
   users: [
     {
         id: 1,
@@ -43,14 +44,14 @@ const initialState = {
 function reducer(state, action) {
   // return state;
   switch (action.type) {
-    case 'CHANGE_INPUT':
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.name]: action.value
-        }
-      };
+  //   case 'CHANGE_INPUT':
+  //     return {
+  //       ...state,
+  //       inputs: {
+  //         ...state.inputs,
+  //         [action.name]: action.value
+  //       }
+  //     };
     
     case 'CREATE_USER':
       return {
@@ -151,18 +152,23 @@ function App() {
   // const count = useMemo(() => countActiveUsers(users), [users]);
 
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [form, onChange, reset] = useInputs({
+    username: '',
+    email: '',
+  });
+  const { username, email } = form;
   const nextId = useRef(4);
   const { users } = state;
-  const { username, email } = state.inputs;
+  // const { username, email } = state.inputs;
 
-  const onChange = useCallback(e => {
-    const { name, value } = e.target;
-    dispatch({
-      type: 'CHANGE_INPUT',
-      name,
-      value
-    })
-  }, []);
+  // const onChange = useCallback(e => {
+  //   const { name, value } = e.target;
+  //   dispatch({
+  //     type: 'CHANGE_INPUT',
+  //     name,
+  //     value
+  //   })
+  // }, []);
 
   const onCreate = useCallback(() => {
     dispatch({
@@ -174,7 +180,8 @@ function App() {
       }
     });
     nextId.current += 1;
-  }, [username, email]);
+    reset();
+  }, [username, email, reset]);
 
   const onToggle = useCallback(id => {
     dispatch({

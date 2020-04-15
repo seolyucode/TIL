@@ -1,22 +1,23 @@
 import React from 'react';
 
-function CreateUser({ username, email, onChange, onCreate }) {
-    console.log('CreateUser');
+// function CreateUser({ username, email, onChange, onCreate }) {
+function CreateUser() {
+    // console.log('CreateUser');
     return (
         <div>
             <input 
                 name="username" 
                 placeholder="계정명" 
-                onChange={onChange} 
-                value={username} 
+                // onChange={onChange} 
+                // value={username} 
             />
             <input
                 name="email" 
                 placeholder="이메일" 
-                onChange={onChange} 
-                value={email} 
+                // onChange={onChange} 
+                // value={email} 
             />
-            <button onClick={onCreate}>등록</button>
+            {/* <button onClick={onCreate}>등록</button> */}
         </div>
     );
 }

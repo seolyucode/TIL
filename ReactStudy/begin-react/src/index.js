@@ -5,12 +5,14 @@ import App from './App';
 import Counter from './Counter';
 import * as serviceWorker from './serviceWorker';
 // import ContextSample from './ContextSample';
+import Hello from './Hello';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
     <Counter />
     {/* <ContextSample /> */}
+    <Hello name="Seolyu isSpecial" />
   </React.StrictMode>,
   document.getElementById('root')
 );

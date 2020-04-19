@@ -9,8 +9,18 @@ $pink: #f06595;
     }
     &:active {
         background: darken($color, 10%);
-    } 
+    }
+    &.outline {
+        color: $color;
+        background: none;
+        border: 1px solid $color;
+        &:hover {
+            background: $color;
+            color: white;
+        }
+    }
 }
+
 .Button {
     display: inline-flex;  // flexboxfroggy.com
     color: white;
@@ -52,6 +62,15 @@ $pink: #f06595;
 
     & + & {
         margin-left: 1rem;
+    }
+
+    &.fullWidth {
+        width: 100%;
+        justify-content: center;
+        & + & {
+            margin-left: 0;
+            margin-top: 1rem;
+        }
     }
 }
 

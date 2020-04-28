@@ -143,3 +143,126 @@ HTML과 마찬가지로 눈에 보이는 스타일은 무시하고 각 문법의
 ![로고][logo]
 
 [logo]: https://seolyucode.github.io/imgs/korea.png "태극기"
+
+
+
+#### 코드(Code) 강조
+
+```
+<pre>, <code> 로 변환됨
+숫자 1번 키 왼쪽에 있는 `(Grave)를 입력
+```
+
+
+
+##### 인라인(inline) 코드 강조
+
+```
+`background` 혹은 `background-image` 속성으로 요소에 배경 이미지를 삽입할 수 있음
+```
+
+`background` 혹은 `background-image` 속성으로 요소에 배경 이미지를 삽입할 수 있음
+
+
+
+#### 블록(block) 코드 강조
+
+```
+` 을 3번 이상 입력하고 코드 종류도 적음
+```
+
+```html
+<a href="https://seolyucode.github.io/" target="_blank">내 블로그</a>
+```
+
+```javascript
+function func() {
+    var a = 'AAA';
+    return a;
+}
+```
+
+
+
+#### 표(Table)
+
+```
+<table> 태그로 변환됨
+헤더 셸을 구분할 때 3개 이상의 - (hyphen/dash) 기호가 필요
+헤더 셸을 구분하면서 : (Colons) 기호로 셸 (열/칸) 안에 내용을 정렬할 수 있음
+가장 좌측과 가장 우측에 있는 | (vertical bar) 기호는 생략 가능
+```
+
+```
+| 값 | 의미 | 기본값 |
+|---|:---:|---:|
+| `static` | 유형(기준) 없음 / 배치 불가능 | `static` |
+| `relative` | 요소 자신을 기준으로 배치 |  |
+| `absolute` | 위치 상 부모(조상)요소를 기준으로 배치 | |
+| `fixed` | 브라우저 창을 기준으로 배치 | |
+
+
+값 | 의미 | 기본값
+---|:---:|---:
+`static` | 유형(기준) 없음 / 배치 불가능 | `static`
+`relative` | 요소 자신을 기준으로 배치 |
+`absolute` | 위치 상 부모(조상)요소를 기준으로 배치 |
+`fixed` | 브라우저 창을 기준으로 배치 |
+```
+
+| 값         |                  의미                  |   기본값 |
+| ---------- | :------------------------------------: | -------: |
+| `static`   |     유형(기준) 없음 / 배치 불가능      | `static` |
+| `relative` |       요소 자신을 기준으로 배치        |          |
+| `absolute` | 위치 상 부모(조상)요소를 기준으로 배치 |          |
+| `fixed`    |      브라우저 창을 기준으로 배치       |          |
+
+
+
+#### 인용문(BlockQuote)
+
+`<blockquote>` 태그로 변환
+
+```
+인용문(blockQuote)
+> 남의 말이나 글에서 직접 또는 간접으로 따온 문장
+> _(네이버 국어 사전)_
+
+BREAK!
+
+> 인용문을 작성하세요
+>> 중첩된 인용문(nested blockquote)을 만들 수 있다
+>>> 중중첩된 인용문 1
+>>> 중중첩된 인용문 2
+>>> 중중첩된 인용문 3
+```
+
+인용문(blockQuote)
+> 남의 말이나 글에서 직접 또는 간접으로 따온 문장
+> _(네이버 국어 사전)_
+
+BREAK!
+
+> 인용문을 작성하세요
+> > 중첩된 인용문(nested blockquote)을 만들 수 있다
+> > > 중중첩된 인용문 1
+> > > 중중첩된 인용문 2
+> > > 중중첩된 인용문 3
+
+
+
+원시 HTML (Raw HTML)
+
+마크다운 문법이 아닌 원시 HTML 문법을 사용할 수 있음
+
+```html
+<u>마크다운에서 지원하지 않는 기능</u>을 사용할 때 유용하며 대부분 잘 동작
+<img width="150" src="https://seolyucode.github.io/imgs/korea.png" alt="태극기" title="Korea">
+![태극기](https://seolyucode.github.io/imgs/korea.png)
+```
+
+
+
+<u>마크다운에서 지원하지 않는 기능</u>을 사용할 때 유용하며 대부분 잘 동작
+<img width="150" src="https://seolyucode.github.io/imgs/korea.png" alt="태극기" title="Korea">
+![태극기](https://seolyucode.github.io/imgs/korea.png)

@@ -232,3 +232,29 @@ get user 누르면 Console에 데이터 나오고 <Root> 누르면 갱신된 데
 
 
 ![:)](C:./imgs/12.png)
+
+클라이언트에서 HTTP Request를 axios로 보내기
+
+XHR 데이터 통신 볼 수 있음
+
+get user 눌렀을 때 HTTP Request가 서버로 날라감
+
+![:)](C:./imgs/13.png)
+
+Headers <- HTTP의 헤더 의미. 일반적인 정보. 특정 요청에 대한 정보, 응답에 대한 정보
+
+![:)](C:./imgs/14.png)
+
+GET 으로 보낼 때는 정보를 달라고 요청하는 것이므로
+
+Response에 정보가 담겨져있음
+
+![:)](C:./imgs/15.png)
+
+Preview로 보면 보기 더 수월(Response가 어떻게 구조화되어서 오는지)
+
+![:)](C:./imgs/16.png)
+
+[Front-end 개발자가 알아야 하는 HTTP 프로토콜](https://joshua1988.github.io/web-development/http-part1/)
+
+[구글 크롬 개발자 도구 공식 문서](https://developers.google.com/web/tools/chrome-devtools/)

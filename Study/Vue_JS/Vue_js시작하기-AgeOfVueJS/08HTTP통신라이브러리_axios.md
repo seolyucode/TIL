@@ -75,17 +75,17 @@ Promise(자바스크립트의 비동기 처리 패턴) based HTTP client for the
 </script>
 ```
 
-![:)](C:./imgs/1.png)
+![1](C:./imgs/1.png)
 
 get user 버튼 누르면 데이터가 옴
 
 서버로 갔다가 온 데이터의 결과
 
-![:)](C:./imgs/2.png)
+![2](C:./imgs/2.png)
 
 config, data, headers, request 속성들은 axios의 일반적인 구조
 
-![:)](C:./imgs/3.png)
+![3](C:./imgs/3.png)
 
 필요한 것은 데이터 속성 안에 10개의 사용자 정보
 
@@ -110,7 +110,7 @@ config, data, headers, request 속성들은 axios의 일반적인 구조
 
 데이터가 배열로 넘어온다
 
-![:)](C:./imgs/4.png)
+![4](C:./imgs/4.png)
 
 ```html
 <script>
@@ -137,13 +137,13 @@ config, data, headers, request 속성들은 axios의 일반적인 구조
 </script>
 ```
 
-![:)](C:./imgs/5.png)
+![5](C:./imgs/5.png)
 
 Esc 누르면 data 내용과 console 같이 보임
 
 get user 버튼 누르면
 
-![:)](C:./imgs/6.png)
+![6](C:./imgs/6.png)
 
 그런데 users는 아직 0 이다. 빈 배열
 
@@ -205,7 +205,7 @@ get user 버튼 누르면
 </script>
 ```
 
-![:)](C:./imgs/7.png)
+![7](C:./imgs/7.png)
 
 get user 누르면 Console에 데이터 나오고 <Root> 누르면 갱신된 데이터 보임
 
@@ -213,17 +213,17 @@ get user 누르면 Console에 데이터 나오고 <Root> 누르면 갱신된 데
 
 아래에 담긴 데이터가 {{ user }} 에 정리되지 않은 형태로 화면에 나옴
 
-![:)](C:./imgs/10.png)
+![10](C:./imgs/10.png)
 
 빈 배열이었다가 get user 누르면
 
-![:)](C:./imgs/9.png)
+![9](C:./imgs/9.png)
 
 
 
 개발자도구 네트워크 패널 보는 법
 
-![:)](C:./imgs/11.png)
+![11](C:./imgs/11.png)
 
 브라우저에서 서버로 HTTP(aixos를 이용해서 HTTP라는 프로토콜. 브라우저(클라이언트)와 서버간 데이터를 주고 받기 위한 규칙, 약속) 요청 보냄
 
@@ -231,7 +231,7 @@ get user 누르면 Console에 데이터 나오고 <Root> 누르면 갱신된 데
 
 
 
-![:)](C:./imgs/12.png)
+![12](C:./imgs/12.png)
 
 클라이언트에서 HTTP Request를 axios로 보내기
 
@@ -239,21 +239,21 @@ XHR 데이터 통신 볼 수 있음
 
 get user 눌렀을 때 HTTP Request가 서버로 날라감
 
-![:)](C:./imgs/13.png)
+![13](C:./imgs/13.png)
 
 Headers <- HTTP의 헤더 의미. 일반적인 정보. 특정 요청에 대한 정보, 응답에 대한 정보
 
-![:)](C:./imgs/14.png)
+![14](C:./imgs/14.png)
 
 GET 으로 보낼 때는 정보를 달라고 요청하는 것이므로
 
 Response에 정보가 담겨져있음
 
-![:)](C:./imgs/15.png)
+![15](C:./imgs/15.png)
 
 Preview로 보면 보기 더 수월(Response가 어떻게 구조화되어서 오는지)
 
-![:)](C:./imgs/16.png)
+![16](C:./imgs/16.png)
 
 [Front-end 개발자가 알아야 하는 HTTP 프로토콜](https://joshua1988.github.io/web-development/http-part1/)
 

@@ -2,6 +2,12 @@
 
 Ajax(Asynchronous JavaScript and XML, 에이잭스) : 비동기적인 웹 애플리케이션의 제작
 
+Ajax 를 함으로 인해서 뷰 라우터 라든지 싱글 페이지 애플리케이션이 조금 더 구현하기 쉬워졌다
+
+일반적으로 많이 쓰는 jQuery.ajax()  <- jQuery에서는 ajax를 이용해서 데이터를 호출하고 받아오고 수정하고 등등의 일 많이 함 
+
+
+
 axios
 
 vue resource github 구글링 -> The HTTP client for Vue.js 예전 공식 라이브러리. 안씀

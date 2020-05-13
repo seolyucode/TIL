@@ -7,7 +7,9 @@
 </head>
 <body>
     <div id="app">
-        <p>{{ num }}</p>
+        <p v-binc:id="uuid">{{ num }}</p>
+        <!-- 위 내용은 실제 화면에서 아래와 같이 나타남 -->
+        <!-- <p id="abc1234">{{ num }}</p> -->
         <p>{{ doubleNum }}</p>
     </div>
 
@@ -17,6 +19,7 @@
             el: '#app',
             data: {
                 num: 10,
+                uuid: 'abc1234'
             },
             computed: {
                 doubleNum: function() {

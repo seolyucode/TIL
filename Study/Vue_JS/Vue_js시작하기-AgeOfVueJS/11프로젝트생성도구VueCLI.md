@@ -52,3 +52,66 @@ default(babel, eslint) 엔터  <- 화살표로 이동
 
 `npm run serve`
 
+- Local: http://localhost:8080/  <- ctrl 키 누르고 클릭
+
+
+
+`npm run serve` 라는 명령어를 보면
+
+npm은 node package manager  <- package.json에서 dependencies, devDependencies
+
+scripts 에 serve 에 정의된
+
+`vue-cli-service serve` <- serve 라고 하고
+
+`npm run serve` 하는 것이다
+
+public 폴더에 index.html 파일
+
+```html
+<!-- built files will be auto injected -->
+```
+
+빌드된 파일들이 자동으로 추가가 될 것이라는 주석
+
+src 폴더 밑에 정의해둔 main.js, App.vue 등등 여러가지 파일들 종합하여 최소한의 파일로 변환하여 주입
+
+웹팩 공부하기
+
+main.js 가보면
+
+```javascript
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+```
+
+```javascript
+new Vue({
+
+}).$mount('#app')
+
+// 위 코드는 아래 코드와 같은 역할
+
+new Vue({
+    el: '#app'
+})
+```
+
+```javascript
+new Vue({
+    el: '#app',
+    render: h => h(App),
+})
+```
+
+render는 뷰 내부적으로 사용하는 함수. 사용자들도 사용할 수 있는 함수.
+
+기본적으로 template 이라는 속성을 정의했을 때 내부적으로 render 함수 실행
+
+App 이라는 컴포넌트 즉, import 한(import App from './App.vue') 파일. .vue 라는 싱글 파일 컴포넌트 렌더
+
+ 
+
+
+

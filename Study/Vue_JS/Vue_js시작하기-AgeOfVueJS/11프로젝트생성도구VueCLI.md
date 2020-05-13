@@ -187,5 +187,68 @@ export default {
 
 
 
+#### App.vue 와 HelloWorld.vue 설명
 
+main.js 에서
+
+import App from './App.vue'  <- App.vue 내용을 App 변수에 담음
+
+
+
+App.vue 보면
+
+template(HTML), script(Javascript), style(CSS)
+
+```vue
+<template>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- 컴포넌트 명명법 종류 -->
+    <!-- <hello-world></hello-world>
+    <HelloWorld></HelloWorld>
+    <HelloWorld/> -->
+  </div>
+</template>
+```
+
+```vue
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+// 컴포넌트 내용 들고와서
+
+export default {
+  // 인스턴스 옵션 속성 or 컴포넌트 옵션 속성
+  name: 'App',
+  // components에 연결해서 사용
+  components: {
+    HelloWorld,
+    'hello-world': HelloWorld,
+  }
+}
+</script>
+```
+
+
+
+HelloWorld 컴포넌트는 components 안에 등록되어있음
+
+HelloWorld.vue
+
+```vue
+<script>
+// var appContent = {
+//   props: ['propsdata']
+// }
+
+export default {
+  // 인스턴스 옵션 속성
+  name: 'HelloWorld',
+  // props: ['msg']
+  props: {
+    msg: String
+  }
+}
+</script>
+```
 

@@ -150,6 +150,7 @@ vue.js의 핵심은 데이터의 변화를 라이브러리에서 감지해서 �
         //     // 정의할 내용
         // })
 
+        // 즉시 실행 함수
         (function() {
             function init() {
             Object.defineProperty(viewModel, 'str', {
@@ -175,6 +176,10 @@ vue.js의 핵심은 데이터의 변화를 라이브러리에서 감지해서 �
 ```
 
 https://developer.mozilla.org/ko/docs/Glossary/IIFE
+
+즉시실행함수 <- init 과 render 가 애플리케이션 로직에 노출되지 않게 그 자체를 또다른 유효범위에 넣어주는 것
+
+일반적으로 오픈소스 라이브러리들이 이런 식으로 변수의 유효범위 관리함
 
 `viewModel.str = 'hi';`
 

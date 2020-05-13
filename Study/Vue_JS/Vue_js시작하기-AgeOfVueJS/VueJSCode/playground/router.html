@@ -28,10 +28,12 @@
 
         var Router = new VueRouter({
             // 페이지의 라우팅 정보
+            // url <- 어떤 page가 뿌려질지에 대한 정보가 배열로 담김
             routes: [
+                // 페이지 개수만큼 객체의 개수가 필요
                 // 로그인 페이지 정보
                 {
-                    // 페이지 url
+                    // 페이지 url 이름
                     path: '/login',
                     name: 'login',
                     // 해당 url에서 표시될 컴포넌트
@@ -49,7 +51,7 @@
 
         new Vue({
             el: '#app',
-            router: Router
+            router: Router  // 라우터 속성: 위에서 정의한 라우터 변수
         });
     </script>
 </body>

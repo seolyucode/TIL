@@ -111,7 +111,81 @@ render는 뷰 내부적으로 사용하는 함수. 사용자들도 사용할 수
 
 App 이라는 컴포넌트 즉, import 한(import App from './App.vue') 파일. .vue 라는 싱글 파일 컴포넌트 렌더
 
- 
+```javascript
+var App = {
+    template: '<div>app</div>'
+}
+
+new Vue({
+    render: h => h(App),
+    components: {
+        'app': App
+    }
+}).$mount('#app')
+```
+
+
+
+.vue
+
+싱글 파일 컴포넌트
+
+src 폴더 우클 새파일
+
+a.vue 생성
+
+scf(Vetur 버전 0.22 이상은 vue) 자동완성 .vue 기본 구조 잡아줌
+
+```vue
+<template>
+	<!-- HTML -->
+</template>
+
+<script>
+export default {
+    // Javascript
+}
+</script>
+
+<style>
+    /* CSS */
+</style>
+```
+
+한 파일에 관리 -> 싱글 파일 컴포넌트 / .vue
+
+```vue
+var appHeader = {
+	template: '<div>header</div>',
+	methods: {
+		addNum: function() {
+
+		}
+	}
+}
+
+<template>
+	<!-- HTML -->
+	<div>header</div>
+</template>
+
+<script>
+export default {
+    // Javascript - 인스턴스 옵션
+    methods: {
+		addNum: function() {
+
+		}
+	}
+}
+</script>
+
+<style>
+    /* CSS */
+</style>
+```
+
+
 
 
 

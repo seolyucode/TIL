@@ -16,3 +16,17 @@ VSCode 터미널 - 새 터미널 - `node -v`
 
 `npm install -g @vue/cli`
 
+
+
+설치하는 라이브러리가 위치하는 폴더에 파일쓰기 권한 없을 때(관리자 권한 아니라서) 에러나면
+
+`sudo npm install -g @vue/cli`
+
+
+
+[설치된 내용들 어디?](https://stackoverflow.com/questions/5926672/where-does-npm-install-packages)
+
+
+
+
+

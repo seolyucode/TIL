@@ -1,12 +1,22 @@
 <template>
   <div>
-    app
+    {{ str }}
   </div>
 </template>
 
 <script>
-export default {
+// new Vue({
+//   data: {
+//     str: 'hi'
+//   }
+// })
 
+export default {
+  data: function() {
+    return {
+      str: 'hi'
+    }
+  }
 }
 </script>
 

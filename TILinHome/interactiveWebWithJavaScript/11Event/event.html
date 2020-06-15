@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script>
+        // 함수 선언
+        function makeLog(str) {
+            console.log(str);
+        }
+
+        // 함수 호출
+        makeLog('안녕하세요');
+
+        $(document).on('keydown', keyboardInput);
+        // 위와 같이 이벤트를 등록하면, 
+        // 이벤트 핸들러 함수(keyboardInput)를 호출하는 코드가 자바스크립트 내부에 이미 구현되어 있습니다. 
+        // 그래서 이벤트 객체를 사용하고자 할 경우, 함수 선언 부분에 파라미터를 넣는 것만으로 이벤트 객체의 전달이 가능해집니다.
+
+        // 이벤트 객체를 사용할 경우
+        function keyboardInput(e) {
+            console.log(e.key);
+        }
+
+        // 이벤트 객체를 사용하지 않을 경우
+        // function keyboardInput() {
+        //     ...
+        // }
+    </script>
+</body>
+
+</html>

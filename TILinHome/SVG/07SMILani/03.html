@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <svg class="svg" viewBox="0 0 1000 1000">
+        <rect class="rect" x="10" y="10" width="20%" height="20%">
+            <!-- repeatCount 를 indefinite 로 하면 무한  -->
+            <!-- begin(언제 시작할지) 을 indefinite 로 하면 출발 안함 -->
+            <animate class="ani" attributeName="x" dur="2s" values="0; 700; 0" 
+            keyTimes="0; 0.5; 1" repeatCount="indefinite">
+            </animate>
+        </rect>
+    </svg>
+</body>
+</html>

@@ -1,0 +1,68 @@
+.seolyuMic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+@keyframes flower-ani {
+    from {
+        transform: rotateZ(-2deg);
+
+    }
+
+    to {
+        transform: rotateZ(1deg);
+    }
+}
+
+#flower {
+    animation: flower-ani 1s alternate linear infinite;
+    transform-origin: center;
+}
+
+.st0 {
+    fill: #FBEBD2;
+}
+
+.st1 {
+    fill: #4396D2;
+}
+
+.st2 {
+    fill: #E83B7D;
+}
+
+.st3 {
+    fill: #D13771;
+}
+
+.st4 {
+    fill: #391A12;
+    stroke: #000000;
+    stroke-miterlimit: 10;
+}
+
+.st5 {
+    fill: #0D9538;
+}
+
+.st6 {
+    fill: #F3A1C1;
+}
+
+.st7 {
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-miterlimit: 10;
+}
+
+.st8 {
+    fill: #9F1916;
+    stroke: #FFFFFF;
+    stroke-miterlimit: 10;
+}

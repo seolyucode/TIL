@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js App</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 여기 #app 내부에 템플릿을 출력할 것입니다 -->
+        <p>{{ message }}</p>
+        <input v-model="message">
+        <p v-if="show">Hello Vue.js!!</p>
+        <ol>
+            <li v-for="item in list">{{ item }}</li>
+        </ol>
+        <button v-on:click="handleClick">Click</button>
+        <button v-on:click="show=!show">변경하기</button>
+        <transition>
+            <p v-if="show">Hello Vue.js!!!</p>
+        </transition>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

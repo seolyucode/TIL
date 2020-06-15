@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout1</title>
+    <style>
+        body {
+            background: #e0c6d3;
+        }
+
+        #wrap {
+            width: 1000px;
+            height: 900px;
+            margin: 0 auto;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        #header {
+            width: 1000px;
+            height: 100px;
+            line-height: 100px;
+            background: #7d2e55;
+        }
+
+        #nav {
+            width: 1000px;
+            height: 100px;
+            line-height: 100px;
+            background: #993a6a;
+        }
+
+        #side {
+            /* float 속성은 블록요소의 정렬 상태를 설정 */
+            /* 기본값은 none */
+            /* left right */
+            /* float 쓰면 height 값 0으로 인식 */
+            /* 깨지는 박스 똑같이 float: left; 써주거나 */
+            /* margin 속성은 요소의 바깥쪽 여백을 설정 */
+            /* margin: 0 auto; 주면 블록구조 가운데정렬. 위아래 0 */
+            /* line-height(문장과 문장사이 간격 설정)을 높이와 같이 설정해주면 한줄일 때 중앙에 오는 효과*/
+            float: left;
+            width: 300px;
+            height: 600px;
+            line-height: 600px;
+            background: #b14b7e;
+        }
+
+        #contents {
+            float: left;
+            width: 700px;
+            height: 600px;
+            line-height: 600px;
+            background: #d66ea2;
+        }
+
+        #footer {
+            float: left;
+            width: 1000px;
+            height: 100px;
+            line-height: 100px;
+            background: #e4a8c6;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header">header</div>
+        <div id="nav">nav</div>
+        <div id="side">side</div>
+        <div id="contents">contents</div>
+        <div id="footer">footer</div>
+    </div>
+</body>
+
+</html>

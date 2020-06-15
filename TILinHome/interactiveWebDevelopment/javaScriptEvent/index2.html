@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- <link rel="stylesheet" href="css/02_01.css"> -->
+
+    <!-- <script>
+        // DOMContentLoaded 와 똑같이 동작
+        // $(function() {
+        //     // ...
+        // });
+        // 문서 전체가 로드가 끝나면 이 함수를 실행
+        // window.addEventListener('load', function () {
+        // 위에 load 는 문서에 있는 리소스(이미지까지)가 전부 로드가 끝날 때까지 기다리지만
+        // DOMContentLoaded 구조만 로드되면 실행됨
+        // 실행시점이 더 빠르고, load 보다 효율적이라서 DOMContentLoaded 쓸 수 있는 상황이면 쓰는게 좋음
+        window.addEventListener('DOMContentLoaded', function () {
+            const ilbuni = document.querySelector('.ilbuni.c');
+
+            function clickInbuniHandler() {
+                ilbuni.classList.toggle('special');
+            }
+
+            ilbuni.addEventListener('click', clickInbuniHandler);
+        });
+        //    const ilbuni = document.querySelector('.ilbuni:nth-child(3)')
+        //    ilbuni.addEventListener('click', function() {
+        //        ilbuni.classList.add('special');
+        //    })
+    </script> -->
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .characters {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: #fff000;
+        }
+
+        .ilbuni {
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .characters .ilbuni {
+            display: inline-block;
+        }
+
+        .special {
+            border: 10px dashed red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="characters">
+        <div class="ilbuni a">
+            <img src="images/ilbuni_0.png" alt="일분이">
+        </div>
+        <div class="ilbuni b">
+            <img src="images/ilbuni_1.png" alt="일분이">
+        </div>
+        <div class="ilbuni c">
+            <img src="images/ilbuni_2.png" alt="일분이">
+        </div>
+        <div class="ilbuni d">
+            <img src="images/ilbuni_3.png" alt="일분이">
+        </div>
+    </div>
+    
+
+    <script>
+        // (함수) 뒤에 호출연산자 ();
+        (function () {
+            const characters = document.querySelector('.characters');
+
+            function clickHandler(e) {
+                // console.log(this);
+                // ilbuni.classList.toggle('special');
+                // console.log(e.currentTarget);
+                
+                console.log(e.target);
+            }
+
+            characters.addEventListener('click', clickHandler);
+        })();
+
+        // 전역변수
+        // const ilbuni = document.querySelector('.ilbuni.c');
+
+        // const clickInbuniHandler = function () {
+        //     ilbuni.classList.toggle('special');
+        // };
+
+        // const clickInbuniHandler = () => {
+        //     ilbuni.classList.toggle('special');
+        // };
+
+        // function clickInbuniHandler() {
+        //     ilbuni.classList.toggle('special');
+        // }
+
+        // ilbuni.addEventListener('click', clickInbuniHandler);
+    </script>
+</body>
+
+</html>

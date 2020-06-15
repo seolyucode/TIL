@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .card {
+            float: left;
+            margin-left: 2px;
+            height: 20px;
+            width: 20px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="cards">
+        <div class="card">1</div>
+        <div class="card">2</div>
+        <div class="card">3</div>
+        <div class="card">4</div>
+        <div class="card">5</div>
+        <div class="card">6</div>
+        <div class="card">7</div>
+        <div class="card">8</div>
+        <div class="card">9</div>
+        <div class="card">10</div>
+        <div class="card">11</div>
+        <div class="card">12</div>
+        <div class="card">13</div>
+        <div class="card">14</div>
+        <div class="card">15</div>
+        <div class="card">16</div>
+        <div class="card">17</div>
+        <div class="card">18</div>
+        <div class="card">19</div>
+        <div class="card">20</div>
+        <div class="card">21</div>
+        <div class="card">22</div>
+        <div class="card">23</div>
+        <div class="card">24</div>
+    </div>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script>
+        $('.card').each(function() {
+            // console.log('hello');
+            console.log($(this).text());
+        });
+    </script>
+</body>
+</html>

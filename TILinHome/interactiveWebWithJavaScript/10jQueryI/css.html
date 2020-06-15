@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 모든 <h1> 태그 */
+        h1 {
+            color: orange;
+        }
+
+        /* 마우스가 <h1> 태그에 올라갔을 때 */
+        h1:hover {
+            color: green;
+        }
+
+        /* 'important' 라는 클래스를 갖고 있는 모든 태그 */
+        .important {
+            color: pink;
+        }
+
+        /* 'favorite' 라는 아이디를 갖고 있는 모든 태그 */
+        #favorite {
+            color: dodgerblue;
+        }
+
+        /* 'div1' 클래스를 갖고 있는 요소의 자식 중 모든 <i> 태그 */
+        .div1 i {
+            color: purple;
+        }
+
+        /* 'div1' 클래스를 갖고 있는 요소의 직속 자식 중 모든 <i> 태그 */
+        .div1>i {
+            color: gold;
+        }
+
+        /* 'two' 클래스를 가지고 있는 태그 모두와 'four' 클래스를 가지고 있는 태그 모두 선택 */
+        .two,
+        .four {
+            color: darkgreen;
+        }
+
+        /* 'outside' 클래스를 갖고 있으면서 'one' 클래스도 갖고 있는 태그 */
+        .outside.one {
+            color: mediumvioletred;
+        }
+
+        /* 'inside' 클래스를 갖고 있으면서 'two' 클래스도 갖고 있는 태그 */
+        .inside.two {
+            color: orangered;
+        }
+
+        /* .div1의 자식인 <p> 태그 중 3번째 */
+        .div1 p:nth-child(3) {
+            color: blue;
+        }
+
+        /* .div1의 자식인 <p> 태그 중 첫 번째 */
+        .div1 p:first-child {
+            color: red;
+        }
+
+        /* .div1의 자식인 <p> 태그 중 마지막 */
+        .div1 p:last-child {
+            color: green;
+        }
+
+        /* .div1의 자식 중 마지막 자식이 아닌 <p> 태그 */
+        .div1 p:not(:last-child) {
+            font-size: 150%;
+        }
+
+        /* .div1의 자식 중 첫 번째 자식이 아닌 <p> 태그 */
+        .div1 p:not(:first-child) {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Heading 1</h1>
+    <h>Heading 2</h2>
+
+        <p class="important">Paragraph 1</p>
+        <p>Paragraph 2</p>
+        <p class="important">Paragraph 3</p>
+        <p class="important">Paragraph 4</p>
+        <p id="favorite">Paragraph 5</p>
+        <p>Paragraph 6</p>
+
+        <i>Outside</i>
+        <div class="div1">
+            <i>Inside 1</i>
+            <p>BLa bla <i>Inside 2</i></p>
+            <i>Inside 3</i>
+        </div>
+
+        <p class="outside one">Outside 1</p>
+        <p class="outside two">Outside 2</p>
+        <div>
+            <p class="inside one">Inside 1</p>
+            <p class="inside two">Inside 2</p>
+            <p class="inside three">Inside 3</p>
+            <p class="inside four">Inside 4</p>
+            <p class="inside five">Inside 5</p>
+        </div>
+
+        <div class="div1">
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+            <p>Paragraph 3</p>
+            <p>Paragraph 4</p>
+            <p>Paragraph 5</p>
+            <p>Paragraph 6</p>
+        </div>
+</body>
+
+</html>

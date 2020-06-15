@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout2</title>
+    <style>
+        body {
+            background: #e2b3de;
+        }
+
+        #wrap {
+            width: 1000px;
+            height: 900px;
+            margin: 0 auto;
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        #header {
+            width: 1000px;
+            height: 100px;
+            line-height: 100px;
+            background-color: #910232;
+        }
+
+        #nav {
+            width: 1000px;
+            height: 100px;
+            line-height: 100px;
+            background-color: #a34a24;
+        }
+
+        #side_left {
+            float: left;
+            width: 300px;
+            height: 600px;
+            line-height: 600px;
+            background-color: #b8a84b;
+        }
+
+        #contents {
+            float: left;
+            width: 400px;
+            height: 600px;
+            line-height: 600px;
+            background-color: #93c274;
+        }
+
+        #side_right {
+            float: left;
+            width: 300px;
+            height: 600px;
+            line-height: 600px;
+            background-color: #8eddcc;
+        }
+
+        #footer {
+            /* clear: both; 는 float:left; 성질 차단 */
+            clear: both;
+            width: 1000px;
+            height: 100px;
+            line-height: 100px;
+            background-color: #b3b8fd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header">header</div>
+        <div id="nav">nav</div>
+        <div id="side_left">side_left</div>
+        <div id="contents">contents</div>
+        <div id="side_right">side_right</div>
+        <div id="footer">footer</div>
+    </div>
+</body>
+
+</html>

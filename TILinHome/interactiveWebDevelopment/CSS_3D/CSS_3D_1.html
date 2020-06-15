@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <style>
+        .world {
+            /* 카드를 중앙에 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 80vw;
+            height: 80vh;
+            background: #fff000;
+
+            /* 3D 공간으로, 안에 oebject 들에 적용됨. 회전같은거 했을 때  */
+            /* 가까이 있으면 3D 효과가 극적으로 */
+            /* 카드가 똑같이 보이길 원하면 주석처리하고 카드(회전되는 element 자체) transform 안에 */
+            /* perspective: 500px; */
+        }
+
+        .card {
+            /* 글씨 중앙 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100px;
+            height: 150px;
+
+            /* 카드 사이 간격 */
+            margin: 1em;
+
+            /* em 은 폰트사이즈 기준 */
+            border-radius: 0.5em;
+            font-size: 1.5rem;
+            background: red;
+
+            /* Y축 기준 회전 */
+            transform: perspective(500px) rotateY(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="world">
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+        <div class="card">CARD</div>
+    </div>
+</body>
+
+</html>

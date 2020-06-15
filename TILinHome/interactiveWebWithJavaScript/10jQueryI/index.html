@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+</head>
+
+<body>
+    <button id="hello">Hello Codeit!</button>
+
+    <ul id="todo-list">
+        <li class="item">청소</li>
+        <li class="item">코딩</li>
+        <li class="item">숙제</li>
+        <li class="item">영화</li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script>
+        // jQuery = '선택' + '동작'
+        // . 을 기준으로 
+        $('#hello').on('click', sayHello);
+
+        function sayHello() {
+            alert($('#hello').text());
+            $('#hello').css('background', '#7f8ff4');
+        }
+
+        // 모든 li 요소 바로 뒤에 <li class="item">새로운 아이템</li> 생김
+        // $('li').after('<li class="item">새로운 아이템</li>');
+
+        // ul 자식 중 마지막만
+        // $('#todo-list li:last-child').after('<li class="item">새로운 아이템</li>');
+        // $('#todo-list li:last-child').before('<li class="item">새로운 아이템</li>');
+
+        // 자식요소로 추가하기
+        // $('ul').append('<li class="item">새로운 아이템</li>');
+        // 첫번째 자식으로
+        $('ul').prepend('<li class="item">새로운 아이템</li>');
+
+        // $('ul li:first-child').before('<li class="item">어떤 요소</li>');
+        // 문제 없이 작동
+        // $('ul li:first-child').before("<li class='item'>어떤 요소</li>");
+        // 오류!
+        // $('ul li:first-child').before('<li class='item '>어떤 요소</li>');
+        // 문제 해결!
+        // $('ul li:first-child').before('<li class=\'item\'>어떤 요소</li>');
+        // 문제 해결!
+        // $('ul li:first-child').before("<li class=\"item\">어떤 요소</li>");
+    </script>
+</body>
+
+</html>

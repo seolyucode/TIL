@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    background: red;
+    width: 120px;
+    height: 80px;
+    display: inline;
+}
+
+div { display: block; }
+h1 { display: block; }
+p { display: block; }
+
+span { display: inline; }

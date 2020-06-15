@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <!-- <style>
+        .face {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            margin: auto;
+        }
+        .face_hair {
+            fill: brown;
+        }
+        .face_hair:nth-of-type(1) {
+            fill: blue;
+        }
+        @keyframes eye-ani {
+            0% { transform: scale(0.9); }
+            100% { transform: scale(1.4); }
+        }
+        .face_eye {
+            /* transform-origin: center center; */
+            animation: eye-ani 0.5s infinite alternate;
+        }
+        .face_eye:nth-of-type(1) {
+            transform-origin: 189.64px 356.25px;
+        }
+        .face_eye:nth-of-type(2) {
+            transform-origin: 394.92px 356.25px;
+        }
+    </style> -->
+</head>
+
+<body>
+    <svg class="face" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 590.96 633.62">
+        <style>
+            .face {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 200px;
+                margin: auto;
+            }
+
+            .face_hair {
+                fill: brown;
+            }
+
+            .face_hair:nth-of-type(1) {
+                fill: blue;
+            }
+
+            @keyframes eye-ani {
+                0% {
+                    transform: scale(0.9);
+                }
+
+                100% {
+                    transform: scale(1.4);
+                }
+            }
+
+            <!-- .face_eye {
+                transform-origin: center center;
+                animation: eye-ani 0.5s infinite alternate;
+            } -->
+
+            .face_eye:nth-of-type(1) {
+                transform-origin: 189.64px 356.25px;
+            }
+
+            .face_eye:nth-of-type(2) {
+                transform-origin: 394.92px 356.25px;
+            }
+
+            .ani-on .face_eye {
+                animation: eye-ani 0.5s infinite alternate;
+            }
+        </style>
+
+        <script>
+            const faceElem = document.querySelector('.face');
+            faceElem.addEventListener('click', function () {
+                this.classList.toggle('ani-on');
+            })
+        </script>
+
+        <defs>
+            <style>
+                .cls-1,
+                .cls-4 {
+                    fill: #1d1d1b;
+                }
+
+                .cls-1,
+                .cls-2,
+                .cls-3,
+                .cls-4 {
+                    stroke: #1d1d1b;
+                    stroke-miterlimit: 10;
+                }
+
+                .cls-1,
+                .cls-2 {
+                    stroke-width: 40px;
+                }
+
+                .cls-2,
+                .cls-3 {
+                    fill: none;
+                }
+
+                .cls-3,
+                .cls-4 {
+                    stroke-width: 30px;
+                }
+            </style>
+        </defs>
+        <title>syface</title>
+        <g>
+            <ellipse class="face_eye" class="cls-1" cx="189.64" cy="356.25" rx="25.87" ry="22.21" />
+            <ellipse class="face_eye" class="cls-1" cx="394.92" cy="356.25" rx="25.87" ry="22.21" />
+        </g>
+        <circle class="cls-2" cx="292.28" cy="348.78" r="264.84" />
+        <path class="cls-3" d="M478.91,464.69c-30.13,40.16-74.76,65.59-124.58,65.59s-94.45-25.43-124.58-65.59"
+            transform="translate(-62.05 -5.56)" />
+        <ellipse class="face_hair" class="cls-4" cx="143.5" cy="173.55" rx="128.5" ry="72" />
+        <ellipse class="face_hair" class="cls-4" cx="361.74" cy="101.55" rx="123.02" ry="86.55" />
+        <ellipse class="face_hair" class="cls-4" cx="201.13" cy="83.94" rx="91.15" ry="68.94" />
+        <ellipse class="face_hair" class="cls-4" cx="460.25" cy="188.11" rx="115.71" ry="58.98" />
+        <ellipse class="face_hair" class="cls-4" cx="292.28" cy="198.47" rx="110.3" ry="64.34" />
+    </svg>
+
+    <!-- <script>
+        const faceElem = document.querySelector('.face');
+        faceElem.addEventListener('click', function () {
+            this.classList.toggle('ani-on');
+        })
+    </script> -->
+</body>
+
+</html>

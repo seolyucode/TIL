@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <style type="text/css">
+        @keyframes ball-ani {
+            0% {
+                transform: translate(-20px);
+            }
+
+            100% {
+                transform: translate(20px);
+            }
+        }
+
+        @keyframes eye-ani {
+            80% {
+                transform: scaleY(1);
+            }
+
+            90% {
+                transform: scaleY(0.01);
+            }
+
+            100% {
+                transform: scaleY(0.01);
+            }
+        }
+
+        /* document.querySelector('.star1-eff').getTotalLength()
+        1143.59130859375 */
+        /* 그려지고 없어지고 */
+        @keyframes star1-ani {
+            0% {
+                stroke-dashoffset: -1144;
+            }
+
+            50% {
+                stroke-dashoffset: 0;
+            }
+
+            100% {
+                stroke-dashoffset: 1144;
+            }
+        }
+
+        /* document.querySelector('.star2-eff').getTotalLength()
+        408.18511962890625 */
+        @keyframes star2-ani {
+            0% {
+                stroke-dashoffset: -409;
+            }
+
+            50% {
+                stroke-dashoffset: 0;
+            }
+
+            100% {
+                stroke-dashoffset: 409;
+            }
+        }
+
+        @keyframes rotate-ani-1 {
+            100% {
+                /* x y z */
+                transform: rotate3D(0, 1, 0, 360deg);
+            }
+        }
+
+        @keyframes rotate-ani-2 {
+            100% {
+                transform: rotate3D(2, 1.22, 0, 360deg);
+            }
+        }
+
+        .star-mon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+        }
+
+        .eye {
+            transform-origin: 28% 28%;
+            animation: eye-ani 2s alternate linear infinite;
+        }
+
+        .ball {
+            animation: ball-ani 1s alternate linear infinite;
+        }
+
+        .star1 {
+            fill: #FFFFFF;
+            stroke: #B41545;
+            stroke-width: 20;
+            stroke-miterlimit: 10;
+            opacity: 0.3;
+        }
+
+        .star2 {
+            fill: #FFFFFF;
+            stroke: #00755F;
+            stroke-width: 20;
+            stroke-miterlimit: 10;
+            opacity: 0.3;
+        }
+
+        .star1-eff {
+            opacity: 1;
+            stroke-dasharray: 1144;
+            stroke-dashoffset: -1144;
+            animation: star1-ani 0.7s infinite ease-in-out;
+        }
+
+        .star2-eff {
+            opacity: 1;
+            stroke-dasharray: 409;
+            stroke-dashoffset: -409;
+            animation: star2-ani 0.7s infinite ease-in-out;
+        }
+
+        .star2-eff-2 {
+            animation-delay: 0.1s;
+        }
+
+        .star {
+            transform-origin: 50% 50%;
+        }
+
+        .star-1 {
+            animation: rotate-ani-1 5s linear infinite;
+        }
+
+        .star-2 {
+            animation: rotate-ani-2 5s linear infinite;
+        }
+
+    </style>
+</head>
+
+<body>
+    <?xml version="1.0" encoding="utf-8"?>
+    <!-- Generator: Adobe Illustrator 24.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+    <svg version="1.1" class="star-mon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" viewBox="0 0 708.66 708.66" style="enable-background:new 0 0 708.66 708.66;"
+        xml:space="preserve">
+        <defs>
+            <mask id="ball-mask">
+                <ellipse class="eye" cx="250" cy="200" rx="28" ry="14" fill="white" />
+            </mask>
+        </defs>
+        <g class="star star-1"> 
+            <polygon class="star1" points="387.79,487.57 292.04,425.05 186.25,468.49 216.12,358.1 142.11,270.91 256.33,265.21 316.38,167.89 
+            357.1,274.75 468.22,301.79 379.17,373.54 " />
+            <polygon class="star1 star1-eff star1-eff-1" points="387.79,487.57 292.04,425.05 186.25,468.49 216.12,358.1 142.11,270.91 256.33,265.21 316.38,167.89 
+            357.1,274.75 468.22,301.79 379.17,373.54 " />
+        </g>
+        <g class="star star-2">
+            <polygon class="star2" points="521.04,386.19 515.25,345.78 478.68,327.65 515.31,309.65 521.26,269.27 549.7,298.55 589.94,291.72 
+        570.88,327.82 589.81,363.98 549.59,357.01 " />
+            <polygon class="star2 star2-eff star2-eff-2" points="521.04,386.19 515.25,345.78 478.68,327.65 515.31,309.65 521.26,269.27 549.7,298.55 589.94,291.72 
+        570.88,327.82 589.81,363.98 549.59,357.01 " />
+        </g>
+
+        <ellipse class="eye" cx="250" cy="200" rx="28" ry="14" fill="red" />
+        <g mask="url(#ball-mask)">
+            <circle class="ball" cx="250" cy="200" r="13" fill="skyblue"></circle>
+        </g>
+    </svg>
+
+    <script>
+        (() => {
+            const starMonElem = document.querySelector('.star-mon');
+            // targetPos <- 마우스가 정지한 위치
+            const targetPos = { x: 0, y: 0};
+            // 가속도
+            const easeValue = 0.05;
+            const starMonInfo = {
+                x: 0,
+                y: 0
+            };
+
+            window.addEventListener('mousemove', (e) => {
+                // 현재 마우스의 위치에서 브라우저 절반 뺌
+                targetPos.x = e.clientX - innerWidth * 0.5;
+                targetPos.y = e.clientY - innerHeight * 0.5;
+            });
+
+            let dx;
+            let dy;
+            function render() {
+                // 목표위치에서 현재위치 뺀거
+                dx = targetPos.x - starMonInfo.x;
+                dy = targetPos.y - starMonInfo.y;
+
+                starMonInfo.x = starMonInfo.x + dx * easeValue;
+                starMonInfo.y = starMonInfo.y + dy * easeValue;
+                starMonElem.style.transform = `translate3d(${starMonInfo.x}px, ${starMonInfo.y}px, 0px)`;
+                requestAnimationFrame(render);
+            }
+
+            render();
+        })();
+    </script>
+
+</body>
+
+</html>

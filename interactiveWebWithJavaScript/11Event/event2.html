@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+
+    <script>
+        // 페이지 로딩이 다 끝나고 나면 whenReady 함수 실행
+        // $(document).ready(whenReady);
+
+        // function whenReady() {
+        //     $('#hello').on('click', sayHello);
+
+        //     function sayHello() {
+        //         alert($('#hello').text());
+        //         $('#hello').css('background', '#7f8ff4');
+        //     }
+        // }
+
+        // 익명함수
+        $(document).ready(function () {
+            $('#hello').on('click', function () {
+                alert($('#hello').text());
+                $('#hello').css('background', '#7f8ff4');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button id="hello">Hello Codeit!</button>
+
+    <ul id="todo-list">
+        <li id="cleaning" class="item">청소</li>
+        <li id="coding" class="item important">코딩</li>
+        <li id="homework" class="item important">숙제</li>
+        <li id="movie" class="item">영화</li>
+        <li id="vitamin" class="item">비타민</li>
+        <li id="gym" class="item">헬스장</li>
+        <li id="reading" class="item important">독서</li>
+    </ul>
+</body>
+
+</html>

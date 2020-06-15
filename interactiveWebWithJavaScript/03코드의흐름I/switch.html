@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Intro</title>
+</head>
+
+<body>
+    <script>
+        var inputNumber = window.prompt("한 자리 숫자를 적어주세요.");
+
+        switch (inputNumber) {
+            case '0':
+                alert('Zero!');
+                break;
+            case '1':
+                alert('One!');
+                break;
+            case '7':
+                alert('Lucky!');
+                break;
+            default:
+                alert('Unlucky!');
+                break;
+        }
+
+        var score = 85;
+        if (score > 70) {
+            alert("잘 하셨습니다!");
+        }
+
+        /*
+        A 코스: 짜장면 짬뽕 탕수육 양장피 팔보채
+        B 코스: 유산슬 짜장면 짬뽕 탕수육 장장피 팔보채
+        C 코스: 게살스프 칠리새우 유산슬 짜장면 짬뽕 탕수육 양장피 팔보채
+        */
+
+        var courseName = 'A';
+
+        // switch (courseName) {
+        //     case 'A':
+        //         console.log('짜장면 짬뽕 탕수육 양장피 팔보채');
+        //         break;
+        //     case 'B':
+        //         console.log('유산슬 짜장면 짬뽕 탕수육 장장피 팔보채');
+        //         break;
+        //     case 'C':
+        //         console.log('게살스프 칠리새우 유산슬 짜장면 짬뽕 탕수육 양장피 팔보채');
+        //         break;
+        // }
+
+        switch (courseName) {
+            case 'C':
+                console.log('게살스프 칠리새우');
+            case 'B':
+                console.log('유산슬');
+                break;
+            case 'A':
+                console.log('짜장면 짬뽕 탕수육 양장피 팔보채');
+                break;
+            default:
+                console.log('주문이 잘못되었습니다.');
+                break;
+        }
+
+
+    </script>
+
+</body>
+
+</html>

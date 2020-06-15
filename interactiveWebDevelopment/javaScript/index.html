@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .characters {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: #fff000;
+        }
+
+        .ilbuni {
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .characters .ilbuni {
+            display: inline-block;
+        }
+
+        .special {
+            border: 10px dashed red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="characters">
+        <div class="ilbuni a">
+            <img src="images/ilbuni_0.png" alt="일분이">
+        </div>
+        <div class="ilbuni b">
+            <img src="images/ilbuni_1.png" alt="일분이">
+        </div>
+        <div class="ilbuni c">
+            <img src="images/ilbuni_2.png" alt="일분이">
+        </div>
+    </div>
+    <div class="ilbuni d">
+        <img src="images/ilbuni_3.png" alt="일분이">
+    </div>
+
+    <script>
+        const ilbuni = document.querySelector('.a');
+        console.log(ilbuni);
+
+        // querySelector 는 기본적으로
+        // 여러개가 있더라도 맨 앞 한개만 가져옴
+        // document.querySelector('.ilbuni');
+
+        // 다 가져오기
+        // document.querySelectorAll('.ilbuni');
+
+        const ilbuniGroup = document.querySelectorAll('.ilbuni');
+        console.log(ilbuniGroup);
+        console.log(ilbuniGroup[2]);
+
+        // document.querySelector('.ilbuni:nth-child(2)')
+        // document.querySelector('.characters .ilbuni:nth-child(2)')
+
+        // 동적으로 element 속성을 넣을 수 있다
+        const char = document.querySelector('.characters');
+        char.setAttribute('data-id', 123);
+
+        console.log(char.getAttribute('data-id'));
+
+        const pElem = document.createElement('p');
+        pElem.innerHTML = '<a href="#">안녕</a>???';
+        console.log(pElem);
+
+        // appendChild 는 막내 자식으로 붙여줌
+        const charactersElem = document.querySelector('.characters');
+        charactersElem.appendChild(pElem);
+
+        charactersElem.removeChild( document.querySelector('.b') );
+
+        // 첫번쨰꺼 가져오기
+        const ilbuni1 = document.querySelector('.ilbuni');
+        // 클래스 붙이기
+        ilbuni1.classList.add('special');
+
+        // 아래와 같이 하면 special 클래스만 남음
+        // 기존꺼 보존 안함
+        // ilbuni1.className = 'special'
+
+        const ilbuni3 = document.querySelector('.ilbuni');
+        // ilbuni3.classList.remove('ilbuni');
+
+        // ilbuni3.classList.toggle('ilbuni');
+    </script>
+</body>
+
+</html>

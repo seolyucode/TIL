@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">취소</button>
+    <script>
+        let timeId;
+        let n = 0;
+        const btn = document.querySelector('.btn');
+
+        function sample() {
+            n++;
+            // console.log('sample!');
+            console.log(n);
+            if (n > 200) {
+                return;
+            }
+            // requestAnimationFrame 은
+            // 반복시킬 함수 안에 작성
+            // 1/60초 초당 60번 목표(상황에 따라 느려질 수 있음)
+            timeId = requestAnimationFrame(sample);
+        }
+
+        // requestAnimationFrame(sample);
+
+        sample();
+
+        // setInterval 은 컴퓨터 부하 걸리면 제대로 처리 못함
+        // 배터리도 빨리 닳고 단점
+        // 그래서 requestAnimationFrame 을 대신 쓰기도 함
+        // IE 10 부터 지원
+
+        btn.addEventListener('click', function () {
+            cancelAnimationFrame(timeId);
+        });
+    </script>
+</body>
+
+</html>

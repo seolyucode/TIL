@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <style>
+        .box-container {
+            display: flex;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            background: rgba(255, 255, 0, 0.7);
+        }
+        .box:hover {
+            /* width: 200px;
+            height: 200px; */
+            /* transform: scale(2) rotate(45deg); */
+            /* transform: skewY(-30deg); */
+            /* transform: translate(30px, 10px); */
+            /* transform: translateY(-30px); */
+            /* transform: scale(1.5); */
+            transform: rotate(30deg);
+            /* transform-origin: right bottom; */
+
+            /* 가로방향 세로방향 */
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Transform</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse vero error quia eius dolor doloremque aliquam
+        culpa. Nesciunt laudantium odio corrupti dolorum dicta error ipsam ducimus fugiat! Quae, recusandae!
+    </p>
+    <div class="box-container">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+        <div class="box">D</div>
+        <div class="box">E</div>
+    </div>
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, quae. Voluptates accusamus doloribus porro
+        quod, qui cupiditate, dolor sint distinctio optio labore repellat numquam tempora? Tempora ab numquam adipisci
+        esse.
+    </p>
+</body>
+
+</html>

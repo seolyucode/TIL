@@ -83,3 +83,20 @@ window.inner <- 페이지가 표기되는 부분 전체
 documentElement.clientWidth <- 스크롤바 제외한 순수 document문서 자체
 ```
 
+---
+
+### coordinates (좌표)
+
+왼쪽 최상위가 (0, 0)
+
+`Element.getBoundingClientRect()`  <- 요소가 브라우저 위에서 즉 window 위에서 얼마나 멀리 떨어져 있는지, 크기 얼마인지 등
+
+left <- x축
+
+top <- y축
+
+bottom <- 브라우저 제일 위에서 요소 밑까지. 
+
+right <- 왼쪽에서 제일 끝까지
+
+cf) CSS 에서는 포지션을 absolute나 relative로 지정하게 되면 top과 left / right(브라우저 제일 오른쪽으로부터 떨어진 거리)과 bottom(브라우저 제일 밑에서 떨어진 거리) 이용. 

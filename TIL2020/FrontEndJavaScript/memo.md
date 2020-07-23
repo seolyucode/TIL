@@ -100,3 +100,20 @@ bottom <- 브라우저 제일 위에서 요소 밑까지.
 right <- 왼쪽에서 제일 끝까지
 
 cf) CSS 에서는 포지션을 absolute나 relative로 지정하게 되면 top과 left / right(브라우저 제일 오른쪽으로부터 떨어진 거리)과 bottom(브라우저 제일 밑에서 떨어진 거리) 이용. 
+
+
+
+### Client x,y  vs  Page x,y
+
+Client x, y  <- 브라우저 window에서 좌표값에 해당
+
+Page x, y  <- 문서의 제일 시작점부터 x, y 계산
+
+---
+
+### Window load
+
+
+
+---
+

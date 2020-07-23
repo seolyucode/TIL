@@ -72,3 +72,14 @@ size, scroll, load 확인 때 많이 쓰임
 
 ---
 
+### Window Size
+
+```
+window.screen <- 모니터 사이즈
+------------------------------------
+아래는 브라우저 사이즈 변경되면 업데이트
+window.outer <- 브라우저 사이즈
+window.inner <- 페이지가 표기되는 부분 전체
+documentElement.clientWidth <- 스크롤바 제외한 순수 document문서 자체
+```
+

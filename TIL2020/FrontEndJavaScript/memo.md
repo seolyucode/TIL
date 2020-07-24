@@ -314,3 +314,88 @@ Watch <- + 누르고
 
 ---
 
+### Event 이벤트
+
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
+
+https://developer.mozilla.org/en-US/docs/Web/Events
+
+* mouse click
+* keyboard
+* resizing window
+* close window
+* page loading
+* form submission
+* video is being played
+* error
+
+특정한 요소에 Event Handler 등록 -> 브라우저에서 다양한 정보가 들어있는 이벤트라는 오브젝트 만들어서 콜백 함수에 전달
+
+EventTarget을 상속하는 모든 요소에 이벤트 핸들러 등록 가능
+
+이벤트타겟에는 3개의 API가 있다
+
+* EventTarget.addEventListener()
+* EventTarget.removeEventListener()
+* EventTarget.dispatchEvent()
+
+```javascript
+$0.addEventListener('click', () => {console.log('clicked!')});
+```
+
+```javascript
+$0.dispatchEvent(new Event('click'));
+```
+
+```javascript
+const listener = () => {console.log('clicked!')};  // 콜백 함수 등록
+$0.addEventListener('click', listener);
+$0.removeEventListener('click', listener);
+```
+
+---
+
+**Bubbling and Capturing** 
+
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Event_bubbling_and_capture
+
+capturing 부모 컨테이너에서 부터 시작해서 캡처링을 통해서 내려옴 이벤트 핸들러 호출
+
+이벤트는 버블링 업 해서 상위에 있는 부모에게 이벤트 발생했다고 해서 부모에게 등록된 이벤트 핸들로 호출, 그 상위에 또 등록된 부모의 이벤트 핸들러 호출
+
+버블링은 신경써서 하자
+
+```javascript
+// event.stopPropagation();
+event.stopImmediatePropagation();
+```
+
+위는 사용하지 않는 것이 좋다
+
+부모에다가 아래 코드 쓰기
+
+```javascript
+if (event.target !== event.currentTarget) {
+    return;
+}
+```
+
+---
+
+scrolling과 같이 passive가 true로 설정된 애들은 웬만해서는 passive를 false로 설정X
+
+---
+
+##### 이벤트델리게이션 이벤트 위임
+
+이벤트 버블링 이해
+
+부모 컨테이너는 어떤 자식 요소에서 이벤트가 발생하든 모든 이벤트를 다 들을 수가 있다
+
+부모 안에 있는 자식들에게 공통적으로 무언가 처리를 해야할 때 일일이 이벤트 리스너를 자식 노드에 추가하는 것 보단 부모에 등록하는 것이 좋다
+
+---
+
+![2](./imgs/2.png)
+
+![3](./imgs/3.png)

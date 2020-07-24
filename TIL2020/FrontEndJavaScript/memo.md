@@ -292,3 +292,25 @@ Element의 레퍼런스 즉 Element의 변수를 가지고 있으면서 조금 �
 
 ---
 
+**CSS Gradient**
+
+https://cssgradient.io/
+
+**Box Shadow CSS Generator**
+
+https://www.cssmatic.com/box-shadow
+
+---
+
+##### 디버깅
+
+개발툴 - Sources
+
+Breakpoints
+
+Watch <- + 누르고 
+
+![1](./imgs/1.png)
+
+---
+

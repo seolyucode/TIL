@@ -399,3 +399,8 @@ scrolling과 같이 passive가 true로 설정된 애들은 웬만해서는 passi
 ![2](./imgs/2.png)
 
 ![3](./imgs/3.png)
+
+![4](./imgs/4.png)
+
+---
+

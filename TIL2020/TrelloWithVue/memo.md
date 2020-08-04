@@ -88,6 +88,8 @@ sass No
 
 폴더 지우고 다시 
 
+
+
 `vue init webpack-simple vue-trello` 
 
 `cd vue-trello`
@@ -95,3 +97,21 @@ sass No
 `npm i`
 
 `npm run dev`
+
+
+
+---
+
+
+
+서버 라우팅  <- 네이버, 구글같은
+
+브라우져 라우팅  <- 좀 더 효율적으로 화면 갱신. 구글 메일, 트렐로. 하나의 화면으로 어플리케이션 동작, 페이지가 변경될 때마다 필요한 데이터 api로 호출
+
+
+
+---
+
+`npm i vue-router --save-dev`
+
+`npm i vue-router --save`

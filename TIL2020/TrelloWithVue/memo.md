@@ -6,17 +6,17 @@
 - 리스트
 - 카드
 
-|        | 생성 | 조회 | 수정           | 이동 | 삭제 |
-| ------ | ---- | ---- | -------------- | ---- | ---- |
-| 보드   | O    | O    | O 타이틀, 색상 | X    | O    |
-| 리스트 | O    | X    | O 타이틀       | O    | O    |
-| 카드   | O    | O    | O 타이틀, 설명 | O    | O    |
+|        | 생성  | 조회  | 수정               | 이동  | 삭제  |
+| ------ | ----- | ----- | ------------------ | ----- | ----- |
+| 보드   | **O** | **O** | O 타이틀, 색상     | X     | O     |
+| 리스트 | O     | X     | O 타이틀           | O     | O     |
+| 카드   | **O** | **O** | **O 타이틀, 설명** | **O** | **O** |
 
 
 
 <기본 플로우>
 
-홈 페이지 접속 (비인가 요청은 로그인 페이지 이동)
+홈 페이지 접속 (비인가 요청은 로그인 페이지 이동) 
 
 로그인 페이지 접속: 로그인 수행
 
@@ -115,3 +115,34 @@ sass No
 `npm i vue-router --save-dev`
 
 `npm i vue-router --save`
+
+---
+
+api 호출
+
+https://ide-run.goorm.io/workspace/server?language=kor#
+
+`curl localhost:3000/health`
+
+`curl localhost:3000/health -v | jq`
+
+---
+
+자바스크립트 코드로 호출하려면
+
+HttpXMLRequest 객체
+
+![2](./imgs/2.png)
+
+![1](./imgs/1.png)
+
+---
+
+`npm install axios`
+
+https://server-msvml.run.goorm.io/
+
+---
+
+`curl localhost:3000/boards -vs | jq`
+

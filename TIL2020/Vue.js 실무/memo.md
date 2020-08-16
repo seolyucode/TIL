@@ -324,3 +324,24 @@ https://vuejs.org/v2/guide/filters.html#ad
 
 ---
 
+테스트 코드 <- 일일이 기능을 손으로 확인하는 시간 줄여줌
+
+https://2019.stateofjs.com/testing/
+
+https://jestjs.io/en/
+
+https://vue-test-utils.vuejs.org/guides/
+
+---
+
+### 수업 정리
+
+* 프로젝트 구성 방법
+  * ESLint + Prettier
+  * env
+* REST API를 이용한 CRUD 애플리케이션 구현 방법
+* 백엔드 API 문서 보는 방법 및 백엔드 개발자와 협업할 때 주의할 점
+* axios 인터셉터와 모듈화를 이용한 API 함수 설계
+* 라우터 페이지 권한 처리
+* 프런트엔드 테스팅 방법
+

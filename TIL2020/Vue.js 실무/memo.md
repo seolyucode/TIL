@@ -183,5 +183,35 @@ https://kr.vuejs.org/v2/style-guide/index.html
 
 ---
 
+https://github.com/joshua1988/vue-til/tree/complete 클론
 
+git checkout 1_setup`
+
+`npm i`
+
+---
+
+[화면 구성]
+
+로그인 
+
+회원가입
+
+메인
+
+추가 / 수정
+
+
+
+`npm i vue-router`
+
+---
+
+mode: 'history',
+
+https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
+
+---
+
+`npm i axios`
 

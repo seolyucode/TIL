@@ -38,7 +38,7 @@ insert 하고 :wq
 
 ---
 
-https://vueserver.run.goorm.io/api/docs/
+https://vue-server.run.goorm.io/api/docs/
 
 ---
 

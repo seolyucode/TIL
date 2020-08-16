@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-      <PostEditForm></PostEditForm>
+    <PostEditForm></PostEditForm>
   </div>
 </template>
 
@@ -8,12 +8,10 @@
 import PostEditForm from '@/components/posts/PostEditForm.vue';
 
 export default {
-    components: {
-        PostEditForm,
-    },
-}
+  components: {
+    PostEditForm,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

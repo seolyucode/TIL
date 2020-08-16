@@ -320,3 +320,7 @@ https://github.com/joshua1988/vue-til/blob/complete/src/components/common/ToastP
 
 ---
 
+https://vuejs.org/v2/guide/filters.html#ad
+
+---
+

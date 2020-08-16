@@ -244,3 +244,10 @@ dependencies: 애플리케이션 로직과 관련된 라이브러리 목록
 
 ---
 
+https://github.com/axios/axios#interceptors
+
+---
+
+// axios.post('https://vue-server.run.goorm.io/signup')
+
+instance.interceptors.request.use();

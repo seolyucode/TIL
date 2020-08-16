@@ -215,3 +215,22 @@ https://router.vuejs.org/guide/essentials/history-mode.html#example-server-confi
 
 `npm i axios`
 
+---
+
+빌드 명령어 입력시(npm run build) -> production 모드
+
+---
+
+javascript email validate
+
+https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+
+```javascript
+function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+```
+
+---
+

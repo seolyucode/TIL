@@ -234,3 +234,13 @@ function validateEmail(email) {
 
 ---
 
+Vue Router - Programmatic Navigation
+
+---
+
+`npm i vuex`
+
+dependencies: 애플리케이션 로직과 관련된 라이브러리 목록
+
+---
+

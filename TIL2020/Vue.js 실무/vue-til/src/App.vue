@@ -1,17 +1,23 @@
 <template>
-	<div>
-		<AppHeader></AppHeader>
-		<router-view></router-view>
-	</div>
+  <div class="app">
+    <AppHeader></AppHeader>
+    <div class="app-contents">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
 import AppHeader from '@/components/common/AppHeader.vue';
+
 export default {
-	components: {
-		AppHeader,
-	},
+  components: {
+    AppHeader,
+  },
 };
 </script>
 
-<style></style>
+<style>
+@import './css/reset.css';
+@import './css/common.css';
+</style>

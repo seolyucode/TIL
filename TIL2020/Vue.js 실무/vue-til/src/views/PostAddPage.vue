@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-      <PostAddForm></PostAddForm>
+    <PostAddForm></PostAddForm>
   </div>
 </template>
 
@@ -8,12 +8,10 @@
 import PostAddForm from '@/components/posts/PostAddForm.vue';
 
 export default {
-    components: {
-        PostAddForm,
-    },
-}
+  components: {
+    PostAddForm,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

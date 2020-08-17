@@ -9,12 +9,12 @@
         </router-link>
       </div>
       <div class="board-item board-item-new">
-        <a class="new-board-btn" href="" @click.prevent="addBoard">
+        <a class="new-board-btn" href="" @click.prevent="SET_IS_ADD_BOARD(true)">
           Create new board...
         </a>
       </div>
     </div>
-    <AddBoard v-if="isAddBoard" @close="isAddBoard=false" @submit="onAddBoard" />
+    <AddBoard v-if="isAddBoard" @close="isAddBoard=false" />
   </div>
 </template>
 
@@ -22,6 +22,7 @@
 // import axios from 'axios'
 import {board} from '../api'
 import AddBoard from './AddBoard.vue'
+import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
   components: {
@@ -30,10 +31,14 @@ export default {
   data() {
     return {
       loading: false,
-      boards: [],
       error: '',
-      isAddBoard: false
     }
+  },
+  computed: {
+    ...mapState({
+      isAddBoard: 'isAddBoard',
+      boards: 'boards'
+    })
   },
   created() {
     this.fetchData()
@@ -44,13 +49,15 @@ export default {
     })
   },
   methods: {
+    ...mapMutations([
+      'SET_IS_ADD_BOARD'
+    ]),
+    ...mapActions([
+      'FETCH_BOARDS'
+    ]),
     fetchData() {
       this.loading = true
-      board.fetch()
-      .then(data => {
-        this.boards = data.list
-      })
-      .finally(_=> {
+      this.FETCH_BOARDS().finally(_=> {
         this.loading = false
       })
       // axios.get('https://server-msvml.run.goorm.io/boards')
@@ -76,13 +83,6 @@ export default {
       //   }
       // })
     },
-    addBoard() {
-      this.isAddBoard = true
-    },
-    onAddBoard(title) {
-      board.create(title)
-      .then(() => this.fetchData())
-    }
   }
 }
 </script>

@@ -120,7 +120,7 @@ sass No
 
 api 호출
 
-https://ide-run.goorm.io/workspace/server?language=kor#
+https://server-msvml.run.goorm.io/
 
 `curl localhost:3000/health`
 

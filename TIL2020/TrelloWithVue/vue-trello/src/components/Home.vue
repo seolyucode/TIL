@@ -9,7 +9,7 @@
         </router-link>
       </div>
       <div class="board-item board-item-new">
-        <a class="new-board-btn" href="" @click.prevent="addBoard">
+        <a class="new-board-btn" href="" @click.prevent="SET_IS_ADD_BOARD(true)">
           Create new board...
         </a>
       </div>
@@ -43,7 +43,7 @@ export default {
       this.loading = true
       board.fetch()
       .then(data => {
-        this.boards = data
+        this.boards = data.list
       })
       .finally(_=> {
         this.loading = false

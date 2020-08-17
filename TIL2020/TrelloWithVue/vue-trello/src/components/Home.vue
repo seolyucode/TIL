@@ -22,7 +22,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import {board} from '../api'
 
 export default {
   data() {
@@ -37,17 +38,23 @@ export default {
   methods: {
     fetchData() {
       this.loading = true
-
-      axios.get('https://server-msvml.run.goorm.io/boards')
-        .then(res => {
-          this.boards = res.data
-        })
-        .catch(res => {
-          this.$router.replace('/login')
-        })
-        .finally(() => {
-          this.loading = false
-        })
+      board.fetch()
+      .then(data => {
+        this.boards = data
+      })
+      .finally(_=> {
+        this.loading = false
+      })
+      // axios.get('https://server-msvml.run.goorm.io/boards')
+      //   .then(res => {
+      //     this.boards = res.data
+      //   })
+      //   .catch(res => {
+      //     this.$router.replace('/login')
+      //   })
+      //   .finally(() => {
+      //     this.loading = false
+      //   })
 
       // const req = new XMLHttpRequest()
       // req.open('GET', 'https://server-msvml.run.goorm.io/health')

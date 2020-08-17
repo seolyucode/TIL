@@ -5,8 +5,9 @@
         Board List:
         <div v-if="loaindg">로딩 중..</div>
         <div v-else>
-          Api result: {{apiRes}}
+          Api result: <pre>{{apiRes}}</pre>
         </div>
+        <div v-if="error"><pre>{{error}}</pre></div>
         <ul>
             <li>
                 <router-link to="/b/1">Board 1</router-link>
@@ -20,11 +21,14 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
       loading: false,
-      apiRes: ''
+      apiRes: '',
+      error: ''
     }
   },
   created() {
@@ -34,20 +38,28 @@ export default {
     fetchData() {
       this.loading = true
 
-      const req = new XMLHttpRequest()
+      axios.get('https://server-msvml.run.goorm.io/_health')
+        .then(res => {
+          this.apiRes = res.data
+        })
+        .catch(res => {
+          this.error = res.response.data
+        })
+        .finally(() => {
+          this.loading = false
+        })
 
-      req.open('GET', 'https://server-msvml.run.goorm.io/health')
-
-      req.send()
-
-      req.addEventListener('load', () => {
-        this.loading = false
-        this.apiRes = {
-          status: req.status,
-          statusText: req.statusText,
-          response: JSON.parse(req.response)
-        }
-      })
+      // const req = new XMLHttpRequest()
+      // req.open('GET', 'https://server-msvml.run.goorm.io/health')
+      // req.send()
+      // req.addEventListener('load', () => {
+      //   this.loading = false
+      //   this.apiRes = {
+      //     status: req.status,
+      //     statusText: req.statusText,
+      //     response: JSON.parse(req.response)
+      //   }
+      // })
     }
   }
 }

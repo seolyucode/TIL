@@ -5,9 +5,10 @@
         Board List:
         <div v-if="loaindg">로딩 중..</div>
         <div v-else>
-          Api result: <pre>{{apiRes}}</pre>
+          <div v-for="b in boards" :key="b.id">
+            {{b}}
+          </div>
         </div>
-        <div v-if="error"><pre>{{error}}</pre></div>
         <ul>
             <li>
                 <router-link to="/b/1">Board 1</router-link>
@@ -27,8 +28,7 @@ export default {
   data() {
     return {
       loading: false,
-      apiRes: '',
-      error: ''
+      boards: [],
     }
   },
   created() {
@@ -38,12 +38,12 @@ export default {
     fetchData() {
       this.loading = true
 
-      axios.get('https://server-msvml.run.goorm.io/_health')
+      axios.get('https://server-msvml.run.goorm.io/boards')
         .then(res => {
-          this.apiRes = res.data
+          this.boards = res.data
         })
         .catch(res => {
-          this.error = res.response.data
+          this.$router.replace('/login')
         })
         .finally(() => {
           this.loading = false

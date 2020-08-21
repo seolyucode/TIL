@@ -1,7 +1,9 @@
 <template>
   <v-app>
-    <search-bar />
-    <movie-list />
+    <v-container>
+      <search-bar />
+      <movie-list />
+    </v-container>
   </v-app>
 </template>
 

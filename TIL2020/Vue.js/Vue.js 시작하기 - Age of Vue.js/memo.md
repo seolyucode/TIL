@@ -63,3 +63,42 @@ new Vue();
 
 뷰 라이브러리를 이용하여 싱글 페이지 애플리케이션을 구현할 때 사용하는 라이브러리
 
+---
+
+액시오스
+
+뷰에서 권고하는 HTTP 통신 라이브러리
+
+Promise 기반의 HTTP 통신 라이브러리이며 상대적으로 다른 HTTP 통신 라이브러리들에 비해 문서화가 잘되어 있고 API가 다양
+
+cf) Ajax(Asynchronous JavaScript and XML, 에이잭스) 
+
+
+
+자바스크립트의 비동기 처리 패턴
+
+1. callback
+2. promise
+3. promise + generator
+4. async & await
+
+https://github.com/axios/axios
+
+https://joshua1988.github.io/web-development/javascript/javascript-asynchronous-operation/
+
+https://joshua1988.github.io/web-development/javascript/promise-for-beginners/
+
+https://joshua1988.github.io/web-development/javascript/js-async-await/
+
+---
+
+https://jsonplaceholder.typicode.com/
+
+https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine/
+
+https://joshua1988.github.io/web-development/http-part1/
+
+https://developers.google.com/web/tools/chrome-devtools/
+
+---
+

@@ -128,3 +128,33 @@ https://vuejs.org/v2/guide/computed.html#ad
 
 ---
 
+Vue CLI
+
+`node -v`
+
+`npm -v`
+
+`npm install -g @vue/cli`  // 권한 없으면 앞에 sudo
+
+https://stackoverflow.com/questions/5926672/where-does-npm-install-packages
+
+[Vue CLI 2.x]
+
+vue init '프로젝트 템플릿 유형' '프로젝트 폴더 위치'
+
+vue init webpack-simple '프로젝트 폴더 위치'
+
+
+
+[Vue CLI 3.x]
+
+vue create '프로젝트 폴더 위치'
+
+`vue create vue-cli`
+
+`cd vue-cli`
+
+`npm run serve`
+
+---
+
